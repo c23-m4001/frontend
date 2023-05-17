@@ -1,0 +1,27 @@
+body.modal-open {
+  @apply overflow-x-hidden overflow-y-hidden !important;
+}
+
+.modal {
+  @apply fixed top-0 bottom-0 left-0 right-0 grid bg-backdrop;
+}
+
+.modal-dialog {
+  @apply max-w-800px rounded-10px py-9px px-18px bg-white;
+}
+
+.modal-dialog-centered {
+  @apply justify-self-center self-center;
+}
+
+.modal-header {
+  @apply flex justify-center items-center;
+}
+
+.modal-seperator {
+  @apply my-10px h-1px w-full bg-secondary;
+}
+
+.modal-title {
+  @apply font-bold mr-auto;
+}
