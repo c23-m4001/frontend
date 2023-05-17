@@ -95,7 +95,7 @@ const CustomModal = ({modal}) => {
                 {/* begin::Modal Header */}
                 <div className="modal-header">
                     <h3 className="modal-title">Title</h3>
-                    <button type="button" class="modal-close-btn" onClick={closeModal}>X Close</button>
+                    <button type="button" className="modal-close-btn" onClick={closeModal}>X Close</button>
                 </div>
                 {/* end::Modal Header */}  
                 <div className="modal-seperator"></div>
