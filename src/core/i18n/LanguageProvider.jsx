@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 
 const I18N_CONFIG_KEY = process.env.REACT_APP_I18N_CONFIG_KEY || 'i18n-cfg';
 
@@ -14,24 +14,37 @@ const setCachedLanguage = (language, isReload = false) => {
   }
 };
 
+const availableLanguages = new Set(['en', 'id'])
+const defaultLanguage ='id'
+
 const initialLanguageState = {
   language: 'id',
   setLanguage: () => {},
 };
 
+
 const LanguageContext = createContext(initialLanguageState);
 
 export const LanguageProvider = ({children}) => {
-  const defaultLanguage = "id";
   const searchParams = new URLSearchParams(window.location.search);
-  const [lang, setLang] = useState(
-    searchParams.get('lang') || getCachedLanguage() || defaultLanguage
-  );
+
+  
+  let currentLanguage = searchParams.get('lang') || getCachedLanguage().language
+  if (!availableLanguages.has(currentLanguage)) {
+    currentLanguage = defaultLanguage;
+  }
+
+  const [lang, setLang] = useState(currentLanguage);
 
   const setLanguage = (nextLang) => {
     setLang(nextLang);
     setCachedLanguage(nextLang);
   };
+
+  useEffect(() => {
+    setCachedLanguage(lang);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return (
     <LanguageContext.Provider

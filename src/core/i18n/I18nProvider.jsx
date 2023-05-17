@@ -13,11 +13,6 @@ export const I18nProvider = ({children}) => {
 
     let messages = allMessages[language]
 
-    if (!messages) {
-        language = "id"
-        messages = allMessages[language]
-    }
-
   return (
     <IntlProvider locale={language} messages={messages}>
         {children}
