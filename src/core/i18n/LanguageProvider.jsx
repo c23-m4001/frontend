@@ -1,49 +1,47 @@
-import { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react'
 
-const I18N_CONFIG_KEY = process.env.REACT_APP_I18N_CONFIG_KEY || 'i18n-cfg';
+const I18N_CONFIG_KEY = process.env.REACT_APP_I18N_CONFIG_KEY || 'i18n-cfg'
 
 const getCachedLanguage = () => {
-  const ls = localStorage.getItem(I18N_CONFIG_KEY);
-  return ls;
-};
+  const ls = localStorage.getItem(I18N_CONFIG_KEY)
+  return ls
+}
 
 const setCachedLanguage = (language, isReload = false) => {
-  localStorage.setItem(I18N_CONFIG_KEY, JSON.stringify({ language }));
+  localStorage.setItem(I18N_CONFIG_KEY, JSON.stringify({ language }))
   if (isReload) {
-    window.location.reload();
+    window.location.reload()
   }
-};
+}
 
 const availableLanguages = new Set(['en', 'id'])
-const defaultLanguage ='id'
+const defaultLanguage = 'id'
 
 const initialLanguageState = {
   language: 'id',
   setLanguage: () => {},
-};
+}
 
+const LanguageContext = createContext(initialLanguageState)
 
-const LanguageContext = createContext(initialLanguageState);
+export const LanguageProvider = ({ children }) => {
+  const searchParams = new URLSearchParams(window.location.search)
 
-export const LanguageProvider = ({children}) => {
-  const searchParams = new URLSearchParams(window.location.search);
-
-  
   let currentLanguage = searchParams.get('lang') || getCachedLanguage().language
   if (!availableLanguages.has(currentLanguage)) {
-    currentLanguage = defaultLanguage;
+    currentLanguage = defaultLanguage
   }
 
-  const [lang, setLang] = useState(currentLanguage);
+  const [lang, setLang] = useState(currentLanguage)
 
   const setLanguage = (nextLang) => {
-    setLang(nextLang);
-    setCachedLanguage(nextLang);
-  };
+    setLang(nextLang)
+    setCachedLanguage(nextLang)
+  }
 
   useEffect(() => {
-    setCachedLanguage(lang);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    setCachedLanguage(lang)
+    // eslint-disable-next-line
   }, [])
 
   return (
@@ -51,11 +49,11 @@ export const LanguageProvider = ({children}) => {
       value={{
         language: lang,
         setLanguage,
-      }}>
-        {children}
-      </LanguageContext.Provider>
-  );
-};
+      }}
+    >
+      {children}
+    </LanguageContext.Provider>
+  )
+}
 
-export const useLanguage = () => useContext(LanguageContext);
-
+export const useLanguage = () => useContext(LanguageContext)
