@@ -27,7 +27,8 @@ const LanguageContext = createContext(initialLanguageState)
 export const LanguageProvider = ({ children }) => {
   const searchParams = new URLSearchParams(window.location.search)
 
-  let currentLanguage = searchParams.get('lang') || getCachedLanguage()?.language
+  let currentLanguage =
+    searchParams.get('lang') || getCachedLanguage()?.language
   if (!availableLanguages.has(currentLanguage)) {
     currentLanguage = defaultLanguage
   }
