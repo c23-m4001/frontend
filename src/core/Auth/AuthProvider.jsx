@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const { createContext, useContext, useState } = require('react')
+const { createContext, useContext, useState, useEffect } = require('react')
 
 const AUTH_KEY = process.env.REACT_APP_AUTH_LOCAL_STORAGE_KEY || 'auth-token'
 
@@ -15,7 +15,7 @@ const getAuthToken = () => {
   }
 
   try {
-    const authParsed = JSON.parse(authToken)
+    const authParsed = JSON.parse(authToken)?.token
     if (authParsed) {
       return authParsed
     }
@@ -53,7 +53,7 @@ const initialAuthContext = {
   token: getAuthToken(),
   setToken: (token) => null,
   currentUser: undefined,
-  refetchAuthToken: () => null,
+  // refetchAuthToken: () => null,
   logout: () => null,
 }
 
@@ -63,16 +63,23 @@ export const useAuth = () => useContext(AuthContext)
 
 export const AuthProvider = ({ children }) => {
   const [token, setTokenState] = useState(getAuthToken())
+  const [currentUser, setCurrentUser] = useState(undefined)
 
-  axios
-    .post('https://money-be.mikroskil.com/users/me')
-    .then((r) => r.data.data?.user)
-    .then((user) => {
-      console.log(user)
-    })
-    .catch((err) => {
-      console.log(err)
-    })
+  useEffect(() => {
+    axios
+      .post('https://money-be.mikroskil.com/users/me', undefined, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((r) => r.data.data?.user)
+      .then((user) => {
+        setCurrentUser(user)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }, [])
 
   const setToken = (newToken) => {
     if (newToken) {
@@ -95,7 +102,7 @@ export const AuthProvider = ({ children }) => {
         setToken,
         currentUser,
         logout,
-        refetchAuth: refetch,
+        // refetchAuth: refetch,
       }}
     >
       {children}
