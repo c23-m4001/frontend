@@ -2,6 +2,14 @@ body.modal-open {
   @apply overflow-x-hidden overflow-y-hidden !important;
 }
 
+#root-modals {
+  @apply opacity-0 pointer-events-none transition-opacity;
+}
+
+#root-modals.modal-open {
+  @apply pointer-events-auto opacity-100;
+}
+
 .modal {
   @apply fixed top-0 bottom-0 left-0 right-0 grid bg-backdrop;
 }
@@ -24,4 +32,14 @@ body.modal-open {
 
 .modal-title {
   @apply font-bold mr-auto;
+}
+
+@keyframes modal-fade {
+  0% {
+    @apply bg-transparent;
+  }
+  
+  100% {
+    @apply bg-backdrop;
+  }
 }

@@ -3,6 +3,9 @@ module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
     extend: {
+      animation: {
+        'modal-fade': 'modal-fade 0.2s linear forwards',
+      },
       colors: {
         primary: '#3DA9FC',
         'primary-hover': '#3DD9DC',
@@ -15,6 +18,9 @@ module.exports = {
       },
       borderRadius: {
         '10px': '10px',
+      },
+      fontFamily: {
+        'poppins': ['Poppins'],
       },
       maxWidth: {
         '800px': '800px',

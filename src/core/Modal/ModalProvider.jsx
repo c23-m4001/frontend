@@ -24,15 +24,15 @@ export const ModalProvider = ({ children }) => {
   const [modal, setModal] = useState(undefined)
 
   const showModal = () => {
-    document.getElementById(rootModalId).classList.remove('d-none')
+    document.getElementById(rootModalId).classList.add('modal-open')
   }
 
   const hideModal = () => {
-    document.getElementById(rootModalId).classList.add('d-none')
+    document.getElementById(rootModalId).classList.remove('modal-open')
   }
 
   const toggleModal = () => {
-    document.getElementById(rootModalId).classList.toggle('d-none')
+    document.getElementById(rootModalId).classList.toggle('modal-open')
   }
 
   const unsetModal = useCallback(() => {
@@ -65,7 +65,7 @@ export const useModal = () => useContext(ModalContext)
 
 const CustomModal = ({ modal }) => {
   const modalRef = useRef(null)
-  const { unsetModal, hideModal } = useModal()
+  const { hideModal } = useModal()
 
   useEffect(() => {
     document.body.classList.add('modal-open')
@@ -82,7 +82,6 @@ const CustomModal = ({ modal }) => {
   }, [modal])
 
   const closeModal = () => {
-    unsetModal()
     hideModal()
   }
 
