@@ -1,6 +1,8 @@
-import axios from 'axios'
+import { useQuery } from 'react-query'
+import { ReactQueryKeys } from '../../api/constant'
+import { UserApi } from '../../api/users/userApi'
 
-const { createContext, useContext, useState, useEffect } = require('react')
+const { createContext, useContext, useState } = require('react')
 
 const AUTH_KEY = process.env.REACT_APP_AUTH_LOCAL_STORAGE_KEY || 'auth-token'
 
@@ -9,13 +11,14 @@ export const getAuthToken = () => {
     return
   }
 
+  console.log(AUTH_KEY)
   const authToken = localStorage.getItem(AUTH_KEY)
   if (!authToken) {
     return
   }
 
   try {
-    const authParsed = JSON.parse(authToken)?.token
+    const authParsed = JSON.parse(authToken)
     if (authParsed) {
       return authParsed
     }
@@ -53,7 +56,8 @@ const initialAuthContext = {
   token: getAuthToken(),
   setToken: (token) => null,
   currentUser: undefined,
-  // refetchAuthToken: () => null,
+  refetchUser: () => null,
+  isLoading: false,
   logout: () => null,
 }
 
@@ -63,23 +67,21 @@ export const useAuth = () => useContext(AuthContext)
 
 export const AuthProvider = ({ children }) => {
   const [token, setTokenState] = useState(getAuthToken())
-  const [currentUser, setCurrentUser] = useState(undefined)
 
-  useEffect(() => {
-    axios
-      .get('https://money-be.mikroskil.com/users/me', {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then((r) => r.data.data?.user)
-      .then((user) => {
-        setCurrentUser(user)
-      })
-      .catch((err) => {
-        console.log(err)
-      })
-  }, [])
+  const {
+    refetch,
+    data: currentUser,
+    isLoading,
+  } = useQuery(
+    ReactQueryKeys.USER_ME,
+    () => UserApi.getMe().then((r) => r.data?.user),
+    {
+      cacheTime: 0,
+      retry: 0,
+      enabled: !!token,
+      onError: () => logout(),
+    }
+  )
 
   const setToken = (newToken) => {
     if (newToken) {
@@ -102,7 +104,8 @@ export const AuthProvider = ({ children }) => {
         setToken,
         currentUser,
         logout,
-        // refetchAuth: refetch,
+        isLoading,
+        refetchUser: refetch,
       }}
     >
       {children}
