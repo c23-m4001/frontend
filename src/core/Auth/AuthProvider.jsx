@@ -67,7 +67,7 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     axios
-      .post('https://money-be.mikroskil.com/users/me', undefined, {
+      .get('https://money-be.mikroskil.com/users/me', {
         headers: {
           Authorization: `Bearer ${token}`,
         },
