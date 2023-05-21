@@ -4,7 +4,7 @@ const { createContext, useContext, useState, useEffect } = require('react')
 
 const AUTH_KEY = process.env.REACT_APP_AUTH_LOCAL_STORAGE_KEY || 'auth-token'
 
-const getAuthToken = () => {
+export const getAuthToken = () => {
   if (!localStorage) {
     return
   }
@@ -24,7 +24,7 @@ const getAuthToken = () => {
   }
 }
 
-const setAuthToken = (auth) => {
+export const setAuthToken = (auth) => {
   if (!localStorage) {
     return
   }
@@ -37,7 +37,7 @@ const setAuthToken = (auth) => {
   }
 }
 
-const removeAuthToken = () => {
+export const removeAuthToken = () => {
   if (!localStorage) {
     return
   }
