@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { API_URL } from '../api/constant'
 
-const BASE_URL = API_URL;
+const BASE_URL = API_URL
 
 // function getAccessToken() {
 //   return localStorage.getItem('accessToken')
@@ -45,9 +45,9 @@ async function register({ name, email, password }) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ name, email, password }),
-    });
-    const responseJson = response.json();
-    console.log(responseJson);
+    })
+    const responseJson = response.json()
+    console.log(responseJson)
     return { data: responseJson.data }
   } catch (error) {
     alert(error.message)
@@ -72,4 +72,4 @@ export {
   login,
   register,
   // getUserLogged
-};
+}

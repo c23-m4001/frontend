@@ -11,7 +11,6 @@ export const getAuthToken = () => {
     return
   }
 
-  console.log(AUTH_KEY)
   const authToken = localStorage.getItem(AUTH_KEY)
   if (!authToken) {
     return

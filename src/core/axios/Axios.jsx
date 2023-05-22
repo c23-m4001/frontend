@@ -11,7 +11,7 @@ export const setupAxiosInterceptor = (axios) => {
     // Authorization
     const auth = getAuthToken()
     if (auth?.token) {
-      config.headers.Authorization = `${auth.token_type} ${auth.token}`
+      config.headers.Authorization = `Bearer ${auth.token}`
     }
 
     // Language
