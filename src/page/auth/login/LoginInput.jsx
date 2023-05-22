@@ -7,9 +7,7 @@ export const LoginInput = ({ login }) => {
   const [email, onEmailChange] = useInput('');
   const [password, onPasswordChange] = useInput('');
   const [domainErrors, setDomainErrors] = useState({});
-  const { currentUser,setToken } = useAuth();
-
-  console.log("CURRE", currentUser)
+  const { setToken } = useAuth();
 
   const onSubmit = async (e) => {
     e.preventDefault();
