@@ -1,6 +1,7 @@
 import axios from 'axios'
+import { API_URL } from '../api/constant'
 
-const BASE_URL = 'https://money-be.mikroskil.com/'
+const BASE_URL = API_URL;
 
 function getAccessToken() {
   return localStorage.getItem('accessToken')
