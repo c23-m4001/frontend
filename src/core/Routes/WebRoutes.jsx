@@ -4,12 +4,15 @@ import { useAuth } from '../Auth/AuthProvider'
 import { DashboardPage } from '../../page/dashboard/Dashboard'
 
 export const WebRoutes = () => {
-  const { currentUser } = useAuth()
+  const { currentUser, isLoading } = useAuth()
+
+  console.log("CURRENT", currentUser)
 
   return (
     <BrowserRouter>
       <Routes>
-        {currentUser ? (
+        {/* TODO: improvise with loading indicator */}
+        {!isLoading && (currentUser ? (
           <Route
             path="/*"
             element={<DashboardPage />}
@@ -25,7 +28,7 @@ export const WebRoutes = () => {
               element={<Navigate to="/auth" />}
             />
           </>
-        )}
+        ))}
       </Routes>
     </BrowserRouter>
   )

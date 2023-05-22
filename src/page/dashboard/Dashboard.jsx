@@ -1,22 +1,20 @@
-import { useIntl } from 'react-intl'
-
-import { useAuth } from '../../core/Auth/AuthProvider'
+import { Navigate, Route, Routes } from 'react-router-dom'
+import { Layout } from '../../layout/Layout'
 
 export const DashboardPage = () => {
-  const intl = useIntl()
-  const { currentUser, logout } = useAuth()
 
   return (
-    <div>
-      <h1>{intl.formatMessage({ id: 'TEST.QWE' })}</h1>
-      <div>test {JSON.stringify(currentUser)}</div>
-      <button
-        type="button"
-        onClick={() => logout()}
-        className="btn btn-primary"
-      >
-        Logout
-      </button>
-    </div>
+    <Routes>
+      <Route 
+        index
+        path="*"
+        element={<Navigate to="/transactions" />}
+      />
+
+      <Route element={<Layout />}>
+          <Route path="/transactions" element={<h1 className="bg-gray-500">Transaction Page</h1>} />
+      </Route>
+
+    </Routes>
   )
 }
