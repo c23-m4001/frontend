@@ -1,27 +1,15 @@
 import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { LoginInput } from './LoginInput'
+import { login } from '../../../utils/api'
 
 export const LoginPage = () => {
   const navigate = useNavigate();
 
-  async function onLogin({ email, password }) {
-    try {
-      const response = await axios.post(`${BASE_URL}/email-login`, {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email, password }),
-      })
-      const responseJson = await response.json()
-      console.log(responseJson)
-      navigate('/')
-      return { data: responseJson.data }
-    } catch (error) {
-      alert(error.message);
-      return { data: null }
-    }
-  }
+  const onLogin = ({ email, password }) => {
+    login({ email, password });
+    navigate('/');
+  };
 
   return (
     <div>
