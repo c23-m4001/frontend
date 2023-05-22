@@ -1,10 +1,10 @@
 import React from 'react'
 import axios from 'axios'
 
+import { WebRoutes } from './core/Routes/WebRoutes'
 import { I18nProvider } from './core/i18n/I18nProvider'
 import { LanguageProvider } from './core/i18n/LanguageProvider'
 import { ModalProvider } from './core/Modal/ModalProvider'
-import { Home } from './page/home/Home'
 import { AuthProvider } from './core/Auth/AuthProvider'
 import { setupAxiosInterceptor } from './core/axios/Axios'
 import { QueryClient, QueryClientProvider } from 'react-query'
@@ -21,10 +21,7 @@ function App() {
           <QueryClientProvider client={queryClient}>
             <AuthProvider>
               <ModalProvider>
-                <div className="App">
-                  <div>Hello World</div>
-                  <Home />
-                </div>
+                <WebRoutes />
               </ModalProvider>
             </AuthProvider>
           </QueryClientProvider>
