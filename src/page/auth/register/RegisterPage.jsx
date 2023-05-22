@@ -3,11 +3,11 @@ import { useNavigate } from 'react-router-dom'
 import { RegisterInput } from './RegisterInput'
 
 export const RegisterPage = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   const onRegister = ({ name, email, password }) => {
-    navigate('/auth/login');
-  };
+    navigate('/auth/login')
+  }
 
   return (
     <div>

@@ -3,12 +3,12 @@ import { Link, useNavigate } from 'react-router-dom'
 import { LoginInput } from './LoginInput'
 
 export const LoginPage = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   const onLogin = ({ email, password }) => {
     // login({ email, password });
-    navigate('/');
-  };
+    navigate('/')
+  }
 
   return (
     <div>
@@ -20,8 +20,7 @@ export const LoginPage = () => {
           <p>sign in with Moneta account</p>
           <LoginInput login={onLogin} />
           <p>
-            Don't have an account?{' '}
-            <Link to="/register">Register</Link>
+            Don't have an account? <Link to="/register">Register</Link>
           </p>
         </div>
       </div>

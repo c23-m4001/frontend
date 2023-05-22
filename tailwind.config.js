@@ -20,7 +20,7 @@ module.exports = {
         '10px': '10px',
       },
       fontFamily: {
-        'poppins': ['Poppins'],
+        poppins: ['Poppins'],
       },
       maxWidth: {
         '800px': '800px',

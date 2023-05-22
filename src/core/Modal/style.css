@@ -38,7 +38,7 @@ body.modal-open {
   0% {
     @apply bg-transparent;
   }
-  
+
   100% {
     @apply bg-backdrop;
   }

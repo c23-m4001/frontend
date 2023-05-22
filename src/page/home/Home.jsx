@@ -4,7 +4,7 @@ import { useAuth } from '../../core/Auth/AuthProvider'
 
 export const Home = () => {
   const intl = useIntl()
-  const { currentUser , logout} = useAuth()
+  const { currentUser, logout } = useAuth()
 
   return (
     <div>
