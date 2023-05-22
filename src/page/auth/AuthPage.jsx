@@ -1,16 +1,17 @@
 import { Routes, Route } from 'react-router-dom'
-import { Loginpage } from './login/LoginPage'
+import { LoginPage } from './login/LoginPage'
+import { RegisterPage } from './register/RegisterPage'
 
 export const AuthPage = () => {
   return (
     <Routes>
       <Route
         path="/register"
-        element={<Loginpage />}
+        element={<RegisterPage />}
       />
       <Route
         path="/login"
-        element={<Loginpage />}
+        element={<LoginPage />}
       />
     </Routes>
   )
