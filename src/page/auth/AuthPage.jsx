@@ -6,11 +6,11 @@ export const AuthPage = () => {
   return (
     <Routes>
       <Route
-        path="/register"
+        path="register"
         element={<RegisterPage />}
       />
       <Route
-        path="/login"
+        path="login"
         element={<LoginPage />}
       />
     </Routes>
