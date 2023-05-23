@@ -1,15 +1,8 @@
 import React from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { LoginInput } from './LoginInput'
-import { login } from '../../../utils/api'
 
 export const LoginPage = () => {
-  const navigate = useNavigate()
-
-  const onLogin = ({ email, password }) => {
-    login({ email, password })
-    navigate('/')
-  }
 
   return (
     <div className="container h-screen bg-blue-200 items-center">
@@ -84,9 +77,9 @@ export const LoginPage = () => {
         <div>sign in with google</div>
         <div>
           <p>sign in with Moneta account</p>
-          <LoginInput login={onLogin} />
+          <LoginInput />
           <p>
-            Don't have an account? <Link to="/auth/register">Register</Link>
+            Don't have an account? <Link to="/register">Register</Link>
           </p>
         </div>
       </div>

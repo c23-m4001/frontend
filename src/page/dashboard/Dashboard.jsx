@@ -1,27 +1,20 @@
-import { useIntl } from 'react-intl'
-
-import { useModal } from '../../core/Modal/ModalProvider'
-import { useAuth } from '../../core/Auth/AuthProvider'
+import { Navigate, Route, Routes } from 'react-router-dom'
+import { Layout } from '../../layout/Layout'
 
 export const DashboardPage = () => {
-  const { setModal, toggleModal } = useModal()
-  const intl = useIntl()
-  const { currentUser } = useAuth()
 
   return (
-    <div>
-      <h1>{intl.formatMessage({ id: 'TEST.QWE' })}</h1>
-      <div>test {JSON.stringify(currentUser)}</div>
-      <button
-        type="button"
-        onClick={() => {
-          setModal(<div>Hello World Hello WorldHello WorldHello World</div>)
-          toggleModal()
-        }}
-        className="btn btn-primary"
-      >
-        Primary
-      </button>
-    </div>
+    <Routes>
+      <Route 
+        index
+        path="*"
+        element={<Navigate to="/transactions" />}
+      />
+
+      <Route element={<Layout />}>
+          <Route path="/transactions" element={<h1 className="bg-gray-500">Transaction Page</h1>} />
+      </Route>
+
+    </Routes>
   )
 }

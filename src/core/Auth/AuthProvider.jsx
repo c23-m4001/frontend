@@ -32,7 +32,7 @@ export const setAuthToken = (auth) => {
   }
 
   try {
-    const authToken = JSON.stringify(auth)
+    const authToken = JSON.stringify({ token: auth })
     localStorage.setItem(AUTH_KEY, authToken)
   } catch (error) {
     console.error('SAVE ERROR', error)
