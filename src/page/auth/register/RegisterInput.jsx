@@ -34,12 +34,12 @@ export const RegisterInput = () => {
 
   return (
     <form
-      className="form-register"
+      className="flex-col"
       onSubmit={onSubmit}
     >
       <input
         placeholder="name"
-        className="inputAuth"
+        className="border border-secondary rounded-md p-2 min-w-3/4 mb-4"
         name="text"
         type="text"
         value={name}
@@ -48,7 +48,7 @@ export const RegisterInput = () => {
       {domainErrors?.name && <div>error: {domainErrors?.name}</div>}
       <input
         placeholder="email"
-        className="inputAuth"
+        className="border border-secondary rounded-md p-2 min-w-3/4 mb-4"
         name="text"
         type="email"
         value={email}
@@ -57,14 +57,19 @@ export const RegisterInput = () => {
       {domainErrors?.email && <div>error: {domainErrors?.email}</div>}
       <input
         placeholder="password"
-        className="inputAuth"
+        className="border border-secondary rounded-md p-2 min-w-3/4 mb-4"
         name="text"
         type="password"
         value={password}
         onChange={onPasswordChange}
       />
       {domainErrors?.password && <div>error: {domainErrors?.password}</div>}
-      <button type="submit">Register</button>
+      <button
+        className="bg-primary text-white rounded-md p-2 min-w-3/4 mb-4"
+        type="submit"
+      >
+        Register
+      </button>
     </form>
   )
 }

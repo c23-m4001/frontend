@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom'
 import { LoginInput } from './LoginInput'
 
 export const LoginPage = () => {
-
   return (
-    <div className="container h-screen bg-blue-200 items-center">
+    <div className="grid place-content-center h-screen bg-background ">
       <svg
+        className="w-28 m-auto"
         width="174"
         height="228"
         viewBox="0 0 174 228"
@@ -72,15 +72,36 @@ export const LoginPage = () => {
           fill="#3DA9FC"
         />
       </svg>
-      <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-        <p>Login</p>
-        <div>sign in with google</div>
-        <div>
-          <p>sign in with Moneta account</p>
-          <LoginInput />
-          <p>
-            Don't have an account? <Link to="/register">Register</Link>
-          </p>
+      <div className="text-center p-5 py-16 max-w-32 min-h-full bg-primary-inverse border border-gray-200 rounded-2xl shadow dark:bg-gray-800 dark:border-gray-700">
+        <p className="text-2xl text-headline mb-10">Login</p>
+        <div className="flex text-paragraph">
+          <div className="flex-1">
+            <p className="mb-4">Sign in with Google</p>
+            <button
+              type="button"
+              className="group h-12 px-6 border-2 border-gray-300 rounded-md transition duration-300 
+ hover:border-blue-400 focus:bg-blue-50 active:bg-blue-100"
+            >
+              <div className="relative flex items-center space-x-4 justify-center">
+                <img
+                  src="https://tailus.io/sources/blocks/social/preview/images/google.svg"
+                  className="absolute left-0 w-5"
+                  alt="google logo"
+                />
+                <span className="block w-max tracking-wide text-secondary text-sm transition duration-300 group-hover:primary-hover sm:text-base">
+                  Continue with Google
+                </span>
+              </div>
+            </button>
+          </div>
+          <div className="bg-secondary w-px"></div>
+          <div className="flex-1">
+            <p className="mb-4">Sign in with Moneta account</p>
+            <LoginInput />
+            <p className="text-sm">
+              Don't have an account? <Link to="/register">Register</Link>
+            </p>
+          </div>
         </div>
       </div>
     </div>

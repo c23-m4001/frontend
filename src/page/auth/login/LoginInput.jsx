@@ -29,12 +29,12 @@ export const LoginInput = () => {
 
   return (
     <form
-      className="form-login"
+      className="flex-col"
       onSubmit={onSubmit}
     >
       <input
         placeholder="email"
-        className="inputAuth"
+        className="border border-secondary rounded-md p-2 min-w-3/4 mb-4"
         name="text"
         type="email"
         value={email}
@@ -43,14 +43,19 @@ export const LoginInput = () => {
       {domainErrors?.email && <div>error: {domainErrors?.email}</div>}
       <input
         placeholder="password"
-        className="inputAuth"
+        className="border border-secondary rounded-md p-2 min-w-3/4 mb-4"
         name="text"
         type="password"
         value={password}
         onChange={onPasswordChange}
       />
       {domainErrors?.password && <div>error: {domainErrors?.password}</div>}
-      <button type="submit">Login</button>
+      <button
+        className="bg-primary text-white rounded-md p-2 min-w-3/4 mb-4"
+        type="submit"
+      >
+        Login
+      </button>
     </form>
   )
 }
