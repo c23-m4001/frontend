@@ -1,5 +1,4 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
 import { RegisterInput } from './RegisterInput'
 
 export const RegisterPage = () => {
@@ -11,7 +10,7 @@ export const RegisterPage = () => {
         <p>Register</p>
         <div>
           <p>sign up with Moneta account</p>
-          <RegisterInput register={onRegister} />
+          <RegisterInput />
         </div>
       </div>
     </div>
