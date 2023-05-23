@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import { RegisterInput } from './RegisterInput'
 
 export const RegisterPage = () => {
-
   return (
     <div className="grid place-content-center h-screen bg-background ">
       <svg
@@ -73,15 +72,15 @@ export const RegisterPage = () => {
           fill="#3DA9FC"
         />
       </svg>
-      <div className="text-center p-5 py-16 max-w-32 min-h-full bg-primary-inverse border border-gray-200 rounded-2xl shadow dark:bg-gray-800 dark:border-gray-700">
+      <div className="max-w-800px text-center p-5 py-10 max-w-32 min-h-full bg-primary-inverse border border-gray-200 rounded-2xl shadow dark:bg-gray-800 dark:border-gray-700">
         <p className="text-2xl text-headline mb-10">Register</p>
         <div className="flex text-paragraph">
           <div className="flex-1">
             <p className="mb-4">Sign in with Google</p>
             <button
               type="button"
-              className="group h-12 px-6 border-2 border-gray-300 rounded-md transition duration-300 
- hover:border-blue-400 focus:bg-blue-50 active:bg-blue-100"
+              className="group h-12 px-6 rounded-3xl transition duration-300 
+              hover:border-blue-400 focus:bg-blue-50 active:bg-blue-100 border border-secondary p-2 min-w-3/4"
             >
               <div className="relative flex items-center space-x-4 justify-center">
                 <img

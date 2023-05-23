@@ -40,7 +40,7 @@ export const LoginInput = () => {
         value={email}
         onChange={onEmailChange}
       />
-      {domainErrors?.email && <div>error: {domainErrors?.email}</div>}
+      {domainErrors?.email && <div className="min-w-3/4 mb-4">error: {domainErrors?.email}</div>}
       <input
         placeholder="password"
         className="border border-secondary rounded-md p-2 min-w-3/4 mb-4"
@@ -49,7 +49,7 @@ export const LoginInput = () => {
         value={password}
         onChange={onPasswordChange}
       />
-      {domainErrors?.password && <div>error: {domainErrors?.password}</div>}
+      {domainErrors?.password && <div className="min-w-3/4 mb-4">error: {domainErrors?.password}</div>}
       <button
         className="bg-primary text-white rounded-md p-2 min-w-3/4 mb-4"
         type="submit"
