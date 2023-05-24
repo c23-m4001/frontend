@@ -1,6 +1,6 @@
 import { React, useState } from 'react'
 
-const Sidebar = () => {
+export const Sidebar = ({children}) => {
   const [open, setOpen] = useState(true)
   const menus = [
     { title: 'Transaction', src: 'transaction' },
@@ -38,24 +38,23 @@ const Sidebar = () => {
           </h1>
         </div>
         <ul className="pt-6">
-          {menus.map((Menu, i) => (
+          {menus.map((menu, i) => (
             <li
               key={i}
               className={`flex rounded-md mt-2 p-2 cursor-pointer hover:bg-background hover:text-primary hover:fill-primary fill-current text-secondary text-sm items-center gap-x-3`}
             >
               <img
                 alt="sidebar menu"
-                src={`/svgs/${Menu.src}.svg`}
+                src={`/svgs/${menu.src}.svg`}
               />
               <span className={`${!open && 'hidden'} origin-left duration-200`}>
-                {Menu.title}
+                {menu.title}
               </span>
             </li>
           ))}
         </ul>
       </div>
+      {children}
     </div>
   )
 }
-
-export default Sidebar
