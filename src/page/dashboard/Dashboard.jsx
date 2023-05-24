@@ -13,7 +13,19 @@ export const DashboardPage = () => {
       <Route element={<Layout />}>
         <Route
           path="/transactions"
-          element={<h1 className="bg-gray-500">Transaction Page</h1>}
+          element={
+            <>
+          <h1 className="h-200px bg-gray-500">Transaction Page</h1>
+          <h1 className="h-200px bg-gray-500">Transaction Page</h1>
+          <h1 className="h-200px bg-gray-500">Transaction Page</h1>
+          <h1 className="h-200px bg-gray-500">Transaction Page</h1>
+          <h1 className="h-200px bg-gray-500">Transaction Page</h1>
+          <h1 className="h-200px bg-gray-500">Transaction Page</h1>
+          <h1 className="h-200px bg-gray-500">Transaction Page</h1>
+          <h1 className="h-200px bg-gray-500">Transaction Page</h1>
+          <h1 className="h-200px bg-gray-500">Transaction Page</h1>
+            </>
+        }
         />
       </Route>
     </Routes>
