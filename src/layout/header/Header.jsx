@@ -3,7 +3,7 @@ import SVG from 'react-inlinesvg'
 import { useAuth } from '../../core/Auth/AuthProvider'
 import { Button } from '../../components/button/Button'
 
-export const Header = ({children}) => {
+export const Header = ({ children }) => {
   const intl = useIntl()
   const { logout } = useAuth()
 

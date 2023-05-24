@@ -6,29 +6,30 @@ import { DashboardPage } from '../../page/dashboard/Dashboard'
 export const WebRoutes = () => {
   const { currentUser, isLoading } = useAuth()
 
-  console.log("CURRENT", currentUser)
+  console.log('CURRENT', currentUser)
 
   return (
     <BrowserRouter>
       <Routes>
         {/* TODO: improvise with loading indicator */}
-        {!isLoading && (currentUser ? (
-          <Route
-            path="/*"
-            element={<DashboardPage />}
-          />
-        ) : (
-          <>
+        {!isLoading &&
+          (currentUser ? (
             <Route
-              path="auth/*"
-              element={<AuthPage />}
+              path="/*"
+              element={<DashboardPage />}
             />
-            <Route
-              path="*"
-              element={<Navigate to="/auth" />}
-            />
-          </>
-        ))}
+          ) : (
+            <>
+              <Route
+                path="auth/*"
+                element={<AuthPage />}
+              />
+              <Route
+                path="*"
+                element={<Navigate to="/auth" />}
+              />
+            </>
+          ))}
       </Routes>
     </BrowserRouter>
   )
