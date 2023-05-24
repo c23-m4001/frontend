@@ -9,7 +9,7 @@ const Sidebar = () => {
   ]
 
   return (
-    <div className="flex">
+    <div className="flex fixed drop-shadow-md">
       <div
         className={` ${
           open ? 'w-48' : 'w-24'
