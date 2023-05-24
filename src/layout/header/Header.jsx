@@ -1,5 +1,6 @@
 import { useIntl } from 'react-intl'
 import { useAuth } from '../../core/Auth/AuthProvider'
+import { Button } from '../../components/button/Button'
 
 export const Header = () => {
   const intl = useIntl()
@@ -7,13 +8,12 @@ export const Header = () => {
 
   return (
     <div className="px-20px bg-white w-full h-70px flex items-center justify-between">
-      <button
-        type="button"
+      <Button
+        type={'button'}
+        btnName={'Logout'}
+        className={'ml-auto btn btn-primary'}
         onClick={() => logout()}
-        className="ml-auto btn btn-primary"
-      >
-        Temporary Logoutt Button
-      </button>
+      />
       <button
         type="button"
         onClick={() => {}}
