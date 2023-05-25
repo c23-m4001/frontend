@@ -4,25 +4,25 @@ import { Button } from '../button/Button'
 import { BiHistory, BiLogOutCircle } from 'react-icons/bi'
 
 export const ProfileModal = ({ isOpen }) => {
-  const { logout } = useAuth()
+  const { currentUser, logout } = useAuth()
   return (
     <div
       className={`${
         isOpen ? 'active' : 'hidden'
-      } absolute mt-60 md:mt-72 flex-col bg-white p-3 md:p-6 max-w-180px md:max-w-sm md:max-h-42`}
+      } select-none rounded-10px absolute mt-60 md:mt-72 flex-col bg-white p-3 md:p-6 max-w-180px md:max-w-sm md:max-h-42 drop-shadow-md`}
     >
       <div>
         <div className="flex gap-2 md:gap-4 mb-4 text-sm md:text-base">
           <img
             alt="sidebar opener"
             src="/svgs/avatar.svg"
-            className={`gap-4 cursor-pointer -right-3 top-12 w-7 rounded-full  ${
+            className={`gap-4 cursor-pointer w-10 rounded-full  ${
               !open && 'transform rotate-180'
             }`}
           />
           <div className='truncate'>
-            <p>Alan</p>
-            <p>alan@gmail.com</p>
+            <p>{currentUser.name}</p>
+            <p>{currentUser.email}</p>
           </div>
         </div>
       </div>
