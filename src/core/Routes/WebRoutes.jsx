@@ -6,8 +6,6 @@ import { DashboardPage } from '../../page/dashboard/Dashboard'
 export const WebRoutes = () => {
   const { currentUser, isLoading } = useAuth()
 
-  console.log('CURRENT', currentUser)
-
   return (
     <BrowserRouter>
       <Routes>

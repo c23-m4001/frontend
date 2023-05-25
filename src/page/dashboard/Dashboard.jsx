@@ -1,5 +1,8 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
 import { Layout } from '../../layout/Layout'
+import { TransactionPage } from '../transaction/Transaction'
+import { LoginHistoryPage } from '../login_history/LoginHistory'
+import { CategoryPage } from '../category/Category'
 
 export const DashboardPage = () => {
   return (
@@ -13,19 +16,22 @@ export const DashboardPage = () => {
       <Route element={<Layout />}>
         <Route
           path="/transactions"
-          element={
-            <>
-          <h1 className="h-200px bg-gray-500">Transaction Page</h1>
-          <h1 className="h-200px bg-gray-500">Transaction Page</h1>
-          <h1 className="h-200px bg-gray-500">Transaction Page</h1>
-          <h1 className="h-200px bg-gray-500">Transaction Page</h1>
-          <h1 className="h-200px bg-gray-500">Transaction Page</h1>
-          <h1 className="h-200px bg-gray-500">Transaction Page</h1>
-          <h1 className="h-200px bg-gray-500">Transaction Page</h1>
-          <h1 className="h-200px bg-gray-500">Transaction Page</h1>
-          <h1 className="h-200px bg-gray-500">Transaction Page</h1>
-            </>
-        }
+          element={<TransactionPage />}
+        />
+
+        <Route
+          path="/wallets"
+          element={<LoginHistoryPage />}
+        />
+
+        <Route
+          path="/categories"
+          element={<CategoryPage />}
+        />
+
+        <Route
+          path="/login-histories"
+          element={<LoginHistoryPage />}
         />
       </Route>
     </Routes>

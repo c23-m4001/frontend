@@ -1,11 +1,12 @@
 import { React, useState } from 'react'
+import { Link } from 'react-router-dom'
 
 export const Sidebar = ({ children }) => {
   const [open, setOpen] = useState(false)
   const menus = [
-    { title: 'Transaction', src: 'transaction' },
-    { title: 'Wallet', src: 'wallet' },
-    { title: 'Category', src: 'category' },
+    { title: 'Transaction', src: 'transaction', to: '/transactions' },
+    { title: 'Wallet', src: 'wallet', to: '/wallets' },
+    { title: 'Category', src: 'category', to: '/categories' },
   ]
 
   return (
@@ -40,17 +41,20 @@ export const Sidebar = ({ children }) => {
             </div>
             <ul className="pt-6">
               {menus.map((menu, i) => (
-                <li
-                  key={i}
-                  className={`flex rounded-md mt-2 p-2 cursor-pointer hover:bg-background hover:text-primary hover:fill-primary fill-current text-secondary font-medium text-sm items-center gap-x-3`}
-                >
-                  <img
-                    width={'30px'}
-                    alt="sidebar menu"
-                    src={`/svgs/${menu.src}.svg`}
-                    className="hover:fill-primary fill-current"
-                  />
-                  <span className={`origin-left ml-25px`}>{menu.title}</span>
+                <li key={i}>
+                  <Link
+                    to={menu.to}
+                    // onClick={() => setOpen(false)}
+                    className={`flex rounded-md mt-2 p-2 cursor-pointer hover:bg-background hover:text-primary hover:fill-primary fill-current text-secondary font-medium text-sm items-center gap-x-3`}
+                  >
+                    <img
+                      width={'30px'}
+                      alt="sidebar menu"
+                      src={`/svgs/${menu.src}.svg`}
+                      className="hover:fill-primary fill-current"
+                    />
+                    <span className={`origin-left ml-25px`}>{menu.title}</span>
+                  </Link>
                 </li>
               ))}
             </ul>
