@@ -3,6 +3,7 @@ import { Layout } from '../../layout/Layout'
 import { TransactionPage } from '../transaction/Transaction'
 import { LoginHistoryPage } from '../login_history/LoginHistory'
 import { CategoryPage } from '../category/Category'
+import { WalletPage } from '../wallet/Wallet'
 
 export const DashboardPage = () => {
   return (
@@ -21,7 +22,7 @@ export const DashboardPage = () => {
 
         <Route
           path="/wallets"
-          element={<LoginHistoryPage />}
+          element={<WalletPage />}
         />
 
         <Route

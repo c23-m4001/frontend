@@ -13,8 +13,6 @@ export const RegisterInput = () => {
   const { currentUser, setToken } = useAuth()
   const navigate = useNavigate()
 
-  console.log('CURRE', currentUser)
-
   const onSubmit = async (e) => {
     e.preventDefault()
 
