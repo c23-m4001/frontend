@@ -1,10 +1,6 @@
-import SVG from 'react-inlinesvg'
-import { useState } from 'react'
 import { ProfileModal } from '../../components/modals/ProfileModal'
 
 export const Header = ({ children }) => {
-  const [isOpen, setIsOpen] = useState(false)
-
   return (
     <div className="w-full flex flex-col">
       <div className="relative">
@@ -18,15 +14,7 @@ export const Header = ({ children }) => {
             {' '}
             Add Transaction
           </button>
-          <SVG
-            alt="sidebar opener"
-            src="/svgs/avatar.svg"
-            className={`md:w-11 gap-4 cursor-pointer -right-3 top-12 w-7 rounded-full  ${
-              !open && 'transform rotate-180'
-            }`}
-            onClick={() => setIsOpen(!isOpen)}
-          />
-          <ProfileModal isOpen={isOpen} />
+          <ProfileModal />
         </div>
       </div>
       {children}
