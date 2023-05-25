@@ -1,14 +1,14 @@
 import React from 'react'
 
-export const Button = ({ btnName, btnType, className, onClick }) => {
+export const Button = ({ children, type, className, onClick }) => {
   return (
     <button
       // eslint-disable-next-line react/button-has-type
-      type={btnType}
+      type={type}
       className={className}
       onClick={onClick}
     >
-      {btnName}
+      {children}
     </button>
   )
 }
