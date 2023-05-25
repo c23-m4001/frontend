@@ -29,6 +29,7 @@ module.exports = {
       },
       fontFamily: {
         poppins: ['Poppins'],
+        sen: ['Sen'],
       },
       maxWidth: {
         '800px': '800px',
