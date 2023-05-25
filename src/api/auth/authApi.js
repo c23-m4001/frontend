@@ -21,4 +21,7 @@ export const AuthApi = {
       })
       .then((r) => r.data)
   },
+  loginHistories: async () => {
+    return axios.post(`${AUTH_API_URL}/login-histories`).then((r) => r.data)
+  },
 }
