@@ -56,7 +56,8 @@ export const LoginInput = () => {
         <div className="min-w-3/4 mb-4">error: {domainErrors?.password}</div>
       )}
       <Button
-        className={'bg-primary text-white rounded-md p-2 w-60 h-9 flex-none order-2 flex-grow-0 mb-4'}
+        btnName={'Login'}
+        className={'bg-primary text-white rounded-md p-2 min-w-3/4 flex-none order-2 flex-grow-0 mb-4'}
         type={'submit'}
       >
         Login

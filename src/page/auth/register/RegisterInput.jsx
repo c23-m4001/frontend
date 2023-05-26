@@ -68,9 +68,11 @@ export const RegisterInput = () => {
       )}
       <Button
         btnName={'Register'}
-        className={'bg-primary text-white rounded-md p-2 min-w-3/4 mb-4'}
+        className={'bg-primary text-white rounded-md p-2 min-w-3/4 flex-none order-2 flex-grow-0 mb-4'}
         type={'submit'}
-      />
+      >
+        Register
+      </Button>
     </form>
   )
 }
