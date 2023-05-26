@@ -31,6 +31,9 @@ module.exports = {
         poppins: ['Poppins'],
         sen: ['Sen'],
       },
+      flexBasis: {
+        '50%': '50%',
+      },
       maxWidth: {
         '800px': '800px',
         '180px': '180px',
