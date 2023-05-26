@@ -27,3 +27,7 @@ body {
 .brand-name {
   @apply font-sen;
 }
+
+li .active {
+  @apply bg-background text-primary;
+}

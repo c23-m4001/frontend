@@ -1,5 +1,5 @@
 import { React, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { Icon } from '@iconify/react'
 
 export const Sidebar = ({ children }) => {
@@ -37,7 +37,7 @@ export const Sidebar = ({ children }) => {
             </div>
             <ul className="pt-6">
               <li>
-                <Link
+                <NavLink
                   to="/transactions"
                   className={`flex rounded-md mt-2 p-2 cursor-pointer font-medium hover:bg-background hover:text-primary text-secondary text-sm items-center gap-x-3`}
                 >
@@ -47,10 +47,10 @@ export const Sidebar = ({ children }) => {
                     className="min-w-max"
                   />
                   <span className={`origin-left ml-25px`}>Transaction</span>
-                </Link>
+                </NavLink>
               </li>
               <li>
-                <Link
+                <NavLink
                   to="/wallets"
                   className={`flex rounded-md mt-2 p-2 cursor-pointer font-medium hover:bg-background hover:text-primary text-secondary text-sm items-center gap-x-3`}
                 >
@@ -60,10 +60,10 @@ export const Sidebar = ({ children }) => {
                     className="min-w-max"
                   />
                   <span className={`origin-left ml-25px`}>Wallet</span>
-                </Link>
+                </NavLink>
               </li>
               <li>
-                <Link
+                <NavLink
                   to="/category"
                   className={`flex rounded-md mt-2 p-2 cursor-pointer font-medium hover:bg-background hover:text-primary text-secondary text-sm items-center gap-x-3`}
                 >
@@ -73,7 +73,7 @@ export const Sidebar = ({ children }) => {
                     className="min-w-max"
                   />
                   <span className={`origin-left ml-25px`}>Category</span>
-                </Link>
+                </NavLink>
               </li>
             </ul>
           </div>
