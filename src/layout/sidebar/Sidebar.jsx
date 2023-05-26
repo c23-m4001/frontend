@@ -1,13 +1,9 @@
 import { React, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { Icon } from '@iconify/react'
 
 export const Sidebar = ({ children }) => {
   const [open, setOpen] = useState(false)
-  const menus = [
-    { title: 'Transaction', src: 'transaction', to: '/transactions' },
-    { title: 'Wallet', src: 'wallet', to: '/wallets' },
-    { title: 'Category', src: 'category', to: '/categories' },
-  ]
 
   return (
     <div className="flex">
@@ -40,23 +36,45 @@ export const Sidebar = ({ children }) => {
               </h1>
             </div>
             <ul className="pt-6">
-              {menus.map((menu, i) => (
-                <li key={i}>
-                  <Link
-                    to={menu.to}
-                    // onClick={() => setOpen(false)}
-                    className={`flex rounded-md mt-2 p-2 cursor-pointer hover:bg-background hover:text-primary hover:fill-primary fill-current text-secondary font-medium text-sm items-center gap-x-3`}
-                  >
-                    <img
-                      width={'30px'}
-                      alt="sidebar menu"
-                      src={`/svgs/${menu.src}.svg`}
-                      className="hover:fill-primary fill-current"
-                    />
-                    <span className={`origin-left ml-25px`}>{menu.title}</span>
-                  </Link>
-                </li>
-              ))}
+              <li>
+                <Link
+                  to="/transactions"
+                  className={`flex rounded-md mt-2 p-2 cursor-pointer font-medium hover:bg-background hover:text-primary text-secondary text-sm items-center gap-x-3`}
+                >
+                  <Icon
+                    icon="icon-park-solid:transaction"
+                    width="30"
+                    className="min-w-max"
+                  />
+                  <span className={`origin-left ml-25px`}>Transaction</span>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/wallets"
+                  className={`flex rounded-md mt-2 p-2 cursor-pointer font-medium hover:bg-background hover:text-primary text-secondary text-sm items-center gap-x-3`}
+                >
+                  <Icon
+                    icon="icon-park-solid:wallet"
+                    width="30"
+                    className="min-w-max"
+                  />
+                  <span className={`origin-left ml-25px`}>Wallet</span>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/category"
+                  className={`flex rounded-md mt-2 p-2 cursor-pointer font-medium hover:bg-background hover:text-primary text-secondary text-sm items-center gap-x-3`}
+                >
+                  <Icon
+                    icon="bxs:category"
+                    width="30"
+                    className="min-w-max"
+                  />
+                  <span className={`origin-left ml-25px`}>Category</span>
+                </Link>
+              </li>
             </ul>
           </div>
         </div>
