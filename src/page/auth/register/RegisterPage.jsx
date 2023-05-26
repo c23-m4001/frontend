@@ -4,8 +4,8 @@ import { RegisterInput } from './RegisterInput'
 
 export const RegisterPage = () => {
   return (
-    <div className="grid place-content-center h-screen bg-background">
-      <div className="max-w-800px grid place-content-center h-screen">
+    <div className="grid place-content-center min-h-screen bg-background">
+      <div className="max-w-800px grid place-content-center pb-10">
         <svg
           className="w-28 m-auto"
           width="174"
@@ -73,15 +73,15 @@ export const RegisterPage = () => {
             fill="#3DA9FC"
           />
         </svg>
-        <div className="w-full text-center p-5 py-10 max-w-32 min-h-full bg-primary-inverse border border-gray-200 rounded-2xl shadow dark:bg-gray-800 dark:border-gray-700">
-          <p className="text-2xl text-headline mb-10">Register</p>
-          <div className="flex text-paragraph">
+        <div className="m-auto w-11/12 min-w-360 md:min-w-800 text-center md:p-5 py-8 md:py-10 max-w-32 min-h-full bg-primary-inverse border border-gray-200 rounded-2xl shadow dark:bg-gray-800 dark:border-gray-700">
+          <p className="text-2xl text-headline mb-4 md:mb-10">Register</p>
+          <div className="flex flex-col md:flex-row text-paragraph">
             <div className="flex-1">
-              <p className="mb-4">Sign in with Google</p>
+              <p className="m-2 md:mb-4">Sign in with Google</p>
               <button
                 type="button"
                 className="group h-12 px-6 rounded-3xl transition duration-300 
-              hover:border-blue-400 focus:bg-blue-50 active:bg-blue-100 border border-secondary p-2 min-w-3/4"
+              hover:border-blue-400 focus:bg-blue-50 active:bg-blue-100 border border-secondary p-2 min-w-3/4 mb-4"
               >
                 <div className="relative flex items-center space-x-4 justify-center">
                   <img
@@ -97,7 +97,7 @@ export const RegisterPage = () => {
             </div>
             <div className="bg-secondary w-px"></div>
             <div className="flex-1">
-              <p className="mb-4">Sign in with Moneta account</p>
+              <p className="m-2 md:mb-4">Sign in with Moneta account</p>
               <RegisterInput />
               <p className="text-sm">
                 Already a user? <Link to="/login">Login</Link>

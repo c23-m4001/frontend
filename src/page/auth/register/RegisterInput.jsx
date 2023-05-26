@@ -35,40 +35,40 @@ export const RegisterInput = () => {
     <form onSubmit={onSubmit}>
       <input
         placeholder="name"
-        className="border border-secondary rounded-md p-2 min-w-3/4 mb-4"
+        className="border border-secondary rounded-md p-2 min-w-3/4 mb-4 focus:outline-primary"
         name="text"
         type="text"
         value={name}
         onChange={onNameChange}
       />
       {domainErrors?.name && (
-        <div className="min-w-3/4 mb-4">error: {domainErrors?.name}</div>
+        <div className="min-w-3/4 mb-4 text-danger">error: {domainErrors?.name}</div>
       )}
       <input
         placeholder="email"
-        className="border border-secondary rounded-md p-2 min-w-3/4 mb-4"
+        className="border border-secondary rounded-md p-2 min-w-3/4 mb-4 focus:outline-primary"
         name="text"
         type="email"
         value={email}
         onChange={onEmailChange}
       />
       {domainErrors?.email && (
-        <div className="min-w-3/4 mb-4">error: {domainErrors?.email}</div>
+        <div className="min-w-3/4 mb-4 text-danger">error: {domainErrors?.email}</div>
       )}
       <input
         placeholder="password"
-        className="border border-secondary rounded-md p-2 min-w-3/4 mb-4"
+        className="border border-secondary rounded-md p-2 min-w-3/4 mb-4 focus:outline-primary"
         name="text"
         type="password"
         value={password}
         onChange={onPasswordChange}
       />
       {domainErrors?.password && (
-        <div className="min-w-3/4 mb-4">error: {domainErrors?.password}</div>
+        <div className="min-w-3/4 mb-4 text-danger">error: {domainErrors?.password}</div>
       )}
       <Button
         btnName={'Register'}
-        className={'bg-primary text-white rounded-md p-2 min-w-3/4 flex-none order-2 flex-grow-0 mb-4'}
+        className={'bg-primary text-white rounded-md p-2 min-w-3/4 flex-none order-2 flex-grow-0 mb-4 active:bg-primary-hover'}
         type={'submit'}
       >
         Register
