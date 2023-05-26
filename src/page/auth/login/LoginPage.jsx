@@ -11,7 +11,7 @@ export const LoginPage = () => {
         <img src="/svgs/moneta-label.svg" className="w-28 mx-auto mb-20px sm:mb-40px" />
         <div className="m-auto grow text-center md:p-5 py-8 md:py-10 bg-primary-inverse border border-gray-200 rounded-2xl shadow dark:bg-gray-800 dark:border-gray-700">
           <p className="text-2xl text-headline mb-4 md:mb-10">Login</p>
-          <div className="flex flex-col md:flex-row text-paragraph">
+          <div className="flex flex-col-reverse md:flex-row text-paragraph">
             <div className="grow basis-50% min-w-0 flex flex-col">
               <p className="m-2 md:mb-4">Sign in with Google</p>
               <Button
@@ -30,7 +30,7 @@ export const LoginPage = () => {
                 </div>
               </Button>
             </div>
-            <div className="bg-secondary w-1px"></div>
+            <div className="bg-secondary mx-20px my-10px md:m-0 h-1px md:h-auto grow md:flex-none md:w-1px"></div>
             <div className="grow basis-50% min-w-0">
               <p className="m-2 md:mb-4">Sign in with Moneta account</p>
               <LoginInput />
