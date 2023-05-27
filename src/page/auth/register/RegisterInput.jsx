@@ -16,14 +16,16 @@ export const RegisterInput = () => {
   const onSubmit = async (e) => {
     e.preventDefault()
 
-    const a = await AuthApi.emailLogin({ email, password }).catch((er) => {
-      setDomainErrors(
-        er.response.data.errors.reduce((prev, err) => {
-          prev[err.domain] = err.message
-          return prev
-        }, {})
-      )
-    })
+    const a = await AuthApi.emailRegister({ name, email, password }).catch(
+      (er) => {
+        setDomainErrors(
+          er.response.data.errors.reduce((prev, err) => {
+            prev[err.domain] = err.message
+            return prev
+          }, {})
+        )
+      }
+    )
 
     setToken(a.data.token.access_token)
     navigate('/')
@@ -54,7 +56,9 @@ export const RegisterInput = () => {
         onChange={onEmailChange}
       />
       {domainErrors?.email && (
-        <div className="grow mb-4 text-danger">error: {domainErrors?.email}</div>
+        <div className="grow mb-4 text-danger">
+          error: {domainErrors?.email}
+        </div>
       )}
       <input
         placeholder="password"
@@ -65,16 +69,18 @@ export const RegisterInput = () => {
         onChange={onPasswordChange}
       />
       {domainErrors?.password && (
-        <div className="grow mb-4 text-danger">error: {domainErrors?.password}</div>
+        <div className="grow mb-4 text-danger">
+          error: {domainErrors?.password}
+        </div>
       )}
       <Button
-        className={'bg-primary text-white rounded-md p-2 grow order-2 mb-4 active:bg-primary-hover'}
+        className={
+          'bg-primary text-white rounded-md p-2 grow order-2 mb-4 active:bg-primary-hover'
+        }
         type={'submit'}
       >
         Register
       </Button>
-
-
     </form>
   )
 }
