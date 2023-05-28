@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Button } from '../../../components/button/Button'
+import { GoogleLogin } from '../components/GoogleLogin'
 import { LoginInput } from './LoginInput'
 
 export const LoginPage = () => {
@@ -14,21 +14,7 @@ export const LoginPage = () => {
           <div className="flex flex-col-reverse md:flex-row text-paragraph">
             <div className="grow basis-50% min-w-0 flex flex-col">
               <p className="m-2 md:mb-4">Sign in with Google</p>
-              <Button
-                type="button"
-                className="mx-20px h-12 px-6 p-2 mb-4 rounded-3xl transition duration-300 hover:border-blue-400 focus:bg-blue-50 active:bg-blue-100 border border-secondary"
-              >
-                <div className="relative flex items-center space-x-4 justify-center">
-                  <img
-                    src="/svgs/google.svg"
-                    className="absolute -left-2 w-5"
-                    alt="google logo"
-                  />
-                  <span className="block whitespace-nowrap tracking-wide text-secondary text-sm transition duration-300 group-hover:primary-hover sm:text-base">
-                    Continue with Google
-                  </span>
-                </div>
-              </Button>
+              <GoogleLogin />
             </div>
             <div className="bg-secondary mx-20px my-10px md:m-0 h-1px md:h-auto grow md:flex-none md:w-1px"></div>
             <div className="grow basis-50% min-w-0">
