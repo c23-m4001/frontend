@@ -4,28 +4,34 @@ import { AuthApi } from '../../../api/auth/authApi'
 import { useAuth } from '../../../core/Auth/AuthProvider'
 import { useInput } from '../../../custom-hooks/useInput'
 import { Button } from '../../../components/button/Button'
+import { Input } from '../../../components/input/Input'
 
 export const RegisterInput = () => {
   const [name, onNameChange] = useInput('')
   const [email, onEmailChange] = useInput('')
   const [password, onPasswordChange] = useInput('')
   const [domainErrors, setDomainErrors] = useState({})
+  const [isLoading, setIsLoading] = useState(false)
   const { setToken } = useAuth()
   const navigate = useNavigate()
 
   const onSubmit = async (e) => {
     e.preventDefault()
 
-    const a = await AuthApi.emailRegister({ name, email, password }).catch(
-      (er) => {
+    setIsLoading(true)
+
+    const a = await AuthApi.emailRegister({ name, email, password })
+      .catch((er) => {
         setDomainErrors(
           er.response.data.errors.reduce((prev, err) => {
             prev[err.domain] = err.message
             return prev
           }, {})
         )
-      }
-    )
+      })
+      .finally(() => {
+        setIsLoading(false)
+      })
 
     setToken(a.data.token.access_token)
     navigate('/')
@@ -36,50 +42,40 @@ export const RegisterInput = () => {
       className="flex flex-col px-20px"
       onSubmit={onSubmit}
     >
-      <input
-        placeholder="name"
-        className="block w-full border border-secondary rounded-md p-2 grow mb-4 focus:outline-primary"
-        name="text"
-        type="name"
+      <Input
+        placeholder="Name"
+        name="name"
+        type="text"
         value={name}
         onChange={onNameChange}
+        error={domainErrors?.name}
+        disabled={isLoading}
       />
-      {domainErrors?.email && (
-        <div className="grow mb-4 text-danger">error: {domainErrors?.name}</div>
-      )}
-      <input
-        placeholder="email"
-        className="block w-full border border-secondary rounded-md p-2 grow mb-4 focus:outline-primary"
-        name="text"
+      <Input
+        placeholder="Email"
+        name="email"
         type="email"
         value={email}
         onChange={onEmailChange}
+        error={domainErrors?.email}
+        disabled={isLoading}
       />
-      {domainErrors?.email && (
-        <div className="grow mb-4 text-danger">
-          error: {domainErrors?.email}
-        </div>
-      )}
-      <input
-        placeholder="password"
-        className="block w-full border border-secondary rounded-md p-2 grow mb-4 focus:outline-primary"
-        name="text"
+      <Input
+        placeholder="Password"
+        name="password"
         type="password"
         value={password}
         onChange={onPasswordChange}
+        error={domainErrors?.password}
+        disabled={isLoading}
       />
-      {domainErrors?.password && (
-        <div className="grow mb-4 text-danger">
-          error: {domainErrors?.password}
-        </div>
-      )}
       <Button
-        className={
-          'bg-primary text-white rounded-md p-2 grow order-2 mb-4 active:bg-primary-hover'
-        }
+        className="btn btn-primary rounded-sm mb-4"
         type={'submit'}
+        disabled={isLoading}
+        isLoading={isLoading}
       >
-        Register
+        Login
       </Button>
     </form>
   )

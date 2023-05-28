@@ -5,6 +5,10 @@ module.exports = {
     extend: {
       animation: {
         'modal-fade': 'modal-fade 0.2s linear forwards',
+        'spin-infinite': 'spin-infinite 1.4s linear infinite',
+      },
+      borderWidth: {
+        '5px': '5px',
       },
       colors: {
         primary: '#3DA9FC',
@@ -15,6 +19,7 @@ module.exports = {
 
         white: '#FFFFFF',
         backdrop: 'rgb(13,12,12,0.6)',
+        'backdrop-light': 'rgb(70,65,65,0.6)',
         background: '#D8EEFE',
         headline: '#094067',
         paragraph: '#5F6C7B',
@@ -26,6 +31,9 @@ module.exports = {
       },
       borderColor: {
         secondary: '#90B4CE',
+      },
+      content: {
+        empty: "''",
       },
       fontFamily: {
         poppins: ['Poppins'],
@@ -40,6 +48,8 @@ module.exports = {
       },
       minHeight: {
         0: '0',
+        '16px': '16px',
+        '20px': '20px',
         '1/4': '25%',
         '1/2': '50%',
         '3/4': '75%',
@@ -77,6 +87,7 @@ module.exports = {
         '200px': '200px',
         '210px': '210px',
         '220px': '220px',
+        '50%': '50%',
       },
     },
   },

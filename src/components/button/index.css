@@ -1,0 +1,28 @@
+.btn {
+  @apply px-4 py-2;
+}
+
+.btn-loading {
+  @apply relative;
+}
+
+.btn-loading:before {
+  @apply content-empty absolute top-0 left-0 right-0 bottom-0 bg-backdrop-light;
+}
+
+.btn-loading:after {
+  @apply content-empty absolute top-50% left-50% -translate-x-50% -translate-y-50% w-20px h-20px rounded-full border-5px border-solid border-black border-b-transparent animate-spin-infinite;
+}
+
+.btn-primary {
+  @apply transition-colors bg-primary hover:bg-primary-hover text-primary-inverse;
+}
+
+@keyframes spin-infinite {
+  0% {
+    transform: translate(-50%, -50%) rotate(0);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}

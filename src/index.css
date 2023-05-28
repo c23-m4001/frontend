@@ -16,14 +16,6 @@ body {
   @apply m-0 font-poppins;
 }
 
-.btn {
-  @apply rounded-xl px-4 py-2;
-}
-
-.btn-primary {
-  @apply transition-colors bg-primary hover:bg-primary-hover text-primary-inverse font-bold;
-}
-
 .brand-name {
   @apply font-sen;
 }
