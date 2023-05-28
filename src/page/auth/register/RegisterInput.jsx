@@ -75,7 +75,7 @@ export const RegisterInput = () => {
         disabled={isLoading}
         isLoading={isLoading}
       >
-        Login
+        Register
       </Button>
     </form>
   )

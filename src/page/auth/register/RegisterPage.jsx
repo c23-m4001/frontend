@@ -13,7 +13,7 @@ export const RegisterPage = () => {
           <p className="text-2xl text-headline mb-4 md:mb-10">Register</p>
           <div className="flex flex-col-reverse md:flex-row text-paragraph">
             <div className="grow basis-50% min-w-0 flex flex-col">
-              <p className="m-2 md:mb-4">Sign in with Google</p>
+              <p className="m-2 md:mb-4">Sign up with Google</p>
               <Button
                 type="button"
                 className="mx-20px h-12 px-6 p-2 mb-4 rounded-3xl transition duration-300 hover:border-blue-400 focus:bg-blue-50 active:bg-blue-100 border border-secondary"
@@ -32,7 +32,7 @@ export const RegisterPage = () => {
             </div>
             <div className="bg-secondary mx-20px my-10px md:m-0 h-1px md:h-auto grow md:flex-none md:w-1px"></div>
             <div className="grow basis-50% min-w-0">
-              <p className="m-2 md:mb-4">Sign in with Moneta account</p>
+              <p className="m-2 md:mb-4">Sign up a Moneta account</p>
               <RegisterInput />
               <p className="text-sm">
                 Don't have an account? <Link to="/auth/login">Login</Link>
