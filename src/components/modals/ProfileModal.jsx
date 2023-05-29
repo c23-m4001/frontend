@@ -40,30 +40,33 @@ export const ProfileModal = () => {
             </div>
           </div>
         </div>
-        <div className="border-t-2 p-2 text-sm">
-          <Button
-            type="button"
-            className="flex items-center text-secondary gap-2 md:gap-4"
-            onClick={() => {
-              navigate('/login-histories')
-              setIsOpen(false)
-            }}
-          >
-            <BiHistory className="flex justify-center text-2xl" />
-            <p>Login History</p>
-          </Button>
-        </div>
-        <div className="p-2 text-sm">
-          <Button
-            type="button"
-            label="Logout"
-            onClick={() => logout()}
-            className="flex items-center text-secondary gap-2 md:gap-4"
-          >
-            <BiLogOutCircle className="flex justify-center transform rotate-180 text-2xl" />
-            <p>Logout</p>
-          </Button>
-        </div>
+        <div className="border-t-2"></div>
+        <ul className="text-sm">
+          <li>
+            <Button
+              type="button"
+              className="flex items-center text-secondary gap-2 md:gap-4 p-2 hover:bg-background hover:text-primary w-full"
+              onClick={() => {
+                navigate('/login-histories')
+                setIsOpen(false)
+              }}
+            >
+              <BiHistory className="flex justify-center text-2xl" />
+              <p>Login History</p>
+            </Button>
+          </li>
+          <li>
+            <Button
+              type="button"
+              label="Logout"
+              onClick={() => logout()}
+              className="flex items-center text-secondary gap-2 md:gap-4 p-2 hover:bg-background hover:text-primary w-full"
+            >
+              <BiLogOutCircle className="flex justify-center transform rotate-180 text-2xl" />
+              <p>Logout</p>
+            </Button>
+          </li>
+        </ul>
       </div>
     </>
   )
