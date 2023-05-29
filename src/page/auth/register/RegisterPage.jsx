@@ -25,7 +25,7 @@ export const RegisterPage = () => {
                     alt="google logo"
                   />
                   <span className="block whitespace-nowrap tracking-wide text-secondary text-sm transition duration-300 group-hover:primary-hover sm:text-base">
-                    Continue with Google
+                  <h1 className="ml-2">Continue with Google</h1>
                   </span>
                 </div>
               </Button>
