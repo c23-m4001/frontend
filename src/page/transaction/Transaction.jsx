@@ -1,3 +1,7 @@
 export const TransactionPage = () => {
-  return <h1 className="h-200px bg-gray-500">Transaction Page</h1>
+  return (
+    <div className="bg-primary">
+      <h1 className="h-80 font-poppins font-bold text-24 text-white ml-96">Transaksi</h1>
+    </div>
+  )
 }
