@@ -7,7 +7,7 @@ export const Sidebar = ({ children }) => {
 
   return (
     <div className="flex">
-      <div className="relative">
+      <div className="relative z-30">
         <div className={`duration-300 ${open ? 'w-220px' : 'w-96px'}`}></div>
         <div className="fixed z-10 drop-shadow-md">
           <img

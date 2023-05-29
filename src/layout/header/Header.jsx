@@ -5,7 +5,7 @@ export const Header = ({ children }) => {
     <div className="w-full flex flex-col">
       <div className="relative">
         <div className="h-70px"></div>
-        <div className="fixed top-0 left-0 right-0 px-10px md:px-20px bg-white h-70px flex items-center justify-end drop-shadow-md gap-4">
+        <div className="z-20 fixed top-0 left-0 right-0 px-10px md:px-20px bg-white h-70px flex items-center justify-end drop-shadow-md gap-4">
           <button
             type="button"
             onClick={() => {}}
