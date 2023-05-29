@@ -1,6 +1,7 @@
 import { useQuery } from 'react-query'
 import { ReactQueryKeys } from '../../api/constant'
 import { AuthApi } from '../../api/auth/authApi'
+import LoginHistoryItem from './LoginHistoryItem'
 
 export const LoginHistoryPage = () => {
   const { data: loginHistories, isLoading } = useQuery(
@@ -13,11 +14,22 @@ export const LoginHistoryPage = () => {
   )
 
   return (
-    <h1 className="h-200px bg-gray-500">
+    <h1 className="min-h-screen bg-background">
       {isLoading ? (
         <h1>Loading </h1>
       ) : (
-        <h4>{JSON.stringify(loginHistories)}</h4>
+        //<h4>{JSON.stringify(loginHistories)}</h4>
+        <div className="m-20">
+          <h4 className="font-bold text-headline text-2xl">Login History</h4>
+          <div className="mt-8">
+            {loginHistories.map((loginHistory) => (
+              <LoginHistoryItem
+                key={loginHistory.id}
+                {...loginHistory}
+              />
+            ))}
+          </div>
+        </div>
       )}
     </h1>
   )
