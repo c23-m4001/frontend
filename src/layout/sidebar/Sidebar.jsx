@@ -64,7 +64,7 @@ export const Sidebar = ({ children }) => {
               </li>
               <li>
                 <NavLink
-                  to="/category"
+                  to="/categories"
                   className={`flex rounded-md mt-2 p-2 cursor-pointer font-medium hover:bg-background hover:text-primary text-secondary text-sm items-center gap-x-3`}
                 >
                   <Icon

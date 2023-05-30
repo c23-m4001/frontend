@@ -19,15 +19,17 @@ export const LoginHistoryPage = () => {
         <h1>Loading </h1>
       ) : (
         //<h4>{JSON.stringify(loginHistories)}</h4>
-        <div className="m-20">
-          <h4 className="font-bold text-headline text-2xl">Login History</h4>
-          <div className="mt-8">
-            {loginHistories.map((loginHistory) => (
-              <LoginHistoryItem
-                key={loginHistory.id}
-                {...loginHistory}
-              />
-            ))}
+        <div className="w-full">
+          <div className="m-8 ">
+            <h4 className="font-bold text-headline text-2xl">Login History</h4>
+            <div className="mt-8">
+              {loginHistories.map((loginHistory) => (
+                <LoginHistoryItem
+                  key={loginHistory.id}
+                  {...loginHistory}
+                />
+              ))}
+            </div>
           </div>
         </div>
       )}
