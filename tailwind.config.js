@@ -91,6 +91,9 @@ module.exports = {
         '220px': '220px',
         '50%': '50%',
       },
+      zIndex: {
+        1000: 1000,
+      },
     },
   },
   plugins: [],
