@@ -2,6 +2,10 @@
   @apply px-4 py-2;
 }
 
+.btn:disabled {
+  @apply bg-backdrop !important;
+}
+
 .btn-loading {
   @apply relative;
 }
