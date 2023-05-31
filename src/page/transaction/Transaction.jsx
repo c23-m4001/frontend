@@ -4,6 +4,7 @@ import { AuthApi } from '../../api/auth/authApi'
 import { ThisMonthTransactionsItem } from './ThisMonthTransactionsItem'
 import { useModal } from '../../core/Modal/ModalProvider'
 import moment from 'moment/moment'
+import { Button } from '../../components/button/Button'
 
 export const TransactionPage = ({ amount }) => {
   const { data: nodess, isLoading } = useQuery(
@@ -64,7 +65,6 @@ export const TransactionPage = ({ amount }) => {
 
   const onTransactionClick = (id) => {
     const transactionNow = nodes.filter((transaction) => transaction.id === id)
-    
     setModal(
       <div className="flex gap-2">
         <div className="flex flex-2 gap-2 items-center">
@@ -72,15 +72,45 @@ export const TransactionPage = ({ amount }) => {
             src="/svgs/avatar.svg"
             className="w-6"
           />
-          <div className='flex flex-col gap-2 text-xs'>
-            <p className="text-headline text-base font-bold">{transactionNow[0].name}</p>
-            <p className='text-paragraph'>{moment(transactionNow.date).format("ddd, MMM Do YYYY")}</p>
-            <p className='bg-primary rounded-lg text-white w-max px-4'>{transactionNow[0].category.name}</p>
+          <div className="flex flex-col gap-2 text-xs">
+            <p className="text-headline text-base font-bold">
+              {transactionNow[0].name}
+            </p>
+            <p className="text-paragraph">
+              {moment(transactionNow.date).format('ddd, MMM Do YYYY')}
+            </p>
+            <p className="bg-primary rounded-lg text-white w-max px-4">
+              {transactionNow[0].category.name}
+            </p>
           </div>
         </div>
         <p className="flex flex-1 justify-end items-center text-right text-green-600 text-sm">
           Rp. {transactionNow[0].amount}
         </p>
+      </div>
+    )
+    showModal()
+  }
+
+  const onDeleteHandler = (id) => {
+    const transactionNow = nodes.filter((transaction) => transaction.id === id)
+    setModal(
+      <div className="flex flex-col justify-center p-4 text-center gap-4">
+        <p>Anda yakin ingin menghapus transaksi?</p>
+        <div className='flex justify-center gap-4'>
+          <Button
+            type={'button'}
+            className='btn bg-danger text-white rounded-full'
+          >
+            Hapus
+          </Button>
+          <Button
+            type={'button'}
+            className='btn bg-white border border-paragraph text-paragraph rounded-full'
+          >
+            Batal
+          </Button>
+        </div>
       </div>
     )
     showModal()
@@ -92,12 +122,12 @@ export const TransactionPage = ({ amount }) => {
         <h1>Loading</h1>
       ) : (
         <>
-          <div className="bg-primary w-full drop-shadow-lg flex justify-center">
+          <div className="bg-primary w-full drop-shadow-lg flex justify-center text-lg sm:text-xl md:text-2xl">
             <div className="w-4/5 md:max-w-800px flex flex-col">
-              <h1 className="my-8 text-2xl top-0">Transaksi</h1>
+              <h1 className="my-8 top-0">Transaksi</h1>
               <div className="flex flex-col items-center">
-                <h2 className="text-lg pb-4 font-semibold">Cashflow</h2>
-                <div className="font-semibold text-4xl pb-28">
+                <h2 className="pb-4 font-semibold">Cashflow</h2>
+                <div className="font-semibold text-3xl sm:text-4xl pb-28">
                   Rp.{amount}4,750,000
                 </div>
               </div>
@@ -125,7 +155,7 @@ export const TransactionPage = ({ amount }) => {
                 <div className="flex-1">This month</div>
                 <div className="flex-1">Future</div>
               </div>
-              <div className="w-full sm:px-12 md:px-16 flex-col text-xs sm:text-sm md:text-base p-3">
+              <div className="w-full flex flex-col gap-2 sm:px-12 md:px-16 text-xs sm:text-sm md:text-base p-3">
                 <div className="flex justify-between">
                   <p>Starting balance</p>
                   <p>Rp. 4,750,000</p>
@@ -159,6 +189,7 @@ export const TransactionPage = ({ amount }) => {
                       name={transaction.name}
                       amount={transaction.amount}
                       onClick={() => onTransactionClick(transaction.id)}
+                      onDelete={() => onDeleteHandler(transaction.id)}
                     />
                   )
                 })}
