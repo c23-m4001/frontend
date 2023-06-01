@@ -15,7 +15,7 @@ export const ProfileModal = () => {
       <SVG
         alt="sidebar opener"
         src="/svgs/avatar.svg"
-        className={`md:w-11 gap-4 cursor-pointer -right-3 top-12 w-7 rounded-full  ${
+        className={`md:w-11 gap-4 cursor-pointer -right-3 top-12 rounded-full  ${
           !open && 'transform rotate-180'
         }`}
         onClick={() => setIsOpen(!isOpen)}
