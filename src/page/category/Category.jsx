@@ -1,4 +1,6 @@
 import { Button } from '../../components/button/Button'
+import { useModal } from '../../core/Modal/ModalProvider'
+import { Input } from '../../components/input/Input'
 
 export const CategoryPage = () => {
   const defaultCategories = [
@@ -20,12 +22,34 @@ export const CategoryPage = () => {
     { name: 'Custom 3', src: 'custom-category' },
   ]
 
+  const { setModal, showModal } = useModal()
+
+  const addCategoryButtonClick = () => {
+    setModal(
+      <form className="flex flex-col w-56 py-2 md:w-72">
+        <Input
+          type="text"
+          placeholder="Masukkan nama kategori"
+          className="text-sm"
+        />
+        <Button className="btn btn-primary rounded-lg text-sm font-bold">
+          Tambah
+        </Button>
+      </form>
+    )
+    showModal()
+  }
+
   return (
     <div className="min-h-screen bg-background">
       <div className="flex flex-col space-y-6 py-40px px-20px sm:px-100px lg:px-200px">
         <div className="flex justify-between items-center">
           <h1 className="font-bold text-headline text-2xl">Category</h1>
-          <Button className="btn btn-primary rounded-xl font-bold text-sm">
+          <Button
+            className="btn btn-primary rounded-xl font-bold text-sm"
+            type="button"
+            onClick={addCategoryButtonClick}
+          >
             Tambah Kategori
           </Button>
         </div>
