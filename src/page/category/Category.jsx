@@ -4,22 +4,22 @@ import { Input } from '../../components/input/Input'
 
 export const CategoryPage = () => {
   const defaultCategories = [
-    { name: 'Food & Beverage', src: 'food-beverage-category' },
-    { name: 'Transportation', src: 'transportation-category' },
-    { name: 'Rental', src: 'rental-category' },
-    { name: 'Water Bill', src: 'water-bill-category' },
-    { name: 'Phone Bill', src: 'phone-bill-category' },
-    { name: 'Electricity Bill', src: 'electricity-bill-category' },
-    { name: 'Education', src: 'education-category' },
-    { name: 'Pets', src: 'pets-category' },
-    { name: 'Fitness', src: 'fitness-category' },
-    { name: 'Games', src: 'games-category' },
+    { id: '1', name: 'Food & Beverage', src: 'food-beverage-category' },
+    { id: '2', name: 'Transportation', src: 'transportation-category' },
+    { id: '3', name: 'Rental', src: 'rental-category' },
+    { id: '4', name: 'Water Bill', src: 'water-bill-category' },
+    { id: '5', name: 'Phone Bill', src: 'phone-bill-category' },
+    { id: '6', name: 'Electricity Bill', src: 'electricity-bill-category' },
+    { id: '7', name: 'Education', src: 'education-category' },
+    { id: '8', name: 'Pets', src: 'pets-category' },
+    { id: '9', name: 'Fitness', src: 'fitness-category' },
+    { id: '10', name: 'Games', src: 'games-category' },
   ]
 
   const customCategories = [
-    { name: 'Custom 1', src: 'custom-category' },
-    { name: 'Custom 2', src: 'custom-category' },
-    { name: 'Custom 3', src: 'custom-category' },
+    { id: '1', name: 'Custom 1', src: 'custom-category' },
+    { id: '2', name: 'Custom 2', src: 'custom-category' },
+    { id: '3', name: 'Custom 3', src: 'custom-category' },
   ]
 
   const { setModal, showModal } = useModal()
@@ -35,6 +35,69 @@ export const CategoryPage = () => {
         <Button className="btn btn-primary rounded-lg text-sm font-bold">
           Tambah
         </Button>
+      </form>
+    )
+    showModal()
+  }
+
+  const editCategoryButtonClick = () => {
+    setModal(
+      <form className="flex flex-col w-56 py-2 md:w-72">
+        <Input
+          type="text"
+          placeholder="Masukkan nama kategori"
+          className="text-sm"
+        />
+        <Button className="btn btn-primary rounded-lg text-sm font-bold">
+          Edit
+        </Button>
+      </form>
+    )
+    showModal()
+  }
+
+  const deleteCategoryButtonClick = () => {
+    setModal(
+      <div className="flex flex-col justify-center py-4 text-center gap-4">
+        <p>Anda yakin ingin menghapus kategori?</p>
+        <div className="flex justify-center gap-4 text-sm">
+          <Button
+            type={'button'}
+            className="btn bg-danger text-white rounded-full"
+          >
+            Hapus
+          </Button>
+          <Button
+            type={'button'}
+            className="btn bg-white border border-paragraph text-paragraph rounded-full"
+          >
+            Batal
+          </Button>
+        </div>
+      </div>
+    )
+    showModal()
+  }
+
+  const categoryDetailClick = (id) => {
+    const detail = defaultCategories.filter((category) => category.id === id)
+    setModal(
+      <form className="flex flex-col w-56 py-2 md:w-72">
+        <div className="flex items-center gap-x-4">
+          <img
+            alt="category icon"
+            src={`/svgs/${detail[0].src}.svg`}
+            className="w-12"
+          />
+          <div className="flex flex-col gap-y-1">
+            <h3 className="text-headline text-xl font-bold">
+              {detail[0].name}
+            </h3>
+            <p className="bg-danger rounded-lg text-white text-sm w-max px-4">
+              Expense
+            </p>
+          </div>
+        </div>
       </form>
     )
     showModal()
@@ -58,10 +121,13 @@ export const CategoryPage = () => {
             <div className="flex flex-col grow basis-50% px-6">
               <h2 className="font-bold text-base text-headline">Default</h2>
               <div className="py-4">
-                {defaultCategories.map((category, i) => (
+                {defaultCategories.map((category, id) => (
                   <div
-                    key={i}
-                    className={`flex text-sm items-center gap-x-4 py-4 border-b-2`}
+                    key={id}
+                    name={category.name}
+                    src={category.src}
+                    className="flex text-sm items-center gap-x-4 py-4 border-b-2 cursor-pointer"
+                    onClick={() => categoryDetailClick(category.id)}
                   >
                     <img
                       alt="category icon"
@@ -76,10 +142,10 @@ export const CategoryPage = () => {
             <div className="flex flex-col grow basis-50% px-6">
               <h2 className="font-bold text-base text-headline">Custom</h2>
               <div className="py-4">
-                {customCategories.map((category, i) => (
+                {customCategories.map((category, id) => (
                   <div
-                    key={i}
-                    className={`flex text-sm py-4 border-b-2 justify-between`}
+                    key={id}
+                    className="flex text-sm py-4 border-b-2 justify-between"
                   >
                     <div className="flex items-center gap-x-4">
                       <img
@@ -92,6 +158,7 @@ export const CategoryPage = () => {
                       <button
                         type="button"
                         className="flex items-center bg-transparent border-none focus:outline-none"
+                        onClick={editCategoryButtonClick}
                       >
                         <img
                           alt="add icon"
@@ -101,6 +168,7 @@ export const CategoryPage = () => {
                       <button
                         type="button"
                         className="flex items-center bg-transparent border-none focus:outline-none"
+                        onClick={deleteCategoryButtonClick}
                       >
                         <img
                           alt="add icon"
