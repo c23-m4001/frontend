@@ -1,5 +1,6 @@
 import { useLocation } from 'react-router-dom'
 import { Button } from '../../components/button/Button'
+import { Input } from '../../components/input/Input'
 import { ProfileModal } from '../../components/modals/ProfileModal'
 import { useModal } from '../../core/Modal/ModalProvider'
 import { Dropdown } from './modal/Dropdown'
@@ -56,11 +57,11 @@ export const Header = ({ children }) => {
     { name: 'Games', src: 'games-category' },
   ]
 
-  const customCategories = [
-    { name: 'Custom 1', src: 'custom-category' },
-    { name: 'Custom 2', src: 'custom-category' },
-    { name: 'Custom 3', src: 'custom-category' },
-  ]
+  // const customCategories = [
+  //   { name: 'Custom 1', src: 'custom-category' },
+  //   { name: 'Custom 2', src: 'custom-category' },
+  //   { name: 'Custom 3', src: 'custom-category' },
+  // ]
 
   const onButtonClick = () => {
     setModal(
@@ -73,20 +74,23 @@ export const Header = ({ children }) => {
           array={defaultCategories}
           labelName={'Category'}
         />
-        <div className="flex flex-col border border-secondary rounded-md">
+        <div className="flex flex-col justify-between border border-secondary rounded-md">
           <label className="text-xs p-1 text-secondary">Amount</label>
           <div className="flex items-center p-2 gap-2 justify-between">
             <p>Rp. </p>
-            <input type="number"></input>
+            <Input
+              type="number"
+              className="text-sm border-0"
+            />
           </div>
         </div>
-        <div className="col-span-2 flex flex-col border border-secondary rounded-md">
+        <div className="col-span-2 flex flex-col justify-between border border-secondary rounded-md">
           <label className="text-xs p-1 text-secondary">Name</label>
           <div className="flex items-center p-2">
-            <input
+            <Input
               type="text"
-              className="w-full"
-            ></input>
+              className="text-sm border-0"
+            />
           </div>
         </div>
         <div className="flex flex-col border border-secondary rounded-md">

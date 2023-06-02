@@ -8,7 +8,7 @@ export const Dropdown = ({ array, labelName }) => {
 
   return (
     <>
-      <div className="relative flex flex-col border border-secondary rounded-md">
+      <div className="relative flex flex-col justify-evenly border border-secondary rounded-md">
         <label className="text-xs p-1 text-secondary">{labelName}</label>
         <Button
           type="button"
