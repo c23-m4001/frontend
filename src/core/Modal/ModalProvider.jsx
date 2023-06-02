@@ -76,12 +76,12 @@ const CustomModal = ({ modal }) => {
     document.addEventListener('keyup', bind)
 
     return () => {
-      document.body.classList.remove('modal-open')
       document.removeEventListener('keyup', bind)
     }
   }, [modal])
 
   const closeModal = () => {
+    document.body.classList.remove('modal-open')
     hideModal()
   }
 
