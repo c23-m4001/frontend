@@ -3,58 +3,68 @@ import { Button } from '../../components/button/Button'
 import { Input } from '../../components/input/Input'
 import { ProfileModal } from '../../components/modals/ProfileModal'
 import { useModal } from '../../core/Modal/ModalProvider'
-import { Dropdown } from './modal/Dropdown'
 import DatePicker from 'react-datepicker'
 
 import 'react-datepicker/dist/react-datepicker.css'
 import { useState } from 'react'
+import { Select } from './Select/Select'
 
 export const Header = ({ children }) => {
   const location = useLocation()
   const { setModal, showModal } = useModal()
   const [startDate, setStartDate] = useState(new Date())
+  const [selectedWallet, setSelectedWallet] = useState(null)
 
-  const userWallet = [
+  const walletOptions = [
     {
-      created_at: '2023-01-01T07:00:00+07:00',
-      id: '023b6735-8255-43c0-bc3d-f6d1e423612d',
-      logo_type: 'DEFAULT',
-      name: 'Credit',
-      total_amount: 10000,
-      updated_at: '2023-01-01T07:00:00+07:00',
-      user_id: 'ccb77821-6289-468d-b4b2-a9b2efc60cb8',
+      value: {
+        created_at: '2023-01-01T07:00:00+07:00',
+        id: '023b6735-8255-43c0-bc3d-f6d1e423612d',
+        logo_type: 'DEFAULT',
+        name: 'Credit',
+        total_amount: 10000,
+        updated_at: '2023-01-01T07:00:00+07:00',
+        user_id: 'ccb77821-6289-468d-b4b2-a9b2efc60cb8',
+      },
+      label: 'Chocolate',
     },
     {
-      created_at: '2023-01-01T07:00:00+07:00',
-      id: '023b6735-8255-43c0-bc3d-f6d1e423612d',
-      logo_type: 'DEFAULT',
-      name: 'Cash',
-      total_amount: 900000,
-      updated_at: '2023-01-01T07:00:00+07:00',
-      user_id: 'ccb77821-6289-468d-b4b2-a9b2efc60cb8',
+      value: {
+        created_at: '2023-01-01T07:00:00+07:00',
+        id: '023b6735-8255-43c0-bc3d-f6d1e423612d',
+        logo_type: 'DEFAULT',
+        name: 'Cash',
+        total_amount: 900000,
+        updated_at: '2023-01-01T07:00:00+07:00',
+        user_id: 'ccb77821-6289-468d-b4b2-a9b2efc60cb8',
+      },
+      label: 'Strawberry',
     },
     {
-      created_at: '2023-01-01T07:00:00+07:00',
-      id: '023b6735-8255-43c0-bc3d-f6d1e423612d',
-      logo_type: 'DEFAULT',
-      name: 'Bank',
-      total_amount: 9000000,
-      updated_at: '2023-01-01T07:00:00+07:00',
-      user_id: 'ccb77821-6289-468d-b4b2-a9b2efc60cb8',
+      value: {
+        created_at: '2023-01-01T07:00:00+07:00',
+        id: '023b6735-8255-43c0-bc3d-f6d1e423612d',
+        logo_type: 'DEFAULT',
+        name: 'Bank',
+        total_amount: 9000000,
+        updated_at: '2023-01-01T07:00:00+07:00',
+        user_id: 'ccb77821-6289-468d-b4b2-a9b2efc60cb8',
+      },
+      label: 'Vanilla',
     },
   ]
 
-  const defaultCategories = [
-    { name: 'Food & Beverage', src: 'food-beverage-category' },
-    { name: 'Transportation', src: 'transportation-category' },
-    { name: 'Rental', src: 'rental-category' },
-    { name: 'Water Bill', src: 'water-bill-category' },
-    { name: 'Phone Bill', src: 'phone-bill-category' },
-    { name: 'Electricity Bill', src: 'electricity-bill-category' },
-    { name: 'Education', src: 'education-category' },
-    { name: 'Pets', src: 'pets-category' },
-    { name: 'Fitness', src: 'fitness-category' },
-    { name: 'Games', src: 'games-category' },
+  const categoriesOptions = [
+    { label: 'Food & Beverage', value: 'food-beverage-category' },
+    { label: 'Transportation', value: 'transportation-category' },
+    { label: 'Rental', value: 'rental-category' },
+    { label: 'Water Bill', value: 'water-bill-category' },
+    { label: 'Phone Bill', value: 'phone-bill-category' },
+    { label: 'Electricity Bill', value: 'electricity-bill-category' },
+    { label: 'Education', value: 'education-category' },
+    { label: 'Pets', value: 'pets-category' },
+    { label: 'Fitness', value: 'fitness-category' },
+    { label: 'Games', value: 'games-category' },
   ]
 
   // const customCategories = [
@@ -66,11 +76,18 @@ export const Header = ({ children }) => {
   const onButtonClick = () => {
     setModal(
       <form className="grid grid-cols-3 gap-2">
-        <Dropdown
+        <Select
+          className="col-span-3"
+          label="Wallet"
+          defaultValue={selectedWallet}
+          onChange={setSelectedWallet}
+          options={walletOptions}
+        />
+        {/* <Dropdown
           array={userWallet}
           labelName={'Wallet'}
-        />
-        <Dropdown
+        /> */}
+        {/* <Dropdown
           array={defaultCategories}
           labelName={'Category'}
         />
@@ -92,7 +109,7 @@ export const Header = ({ children }) => {
               className="text-sm border-0"
             />
           </div>
-        </div>
+        </div> */}
         <div className="flex flex-col border border-secondary rounded-md">
           <label className="text-xs p-1 text-secondary">Date</label>
           <div className="flex items-center p-2">
