@@ -21,7 +21,7 @@ export const Select = ({
             ...provided,
             border: '1px solid #ccc',
             borderRadius: '4px',
-            padding: '10px',
+            padding: '2px 10px',
           }),
           placeholder: (provided) => ({
             ...provided,
@@ -35,6 +35,7 @@ export const Select = ({
             ...provided,
             padding: '0',
             position: 'relative',
+            textAlign: "left",
           }),
           singleValue: (provided) => ({
             ...provided,

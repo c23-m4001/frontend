@@ -2,7 +2,6 @@ import React from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { Button } from '../../../components/button/Button'
 import { RegisterInput } from './RegisterInput'
 
 export const RegisterGooglePage = () => {
