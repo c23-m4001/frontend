@@ -12,20 +12,7 @@ export const DashboardPage = () => {
 
   return (
     <Routes>
-      {!currentUser.have_wallet ? (
-        <>
-          <Route
-            index
-            path="*"
-            element={<Navigate to="/welcome" />}
-          />
-
-            <Route
-              path="/welcome"
-              element={<WelcomePage />}
-            />
-        </>
-      ) : (
+      {currentUser.wallets && currentUser.wallets.length > 0 ? (
         <>
           <Route
             index
@@ -54,6 +41,19 @@ export const DashboardPage = () => {
               element={<LoginHistoryPage />}
             />
           </Route>
+        </>
+      ) : (
+        <>
+          <Route
+            index
+            path="*"
+            element={<Navigate to="/welcome" />}
+          />
+
+          <Route
+            path="/welcome"
+            element={<WelcomePage />}
+          />
         </>
       )}
     </Routes>
