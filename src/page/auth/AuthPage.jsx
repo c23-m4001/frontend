@@ -1,6 +1,7 @@
 import { Routes, Route, Navigate } from 'react-router-dom'
 import { GoogleCallback } from './components/GoogleCallback'
 import { LoginPage } from './login/LoginPage'
+import { RegisterGooglePage } from './register/RegisterGooglePage'
 import { RegisterPage } from './register/RegisterPage'
 
 export const AuthPage = () => {
@@ -17,6 +18,10 @@ export const AuthPage = () => {
       <Route
         path="register"
         element={<RegisterPage />}
+      />
+      <Route
+        path="register-google"
+        element={<RegisterGooglePage />}
       />
       <Route
         path="login"

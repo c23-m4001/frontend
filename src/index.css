@@ -23,3 +23,28 @@ body {
 li .active {
   @apply bg-background text-primary;
 }
+
+/* scrollbar */
+body {
+  overflow-y: scroll;
+}
+
+/* Adjust the width of the content area when scrollbar is present */
+body::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Style the scrollbar track */
+body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Style the scrollbar thumb */
+body::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Adjust the width of the content area when scrollbar disappears */
+body {
+  margin-right: calc(100vw - 100%);
+}

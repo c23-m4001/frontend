@@ -45,6 +45,11 @@ module.exports = {
       flexBasis: {
         '50%': '50%',
       },
+      minWidth: {
+        '600px': '600px',
+        '800px': '800px',
+        '180px': '180px',
+      },
       maxWidth: {
         '600px': '600px',
         '800px': '800px',

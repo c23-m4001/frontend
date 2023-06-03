@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { useCallback, useEffect, useState } from 'react'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { AuthApi } from '../../../api/auth/authApi'
 import { Button } from '../../../components/button/Button'
 import { useAuth } from '../../../core/Auth/AuthProvider'
@@ -13,19 +13,22 @@ export const GoogleLogin = () => {
   const [error, setError] = useState()
   const { setToken, isLoading } = useAuth()
   const location = useLocation()
+  const navigate = useNavigate();
 
   const getAccessToken = useCallback(
     async (code) => {
       try {
         if (code) {
           const response = await AuthApi.loginGoogle({ code })
-          console.log(response, response.data, response.data?.access_token)
           const tokenObj = response.data?.google_login_data?.token
-          console.log(tokenObj)
           if (tokenObj) {
             setToken(tokenObj?.access_token)
           } else {
-            // TODO: Handling User Not Registered
+            navigate("/auth/register-google", {
+              state: {
+                user: response.data?.google_login_data?.user_data,
+              },
+            })
           }
         }
       } catch (err) {
