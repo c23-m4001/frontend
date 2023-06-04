@@ -3,7 +3,7 @@ import { useAuth } from '../../../core/Auth/AuthProvider'
 import { useActiveWallet } from '../../../core/wallet/ActiveWalletProvider'
 import { Select } from '../Select/Select'
 
-export const ActiveWalletSelect = () => {
+export const ActiveWalletSelect = ({className}) => {
   const { activeWallet, setActiveWalletId } = useActiveWallet()
   const { currentUser } = useAuth()
 
@@ -22,7 +22,7 @@ export const ActiveWalletSelect = () => {
   ]
 
   return (
-    <div>
+    <div className={className}>
       <Select
         value={value}
         label="Wallet "

@@ -14,6 +14,7 @@ export const Select = ({
         {label}
       </label>
       <ReactSelect
+      className='text-xs sm:text-16px'
         defaultValue={defaultValue}
         value={value}
         options={options}

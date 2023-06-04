@@ -7,7 +7,6 @@ import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import { useState } from 'react'
 import { Select } from './Select/Select'
-import { useActiveWallet } from '../../core/wallet/ActiveWalletProvider'
 import { ActiveWalletSelect } from './components/ActiveWalletSelect'
 
 export const Header = ({ children }) => {
@@ -129,7 +128,6 @@ export const Header = ({ children }) => {
   return (
     <div className="w-full flex flex-col h-screen">
       <div className="relative">
-        {/* <div className="h-70px"></div> */}
         <div className="z-20 sticky top-0 left-0 right-0 px-20px py-14px bg-white flex items-center justify-between drop-shadow-md gap-4">
           <div className="flex items-center">
             <Button
@@ -144,7 +142,7 @@ export const Header = ({ children }) => {
             </Button>
             {
               location.pathname === "/transactions" && (
-                <ActiveWalletSelect />
+                <ActiveWalletSelect className={"ml-20px"}/>
               )
             }
           </div>
@@ -153,7 +151,7 @@ export const Header = ({ children }) => {
               <Button
                 type="button"
                 onClick={onButtonClick}
-                className="rounded-md btn btn-primary text-xs"
+                className="hidden sm:block rounded-md btn btn-primary text-xs"
               >
                 Add Transaction
               </Button>

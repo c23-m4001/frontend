@@ -135,20 +135,20 @@ export const TransactionPage = ({ amount }) => {
             </div>
           </div>
         </div>
-        <div className="w-full sm:w-4/5 md:max-w-800px sm:gap-8 flex flex-col sm:flex-row items-center">
-          <div className="w-4/5 flex flex-col items-center bg-white text-green-600 p-8 rounded-md mb-4">
+        <div className="w-full sm:w-full md:max-w-800px sm:gap-8 flex flex-col sm:flex-row items-center">
+          <div className="w-full flex flex-col items-center bg-white text-green-600 p-8 rounded-md mb-4">
             <div className="font-semibold text-xl pb-1">
               Rp.{amount}4,750,000
             </div>
             <p className="font-bold text-headline">Gross Income</p>
           </div>
-          <div className="w-4/5 flex flex-col items-center bg-white text-danger p-8 rounded-md mb-4">
+          <div className="w-full flex flex-col items-center bg-white text-danger p-8 rounded-md mb-4">
             <div className="font-semibold text-xl pb-1">Rp.{amount}200,000</div>
             <p className="font-bold text-headline">Expense</p>
           </div>
         </div>
-        <div className="w-full sm:w-4/5 md:max-w-800px flex flex-col items-center mt-60 sm:mt-24">
-          <div className="w-4/5 sm:w-full flex flex-col items-center bg-white text-headline p-2 rounded-md mb-4">
+        <div className="w-full sm:w-full md:max-w-800px flex flex-col items-center mt-60 sm:mt-24">
+          <div className="w-full sm:w-full flex flex-col items-center bg-white text-headline p-2 rounded-md mb-4">
             <div className="w-full sm:px-8 md:px-16 flex text-center text-xs sm:text-sm md:text-base lg:text-lg py-3 border-b-2">
               <div className="flex-1">Last month</div>
               <div className="flex-1">This month</div>
@@ -176,7 +176,7 @@ export const TransactionPage = ({ amount }) => {
             </div>
           </div>
 
-          <div className="w-4/5 sm:w-full flex flex-col items-center bg-white text-headline p-2 rounded-md mb-4">
+          <div className="w-full sm:w-full flex flex-col items-center bg-white text-headline p-2 rounded-md mb-4">
             <div className="w-full flex text-center text-xs sm:text-sm md:text-base lg:text-lg py-3 border-b-2">
               <div className="flex-1">This month</div>
             </div>
