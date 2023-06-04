@@ -18,14 +18,11 @@ export const WelcomePage = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault()
-    console.log(selectedType)
-
-    const wallet = await WalletApi.createWallet({
+    
+    await WalletApi.createWallet({
       logo_type: selectedType.value,
       name: name,
     })
-
-    console.log(wallet)
 
     refetchUser()
   }
