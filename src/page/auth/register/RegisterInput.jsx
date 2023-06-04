@@ -6,7 +6,7 @@ import { useInput } from '../../../custom-hooks/useInput'
 import { Button } from '../../../components/button/Button'
 import { Input } from '../../../components/input/Input'
 
-export const RegisterInput = ({name: _name, email: _email}) => {
+export const RegisterInput = ({ name: _name, email: _email }) => {
   const [name, onNameChange] = useInput(_name)
   const [email, onEmailChange] = useInput(_email)
   const [password, onPasswordChange] = useInput('')
@@ -14,7 +14,6 @@ export const RegisterInput = ({name: _name, email: _email}) => {
   const [isLoading, setIsLoading] = useState(false)
   const { setToken } = useAuth()
   const navigate = useNavigate()
-
 
   const onSubmit = async (e) => {
     e.preventDefault()

@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 import React from 'react'
-import './index.css';
+import './index.css'
 
 export const Button = ({
   children,

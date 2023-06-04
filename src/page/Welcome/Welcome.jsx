@@ -25,9 +25,9 @@ export const WelcomePage = () => {
       name: name,
     })
 
-    console.log(wallet);
+    console.log(wallet)
 
-    refetchUser();
+    refetchUser()
   }
 
   return (
@@ -54,7 +54,7 @@ export const WelcomePage = () => {
                     disabled={isLoading}
                   />
                   <Select
-                  className="mb-4"
+                    className="mb-4"
                     label="Type"
                     defaultValue={selectedType}
                     onChange={setSelectedType}

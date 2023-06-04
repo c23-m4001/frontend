@@ -30,6 +30,8 @@ export const ActiveWalletProvider = ({ children }) => {
           (wallet) => (wallet.id = searchParams.get('active_wallet_id'))
         )
       )
+    } else {
+      setActiveWallet(undefined)
     }
   }, [searchParams, currentUser])
 
@@ -38,11 +40,11 @@ export const ActiveWalletProvider = ({ children }) => {
       value={{
         activeWallet,
         setActiveWalletId: (walletId) => {
-          if(walletId) {
+          if (walletId) {
             setSearchParams({ active_wallet_id: walletId })
           } else {
-            searchParams.delete("active_wallet_id")
-            setSearchParams(searchParams) 
+            searchParams.delete('active_wallet_id')
+            setSearchParams(searchParams)
           }
         },
       }}

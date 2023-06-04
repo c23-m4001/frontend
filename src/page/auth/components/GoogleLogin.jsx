@@ -13,7 +13,7 @@ export const GoogleLogin = () => {
   const [error, setError] = useState()
   const { setToken, isLoading } = useAuth()
   const location = useLocation()
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   const getAccessToken = useCallback(
     async (code) => {
@@ -24,7 +24,7 @@ export const GoogleLogin = () => {
           if (tokenObj) {
             setToken(tokenObj?.access_token)
           } else {
-            navigate("/auth/register-google", {
+            navigate('/auth/register-google', {
               state: {
                 user: response.data?.google_login_data?.user_data,
               },

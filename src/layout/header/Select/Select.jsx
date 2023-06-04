@@ -4,6 +4,7 @@ export const Select = ({
   className,
   label,
   defaultValue,
+  value,
   options,
   onChange,
 }) => {
@@ -14,6 +15,7 @@ export const Select = ({
       </label>
       <ReactSelect
         defaultValue={defaultValue}
+        value={value}
         options={options}
         onChange={onChange}
         styles={{
@@ -35,7 +37,7 @@ export const Select = ({
             ...provided,
             padding: '0',
             position: 'relative',
-            textAlign: "left",
+            textAlign: 'left',
           }),
           singleValue: (provided) => ({
             ...provided,

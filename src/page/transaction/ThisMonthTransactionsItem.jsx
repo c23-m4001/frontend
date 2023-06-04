@@ -8,7 +8,7 @@ export const ThisMonthTransactionsItem = ({
   onDelete,
 }) => {
   return (
-    <div className='flex justify-between gap-2'>
+    <div className="flex justify-between gap-2">
       <div
         className="flex flex-grow justify-between cursor-pointer"
         onClick={onClick}

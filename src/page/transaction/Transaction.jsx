@@ -18,7 +18,7 @@ export const TransactionPage = ({ amount }) => {
     }
   )
 
-  const {activeWallet} = useActiveWallet();
+  const { activeWallet } = useActiveWallet()
 
   const nodes = [
     {
@@ -123,9 +123,8 @@ export const TransactionPage = ({ amount }) => {
     showModal()
   }
 
-
   return (
-    <div className="overflow-y-auto bg-background">
+    <div className="bg-background">
       <div className="w-full flex flex-col space-y-6 py-40px px-20px sm:px-100px lg:px-200px items-center">
         <div className="w-full flex flex-col items-start text-headline text-lg sm:text-xl md:text-2xl">
           <h1 className="font-bold text-2xl">Transaction</h1>

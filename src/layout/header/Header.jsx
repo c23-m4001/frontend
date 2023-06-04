@@ -133,7 +133,8 @@ export const Header = ({ children }) => {
         <div className="z-20 sticky top-0 left-0 right-0 px-20px py-14px bg-white flex items-center justify-between drop-shadow-md gap-4">
           <div className="flex items-center">
             <Button
-              type="button"top
+              type="button"
+              top
               className="sm:hidden"
             >
               <img
@@ -157,7 +158,7 @@ export const Header = ({ children }) => {
           </div>
         </div>
       </div>
-      {children}
+      <div className="overflow-y-auto">{children}</div>
     </div>
   )
 }
