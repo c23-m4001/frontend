@@ -13,7 +13,7 @@ const initialModalContext = {
   hideModal: () => {},
   toggleModal: () => {},
   unsetModal: () => {},
-  setModal: () => {},
+  setModal: (content, title) => {},
 }
 
 const ModalContext = createContext(initialModalContext)
@@ -21,6 +21,7 @@ const ModalContext = createContext(initialModalContext)
 const rootModalId = 'root-modals'
 
 export const ModalProvider = ({ children }) => {
+  const [title, setTitle] = useState(undefined)
   const [modal, setModal] = useState(undefined)
 
   const showModal = () => {
@@ -39,7 +40,10 @@ export const ModalProvider = ({ children }) => {
     setModal(undefined)
   }, [setModal])
 
-  const _setModal = (modalComponent) => setModal(modalComponent)
+  const _setModal = (modalComponent, title) => {
+    setModal(modalComponent)
+    setTitle(title)
+  }
 
   return (
     <ModalContext.Provider
@@ -54,7 +58,7 @@ export const ModalProvider = ({ children }) => {
       {children}
       {modal &&
         createPortal(
-          <CustomModal modal={modal} />,
+          <CustomModal title={title} modal={modal} />,
           document.getElementById(rootModalId)
         )}
     </ModalContext.Provider>
@@ -63,7 +67,7 @@ export const ModalProvider = ({ children }) => {
 
 export const useModal = () => useContext(ModalContext)
 
-const CustomModal = ({ modal }) => {
+const CustomModal = ({ title,modal }) => {
   const modalRef = useRef(null)
   const { hideModal } = useModal()
 
@@ -102,13 +106,17 @@ const CustomModal = ({ modal }) => {
         >
           {/* begin::Modal Header */}
           <div className="modal-header">
-            <h3 className="modal-title">Title</h3>
+            <h3 className="modal-title">{title}</h3>
             <button
               type="button"
               className="modal-close-btn"
               onClick={closeModal}
             >
-              X Close
+              <img 
+              height={20}
+              width={20}
+                src="/svgs/x.svg"
+              />
             </button>
           </div>
           {/* end::Modal Header */}
