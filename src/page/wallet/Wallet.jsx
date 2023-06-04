@@ -1,4 +1,5 @@
 import { useQuery } from 'react-query'
+import clsx from 'clsx'
 import { ReactQueryKeys } from '../../api/constant'
 import { WalletApi } from '../../api/wallets/walletApi'
 import { useSearchParams } from 'react-router-dom'
@@ -6,9 +7,10 @@ import useFirstTimeEffect from '../../util/useFirstTimeEffect'
 import { useEffect, useState } from 'react'
 import { loadPages } from '../../util/pagination'
 import { Button } from '../../components/button/Button'
-import clsx from 'clsx'
+import { useModal } from '../../core/Modal/ModalProvider'
 
 export const WalletPage = () => {
+  const { setModal, showModal, hideModal } = useModal()
   const [searchParams, setSearchParams] = useSearchParams()
   const [pages, setPages] = useState([])
 
@@ -56,6 +58,35 @@ export const WalletPage = () => {
     }
   }, [isLoading, page])
 
+  const deleteWalletButtonClick = (id) => {
+    setModal(
+      <div className="flex flex-col justify-center py-4 text-center gap-4">
+        <p>Anda yakin ingin menghapus wallet ini?</p>
+        <div className="flex justify-center gap-4 text-sm">
+          <Button
+            type={'button'}
+            className="btn bg-danger text-white rounded-full"
+            onClick={async () => {
+              await WalletApi.deleteWallet({ id: id })
+              hideModal()
+              refetch()
+            }}
+          >
+            Hapus
+          </Button>
+          <Button
+            type={'button'}
+            className="btn bg-white border border-paragraph text-paragraph rounded-full"
+            onClick={() => hideModal()}
+          >
+            Batal
+          </Button>
+        </div>
+      </div>
+    )
+    showModal()
+  }
+
   if (isLoading) {
     return <div>Loading...</div>
   }
@@ -75,64 +106,68 @@ export const WalletPage = () => {
           </button>
         </div>
 
-        <div className="grow grid grid-cols-1 lg:grid-cols-2 gap-x-20px mb-20px">
-          {wallets?.nodes.map((wallet, idx) => (
-            <div
-              key={idx}
-              className="w-full mt-20px"
-            >
-              <div className="flex flex-col items-left bg-white text-paragraph p-8 rounded-md">
-                <div className="font-semibold text-xl pb-1"></div>
-                <div className="flex justify-between items-center">
-                  <div className="flex">
-                    <img
-                      alt="cash icon"
-                      src="/svgs/cash.svg"
-                      className={`duration-500 w-12 h-12 mr-4`}
-                    />
-                    <div>
-                      <div className="flex flex-col">
-                        <p className="font-bold text-headline">{wallet.name}</p>
-                        <p className="font-bold">Rp.{wallet.total_amount}</p>
+        <div className="grow">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-20px mb-20px">
+            {wallets?.nodes.map((wallet, idx) => (
+              <div
+                key={idx}
+                className="w-full mt-20px"
+              >
+                <div className="flex flex-col items-left bg-white text-paragraph p-8 rounded-md">
+                  <div className="font-semibold text-xl pb-1"></div>
+                  <div className="flex justify-between items-center">
+                    <div className="flex">
+                      <img
+                        alt="cash icon"
+                        src="/svgs/cash.svg"
+                        className={`duration-500 w-12 h-12 mr-4`}
+                      />
+                      <div>
+                        <div className="flex flex-col">
+                          <p className="font-bold text-headline">
+                            {wallet.name}
+                          </p>
+                          <p className="font-bold">Rp.{wallet.total_amount}</p>
+                        </div>
                       </div>
                     </div>
-                  </div>
 
-                  <div className="flex">
-                    <button
-                      type="button"
-                      className="flex items-center bg-transparent border-none focus:outline-none"
-                    >
-                      <img
-                        alt="add icon"
-                        src="/svgs/addicon.svg"
-                        className={`duration-500 w-9 h-9 ml-16 mr-5`}
-                      />
-                    </button>
-                    <button
-                      type="button"
-                      className="flex items-center bg-transparent border-none focus:outline-none"
-                    >
-                      <img
-                        alt="add icon"
-                        src="/svgs/deleteicon.svg"
-                        className={`duration-500 w-9 h-9`}
-                      />
-                    </button>
+                    <div className="flex">
+                      <Button
+                        type="button"
+                        className="flex items-center bg-transparent border-none focus:outline-none"
+                      >
+                        <img
+                          alt="add icon"
+                          src="/svgs/addicon.svg"
+                          className={`duration-500 w-9 h-9 ml-16 mr-5`}
+                        />
+                      </Button>
+                      <Button
+                        onClick={() => deleteWalletButtonClick(wallet.id)}
+                        type="button"
+                        className="flex items-center bg-transparent border-none focus:outline-none"
+                      >
+                        <img
+                          alt="add icon"
+                          src="/svgs/deleteicon.svg"
+                          className={`duration-500 w-9 h-9`}
+                        />
+                      </Button>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-
         <div className="flex justify-center">
           {pages.map((pageNumber, idx) => (
             <Button
               className={clsx({
-                "btn mr-10px rounded-lg font-bold": true,
-                "btn-active": ''+pageNumber.value === ''+page,
-                "btn-primary": ''+pageNumber.value !== ''+page,
+                'btn mr-10px rounded-lg font-bold': true,
+                'btn-active': '' + pageNumber.value === '' + page,
+                'btn-primary': '' + pageNumber.value !== '' + page,
               })}
               disabled={!pageNumber.is_active}
               key={idx}

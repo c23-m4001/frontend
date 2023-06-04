@@ -14,4 +14,7 @@ export const WalletApi = {
       .post(`${WALLET_API_URL}/filter`, { page, limit, phrase, sorts })
       .then((r) => r.data)
   },
+  deleteWallet: async ({ id }) => {
+    return axios.delete(`${WALLET_API_URL}/${id}`).then((r) => r.message)
+  },
 }
