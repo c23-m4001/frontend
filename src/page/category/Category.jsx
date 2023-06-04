@@ -22,7 +22,7 @@ export const CategoryPage = () => {
     { id: '3', name: 'Custom 3', src: 'custom-category' },
   ]
 
-  const { setModal, showModal } = useModal()
+  const { setModal, showModal, hideModal } = useModal()
 
   const addCategoryButtonClick = () => {
     setModal(
@@ -56,20 +56,26 @@ export const CategoryPage = () => {
     showModal()
   }
 
-  const deleteCategoryButtonClick = () => {
+  const deleteCategoryButtonClick = (id) => {
     setModal(
       <div className="flex flex-col justify-center py-4 text-center gap-4">
-        <p>Anda yakin ingin menghapus kategori?</p>
+        <p>Anda yakin ingin menghapus kategori ini?</p>
         <div className="flex justify-center gap-4 text-sm">
           <Button
             type={'button'}
             className="btn bg-danger text-white rounded-full"
+            // onClick={async () => {
+            //   await WalletApi.deleteWallet({ id: id })
+            //   hideModal()
+            //   refetch()
+            // }}
           >
             Hapus
           </Button>
           <Button
             type={'button'}
             className="btn bg-white border border-paragraph text-paragraph rounded-full"
+            onClick={() => hideModal()}
           >
             Batal
           </Button>
@@ -163,8 +169,8 @@ export const CategoryPage = () => {
                         onClick={editCategoryButtonClick}
                       >
                         <img
-                          alt="add icon"
-                          src="/svgs/addicon.svg"
+                          alt="edit icon"
+                          src="/svgs/editicon.svg"
                         />
                       </button>
                       <button
@@ -173,7 +179,7 @@ export const CategoryPage = () => {
                         onClick={deleteCategoryButtonClick}
                       >
                         <img
-                          alt="add icon"
+                          alt="delete icon"
                           src="/svgs/deleteicon.svg"
                         />
                       </button>

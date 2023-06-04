@@ -138,8 +138,8 @@ export const WalletPage = () => {
                         className="flex items-center bg-transparent border-none focus:outline-none"
                       >
                         <img
-                          alt="add icon"
-                          src="/svgs/addicon.svg"
+                          alt="edit icon"
+                          src="/svgs/editicon.svg"
                           className={`duration-500 w-9 h-9 ml-16 mr-5`}
                         />
                       </Button>
@@ -149,7 +149,7 @@ export const WalletPage = () => {
                         className="flex items-center bg-transparent border-none focus:outline-none"
                       >
                         <img
-                          alt="add icon"
+                          alt="delete icon"
                           src="/svgs/deleteicon.svg"
                           className={`duration-500 w-9 h-9`}
                         />

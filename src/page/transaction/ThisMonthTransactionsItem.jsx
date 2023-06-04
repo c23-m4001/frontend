@@ -32,8 +32,8 @@ export const ThisMonthTransactionsItem = ({
           className="flex items-center bg-transparent border-none focus:outline-none"
         >
           <img
-            alt="add icon"
-            src="/svgs/addicon.svg"
+            alt="edit icon"
+            src="/svgs/editicon.svg"
             className={`duration-500 w-4 h-4 md:w-5 md:h-5`}
           />
         </Button>
@@ -43,7 +43,7 @@ export const ThisMonthTransactionsItem = ({
           className="flex items-center bg-transparent border-none focus:outline-none"
         >
           <img
-            alt="add icon"
+            alt="delete icon"
             src="/svgs/deleteicon.svg"
             className={`duration-500 w-4 h-4 md:w-5 md:h-5`}
           />
