@@ -22,6 +22,10 @@
   @apply transition-colors bg-primary hover:bg-primary-hover text-primary-inverse;
 }
 
+.btn-active {
+  @apply bg-primary-hover text-primary-inverse border-3px border-solid border-black;
+}
+
 @keyframes spin-infinite {
   0% {
     transform: translate(-50%, -50%) rotate(0);
