@@ -7,9 +7,9 @@ export const Sidebar = ({ children }) => {
 
   return (
     <div className="flex">
-      <div className="relative z-30">
+      <div className="md:relative fixed z-30 -translate-x-full sm:translate-x-0">
         <div className={`duration-300 ${open ? 'w-220px' : 'w-96px'}`}></div>
-        <div className="fixed z-10 drop-shadow-md">
+        <div className="fixed z-10 drop-shadow-md -translate-x-full sm:translate-x-0">
           <img
             alt="sidebar opener"
             src="/svgs/sidebar-opener.svg"
