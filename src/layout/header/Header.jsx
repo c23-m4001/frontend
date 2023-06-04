@@ -1,6 +1,5 @@
 import { useLocation } from 'react-router-dom'
 import { Button } from '../../components/button/Button'
-import { Input } from '../../components/input/Input'
 import { ProfileModal } from '../../components/modals/ProfileModal'
 import { useModal } from '../../core/Modal/ModalProvider'
 import DatePicker from 'react-datepicker'
@@ -8,6 +7,8 @@ import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import { useState } from 'react'
 import { Select } from './Select/Select'
+import { useActiveWallet } from '../../core/wallet/ActiveWalletProvider'
+import { ActiveWalletSelect } from './components/ActiveWalletSelect'
 
 export const Header = ({ children }) => {
   const location = useLocation()
@@ -126,13 +127,13 @@ export const Header = ({ children }) => {
   }
 
   return (
-    <div className="w-full flex flex-col">
+    <div className="w-full flex flex-col h-screen">
       <div className="relative">
-        <div className="h-70px"></div>
-        <div className="z-20 fixed top-0 left-0 right-0 px-20px py-14px bg-white h-70px flex items-center justify-between drop-shadow-md gap-4">
+        {/* <div className="h-70px"></div> */}
+        <div className="z-20 sticky top-0 left-0 right-0 px-20px py-14px bg-white flex items-center justify-between drop-shadow-md gap-4">
           <div className="flex items-center">
             <Button
-              type="button"
+              type="button"top
               className="sm:hidden"
             >
               <img
@@ -140,6 +141,7 @@ export const Header = ({ children }) => {
                 src="/svgs/hamburger-menu.svg"
               />
             </Button>
+            <ActiveWalletSelect />
           </div>
           <div className="flex flex-row gap-4 items-center">
             {location.pathname === '/transactions' && (

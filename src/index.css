@@ -12,6 +12,11 @@
 
 @import url(core/index.css);
 
+html,
+body {
+  overflow-y: hidden;
+}
+
 body {
   @apply m-0 font-poppins;
 }
@@ -22,11 +27,6 @@ body {
 
 li .active {
   @apply bg-background text-primary;
-}
-
-/* scrollbar */
-body {
-  overflow-y: scroll;
 }
 
 /* Adjust the width of the content area when scrollbar is present */

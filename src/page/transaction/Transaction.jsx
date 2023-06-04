@@ -5,6 +5,7 @@ import { ThisMonthTransactionsItem } from './ThisMonthTransactionsItem'
 import { useModal } from '../../core/Modal/ModalProvider'
 import moment from 'moment/moment'
 import { Button } from '../../components/button/Button'
+import { useActiveWallet } from '../../core/wallet/ActiveWalletProvider'
 
 export const TransactionPage = ({ amount }) => {
   const { data: nodess, isLoading } = useQuery(
@@ -16,6 +17,9 @@ export const TransactionPage = ({ amount }) => {
       retry: false,
     }
   )
+
+  const {activeWallet} = useActiveWallet();
+
   const nodes = [
     {
       id: '10',
@@ -118,8 +122,10 @@ export const TransactionPage = ({ amount }) => {
     )
     showModal()
   }
+
+
   return (
-    <div className="min-h-screen bg-background">
+    <div className="overflow-y-auto bg-background">
       <div className="w-full flex flex-col space-y-6 py-40px px-20px sm:px-100px lg:px-200px items-center">
         <div className="w-full flex flex-col items-start text-headline text-lg sm:text-xl md:text-2xl">
           <h1 className="font-bold text-2xl">Transaction</h1>
