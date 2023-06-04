@@ -142,7 +142,11 @@ export const Header = ({ children }) => {
                 src="/svgs/hamburger-menu.svg"
               />
             </Button>
-            <ActiveWalletSelect />
+            {
+              location.pathname === "/transactions" && (
+                <ActiveWalletSelect />
+              )
+            }
           </div>
           <div className="flex flex-row gap-4 items-center">
             {location.pathname === '/transactions' && (
@@ -158,7 +162,7 @@ export const Header = ({ children }) => {
           </div>
         </div>
       </div>
-      <div className="overflow-y-auto">{children}</div>
+      <div className="grow overflow-y-auto">{children}</div>
     </div>
   )
 }
