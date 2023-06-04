@@ -100,7 +100,6 @@ export const TransactionPage = ({ amount }) => {
   }
 
   const onDeleteHandler = (id) => {
-    const transactionNow = nodes.filter((transaction) => transaction.id === id)
     setModal(
       <div className="flex flex-col justify-center py-4 text-center gap-4">
         <p>Anda yakin ingin menghapus transaksi?</p>
@@ -108,12 +107,18 @@ export const TransactionPage = ({ amount }) => {
           <Button
             type={'button'}
             className="btn bg-danger text-white rounded-full"
+            // onClick={async () => {
+            //   await WalletApi.deleteWallet({ id: id })
+            //   hideModal()
+            //   refetch()
+            // }}
           >
             Hapus
           </Button>
           <Button
             type={'button'}
             className="btn bg-white border border-paragraph text-paragraph rounded-full"
+            onClick={() => hideModal()}
           >
             Batal
           </Button>
@@ -127,10 +132,12 @@ export const TransactionPage = ({ amount }) => {
     <div className="bg-background">
       <div className="w-full flex flex-col space-y-6 py-40px px-20px sm:px-100px lg:px-200px items-center">
         <div className="w-full flex flex-col items-start text-headline text-lg sm:text-xl md:text-2xl">
-          <h1 className="font-bold text-2xl">Transaction</h1>
+          <h1 className="font-bold text-2xl sm:text-2xl xl:text-3xl">
+            Transaction
+          </h1>
           <div className="w-full flex flex-col items-center py-6">
-            <h2 className="pb-4 font-semibold">Cashflow</h2>
-            <div className="font-semibold text-3xl sm:text-4xl">
+            <h2 className="pb-4 text-xl font-bold sm:text-2xl">Cashflow</h2>
+            <div className="font-bold text-2xl sm:text-3xl">
               Rp.{amount}4,750,000
             </div>
           </div>
@@ -149,12 +156,12 @@ export const TransactionPage = ({ amount }) => {
         </div>
         <div className="w-full sm:w-full md:max-w-800px flex flex-col items-center mt-60 sm:mt-24">
           <div className="w-full sm:w-full flex flex-col items-center bg-white text-headline p-2 rounded-md mb-4">
-            <div className="w-full sm:px-8 md:px-16 flex text-center text-xs sm:text-sm md:text-base lg:text-lg py-3 border-b-2">
+            <div className="w-full flex text-center text-xs sm:text-sm md:text-base lg:text-lg py-3 border-b-2">
               <div className="flex-1">Last month</div>
               <div className="flex-1">This month</div>
               <div className="flex-1">Future</div>
             </div>
-            <div className="w-full flex flex-col gap-2 sm:px-12 md:px-16 text-xs sm:text-sm md:text-base p-3">
+            <div className="w-full flex flex-col gap-2 sm:px-6 md:px-8 text-xs sm:text-sm md:text-base p-3">
               <div className="flex justify-between">
                 <p>Starting balance</p>
                 <p>Rp. 4,750,000</p>
@@ -168,7 +175,7 @@ export const TransactionPage = ({ amount }) => {
                 <p className="text-danger">-Rp. 2,000,000</p>
               </div>
             </div>
-            <div className="w-full px-3 sm:px-12 md:px-16 text-xs sm:text-sm md:text-base pb-3">
+            <div className="w-full px-3 sm:px-6 md:px-8 text-xs sm:text-sm md:text-base pb-3">
               <div className="flex justify-between pt-3 border-t-2">
                 <p>Total</p>
                 <p>Rp. 3,430,000</p>
@@ -180,7 +187,7 @@ export const TransactionPage = ({ amount }) => {
             <div className="w-full flex text-center text-xs sm:text-sm md:text-base lg:text-lg py-3 border-b-2">
               <div className="flex-1">This month</div>
             </div>
-            <div className="w-full sm:py-6 sm:px-12 md:px-16 flex flex-col text-xs sm:text-sm md:text-base p-3 justify-between gap-2 sm:gap-6">
+            <div className="w-full sm:py-6 sm:px-6 md:px-8 flex flex-col text-xs sm:text-sm md:text-base p-3 justify-between gap-2 sm:gap-6">
               {nodes?.map((transaction, idx) => {
                 return (
                   <ThisMonthTransactionsItem

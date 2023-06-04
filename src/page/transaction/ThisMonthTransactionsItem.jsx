@@ -1,5 +1,5 @@
 import React from 'react'
-import { Icon } from '@iconify/react'
+import { Button } from '../../components/button/Button'
 
 export const ThisMonthTransactionsItem = ({
   name,
@@ -8,7 +8,7 @@ export const ThisMonthTransactionsItem = ({
   onDelete,
 }) => {
   return (
-    <div className="flex justify-between gap-2">
+    <div className="flex justify-between gap-2 sm:gap-4">
       <div
         className="flex flex-grow justify-between cursor-pointer"
         onClick={onClick}
@@ -26,16 +26,28 @@ export const ThisMonthTransactionsItem = ({
           </p>
         </div>
       </div>
-      <div className="flex items-center gap-1 cursor-pointer">
-        <Icon
-          className="text-danger"
-          icon="material-symbols:delete"
+      <div className="flex items-center gap-1 sm:gap-2 cursor-pointer">
+        <Button
+          type="button"
+          className="flex items-center bg-transparent border-none focus:outline-none"
+        >
+          <img
+            alt="add icon"
+            src="/svgs/addicon.svg"
+            className={`duration-500 w-4 h-4 md:w-5 md:h-5`}
+          />
+        </Button>
+        <Button
           onClick={onDelete}
-        />
-        <Icon
-          className="text-headline"
-          icon="ri:edit-fill"
-        />
+          type="button"
+          className="flex items-center bg-transparent border-none focus:outline-none"
+        >
+          <img
+            alt="add icon"
+            src="/svgs/deleteicon.svg"
+            className={`duration-500 w-4 h-4 md:w-5 md:h-5`}
+          />
+        </Button>
       </div>
     </div>
   )

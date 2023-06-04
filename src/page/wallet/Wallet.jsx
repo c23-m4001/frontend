@@ -95,7 +95,7 @@ export const WalletPage = () => {
     <div className="h-full bg-background">
       <div className="h-full flex flex-col justify-center py-40px px-20px sm:px-100px lg:px-200px">
         <div className="flex justify-between">
-          <h1 className="font-poppins font-bold text-3xl text-headline">
+          <h1 className="font-bold text-2xl sm:text-2xl xl:text-3xl text-headline">
             Wallet
           </h1>
           <button

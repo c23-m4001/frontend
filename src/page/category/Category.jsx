@@ -107,7 +107,9 @@ export const CategoryPage = () => {
     <div className="min-h-screen bg-background">
       <div className="flex flex-col space-y-6 py-40px px-20px sm:px-100px lg:px-200px">
         <div className="flex justify-between items-center">
-          <h1 className="font-bold text-headline text-2xl">Category</h1>
+          <h1 className="font-bold text-2xl sm:text-2xl xl:text-3xl text-headline">
+            Category
+          </h1>
           <Button
             className="btn btn-primary rounded-xl font-bold text-sm"
             type="button"
