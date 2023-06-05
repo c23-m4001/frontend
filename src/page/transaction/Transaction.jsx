@@ -38,20 +38,24 @@ export const TransactionPage = ({ amount }) => {
     isLoading,
     refetch,
   } = useQuery(
-    [ReactQueryKeys.TRANSACTION_FILTER, {
-    phrase,
-    start_date: dateRange.start_date,
-    end_date: dateRange.end_date,
-    wallet_id: activeWallet?.id,
-    sorts: [{ field: 'date', direction: 'desc' }],
-  }],
-    () => TransactionApi.fetchTransactions({
-    phrase,
-    start_date: dateRange.start_date,
-    end_date: dateRange.end_date,
-    wallet_id: activeWallet?.id,
-    sorts: [{ field: 'date', direction: 'desc' }],
-  }).then((r) => r.data),
+    [
+      ReactQueryKeys.TRANSACTION_FILTER,
+      {
+        phrase,
+        start_date: dateRange.start_date,
+        end_date: dateRange.end_date,
+        wallet_id: activeWallet?.id,
+        sorts: [{ field: 'date', direction: 'desc' }],
+      },
+    ],
+    () =>
+      TransactionApi.fetchTransactions({
+        phrase,
+        start_date: dateRange.start_date,
+        end_date: dateRange.end_date,
+        wallet_id: activeWallet?.id,
+        sorts: [{ field: 'date', direction: 'desc' }],
+      }).then((r) => r.data),
     {
       cacheTime: 0,
       // keepPreviousData: true,
@@ -179,7 +183,7 @@ export const TransactionPage = ({ amount }) => {
   useFirstTimeEffect(
     (firstTime) => {
       if (!firstTime) {
-        console.log("REFETCH", dateRange, activeWallet)
+        console.log('REFETCH', dateRange, activeWallet)
         refetch()
       }
     },

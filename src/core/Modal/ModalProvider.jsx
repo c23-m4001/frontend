@@ -58,7 +58,10 @@ export const ModalProvider = ({ children }) => {
       {children}
       {modal &&
         createPortal(
-          <CustomModal title={title} modal={modal} />,
+          <CustomModal
+            title={title}
+            modal={modal}
+          />,
           document.getElementById(rootModalId)
         )}
     </ModalContext.Provider>
@@ -67,9 +70,9 @@ export const ModalProvider = ({ children }) => {
 
 export const useModal = () => useContext(ModalContext)
 
-const CustomModal = ({ title,modal }) => {
+const CustomModal = ({ title, modal }) => {
   const modalRef = useRef(null)
-  const { hideModal } = useModal()
+  const { hideModal, unsetModal } = useModal()
 
   useEffect(() => {
     document.body.classList.add('modal-open')
@@ -87,6 +90,7 @@ const CustomModal = ({ title,modal }) => {
   const closeModal = () => {
     document.body.classList.remove('modal-open')
     hideModal()
+    unsetModal()
   }
 
   return (
@@ -112,9 +116,9 @@ const CustomModal = ({ title,modal }) => {
               className="modal-close-btn"
               onClick={closeModal}
             >
-              <img 
-              height={20}
-              width={20}
+              <img
+                height={20}
+                width={20}
                 src="/svgs/x.svg"
               />
             </button>

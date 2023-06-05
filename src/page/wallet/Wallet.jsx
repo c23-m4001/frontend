@@ -9,9 +9,8 @@ import { loadPages } from '../../util/pagination'
 import { Button } from '../../components/button/Button'
 import { useModal } from '../../core/Modal/ModalProvider'
 import { Icon } from '@iconify/react'
-import { Input } from '../../components/input/Input'
-import { Select } from '../../layout/header/Select/Select'
 import { AddWallet } from './components/AddWallet'
+import { EditWallet } from './components/EditWallet'
 
 export const WalletPage = () => {
   const { setModal, showModal, hideModal } = useModal()
@@ -168,6 +167,16 @@ export const WalletPage = () => {
     showModal()
   }
 
+  const editWalletButtonClick = ({ wallet }) => {
+    setModal(
+      <EditWallet
+        wallet={wallet}
+        refetch={refetch}
+      />
+    )
+    showModal()
+  }
+
   const deleteWalletButtonClick = (id) => {
     setModal(
       <div className="flex flex-col justify-center py-4 text-center gap-4">
@@ -245,6 +254,7 @@ export const WalletPage = () => {
 
                     <div className="flex">
                       <Button
+                        onClick={() => editWalletButtonClick({ wallet })}
                         type="button"
                         className="flex items-center bg-transparent border-none focus:outline-none"
                       >

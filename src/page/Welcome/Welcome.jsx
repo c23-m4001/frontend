@@ -18,7 +18,7 @@ export const WelcomePage = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault()
-    
+
     await WalletApi.createWallet({
       logo_type: selectedType.value,
       name: name,

@@ -9,6 +9,11 @@ export const WalletApi = {
       .post(`${WALLET_API_URL}`, { name, logo_type })
       .then((r) => r.data)
   },
+  updateWallet: async ({ id, name, logo_type }) => {
+    return axios
+      .put(`${WALLET_API_URL}/${id}`, { name, logo_type })
+      .then((r) => r.data)
+  },
   fetchWallets: async ({ page, limit, phrase, sorts }) => {
     return axios
       .post(`${WALLET_API_URL}/filter`, { page, limit, phrase, sorts })

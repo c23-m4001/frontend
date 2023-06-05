@@ -8,7 +8,11 @@ export const Sidebar = ({ children }) => {
   return (
     <div className="flex">
       <div className="relative z-30">
-        <div className={`hidden md:block duration-300 ${open ? 'w-220px' : 'w-96px'}`}></div>
+        <div
+          className={`hidden md:block duration-300 ${
+            open ? 'w-220px' : 'w-96px'
+          }`}
+        ></div>
         <div className="fixed z-10 drop-shadow-md hidden md:block">
           <img
             alt="sidebar opener"

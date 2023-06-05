@@ -10,7 +10,7 @@ export const ThisMonthTransactionsItem = ({
   onClick,
   onDelete,
 }) => {
-  const { setModal, showModal } = useModal() 
+  const { setModal, showModal } = useModal()
   const [startDate, setStartDate] = useState(new Date())
   const [selectedWallet, setSelectedWallet] = useState(null)
   const [selectedCategory, setSelectedCategory] = useState(null)
@@ -89,8 +89,8 @@ export const ThisMonthTransactionsItem = ({
             Amount
           </label>
           <div className="flex p-10px gap-2 justify-between items-center">
-            <p className='text-sm'>Rp. </p>
-            <input 
+            <p className="text-sm">Rp. </p>
+            <input
               type="number"
               className="text-sm border-0 items-center focus:outline-none"
             />
@@ -114,7 +114,7 @@ export const ThisMonthTransactionsItem = ({
           </label>
           <div className="w-full p-10px gap-2">
             <DatePicker
-            className='focus:outline-none'
+              className="focus:outline-none"
               selected={startDate}
               onChange={(date) => setStartDate(date)}
             />
@@ -136,7 +136,7 @@ export const ThisMonthTransactionsItem = ({
       >
         <div className="flex flex-1 gap-2 items-center">
           <div className="mr-20px font-bold">
-            {moment(transaction.date).format("DD MMMM")}
+            {moment(transaction.date).format('DD MMMM')}
           </div>
           <img
             src="/svgs/avatar.svg"

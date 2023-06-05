@@ -96,8 +96,8 @@ export const Header = ({ children }) => {
             Amount
           </label>
           <div className="flex p-10px gap-2 justify-between items-center">
-            <p className='text-sm'>Rp. </p>
-            <input 
+            <p className="text-sm">Rp. </p>
+            <input
               type="number"
               className="text-sm border-0 items-center focus:outline-none"
             />
@@ -121,7 +121,7 @@ export const Header = ({ children }) => {
           </label>
           <div className="w-full p-10px gap-2">
             <DatePicker
-            className='focus:outline-none'
+              className="focus:outline-none"
               selected={startDate}
               onChange={(date) => setStartDate(date)}
             />
