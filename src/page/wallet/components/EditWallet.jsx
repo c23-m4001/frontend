@@ -5,7 +5,7 @@ import { Input } from '../../../components/input/Input'
 import { useModal } from '../../../core/Modal/ModalProvider'
 import { useInput } from '../../../custom-hooks/useInput'
 import { WalletEnums } from '../../../util/enum'
-import { WalletSelect } from './WalletSelect'
+import { WalletTypeSelect } from './WalletTypeSelect'
 
 export const EditWallet = ({ refetch, wallet }) => {
   const { unsetModal, hideModal } = useModal()
@@ -41,7 +41,7 @@ export const EditWallet = ({ refetch, wallet }) => {
         value={name}
         onChange={setName}
       />
-      <WalletSelect
+      <WalletTypeSelect
         label="Wallet type"
         value={selectedWalletType}
         onChange={setSelectedWalletType}

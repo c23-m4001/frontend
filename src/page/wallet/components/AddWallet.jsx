@@ -4,7 +4,7 @@ import { Button } from '../../../components/button/Button'
 import { Input } from '../../../components/input/Input'
 import { useModal } from '../../../core/Modal/ModalProvider'
 import { useInput } from '../../../custom-hooks/useInput'
-import { WalletSelect } from './WalletSelect'
+import { WalletTypeSelect } from './WalletTypeSelect'
 
 export const AddWallet = ({ refetch }) => {
   const { unsetModal, hideModal } = useModal()
@@ -37,7 +37,7 @@ export const AddWallet = ({ refetch }) => {
         value={name}
         onChange={setName}
       />
-      <WalletSelect
+      <WalletTypeSelect
         label="Wallet type"
         value={selectedWalletType}
         onChange={setSelectedWalletType}
