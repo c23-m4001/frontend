@@ -1,4 +1,4 @@
-export const WalletEnums = {
+export const WalletTypeEnums = {
   CASH: { label: 'Cash', value: 'CASH', icon: 'bi-cash' },
   BANK: { label: 'Bank', value: 'BANK', icon: 'ph-piggy-bank-bold' },
   CREDIT_CARD: {
