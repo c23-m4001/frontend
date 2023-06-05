@@ -11,6 +11,7 @@ import { useModal } from '../../core/Modal/ModalProvider'
 import { Icon } from '@iconify/react'
 import { AddWallet } from './components/AddWallet'
 import { EditWallet } from './components/EditWallet'
+import { WalletEnums } from '../../util/enum'
 
 export const WalletPage = () => {
   const { setModal, showModal, hideModal } = useModal()
@@ -237,10 +238,10 @@ export const WalletPage = () => {
                   <div className="font-semibold text-xl pb-1"></div>
                   <div className="flex justify-between items-center">
                     <div className="flex">
-                      <img
-                        alt="cash icon"
-                        src="/svgs/cash.svg"
-                        className={`duration-500 w-12 h-12 mr-4`}
+                      <Icon
+                      className="rounded-full bg-primary text-primary-inverse mr-4 w-12 h-12 p-8px"
+                        alt="icon"
+                        icon={WalletEnums[wallet.logo_type].icon}
                       />
                       <div>
                         <div className="flex flex-col">
