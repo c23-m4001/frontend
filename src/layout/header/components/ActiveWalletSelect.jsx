@@ -25,7 +25,7 @@ export const ActiveWalletSelect = ({ className }) => {
     <div className={className}>
       <Select
         value={value}
-        label="Wallet "
+        label="Wallet"
         onChange={(val) => setActiveWalletId(val.value)}
         options={options}
       />
