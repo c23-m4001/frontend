@@ -1,24 +1,63 @@
 import { useQuery } from 'react-query'
 import { ReactQueryKeys } from '../../api/constant'
-import { AuthApi } from '../../api/auth/authApi'
 import { ThisMonthTransactionsItem } from './ThisMonthTransactionsItem'
 import { useModal } from '../../core/Modal/ModalProvider'
 import moment from 'moment/moment'
 import { Button } from '../../components/button/Button'
 import { useActiveWallet } from '../../core/wallet/ActiveWalletProvider'
+import { TransactionApi } from '../../api/transactions/transactionApi'
+import { useEffect, useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
+import { loadPages } from '../../util/pagination'
+import useFirstTimeEffect from '../../util/useFirstTimeEffect'
 
 export const TransactionPage = ({ amount }) => {
-  const { data: nodess, isLoading } = useQuery(
-    // TODO: replace with transaction API
-    ReactQueryKeys.LOGIN_HISTORIES,
-    () => AuthApi.loginHistories().then((r) => r.data?.login_histories),
+  const { activeWallet } = useActiveWallet()
+  const { setModal, showModal, hideModal } = useModal()
+  const [searchParams, setSearchParams] = useSearchParams()
+
+  const [dateRange, setDateRange] = useState({
+    start_date: moment().startOf('month').format('YYYY-MM-DD'),
+    end_date: moment().endOf('month').format('YYYY-MM-DD'),
+  })
+  const [pages, setPages] = useState([])
+
+  const page = parseInt(searchParams.get('page')) || 1
+  const limit = undefined
+  const phrase = undefined
+
+  // const [params, setParams] = useState({
+  //   phrase,
+  //   start_date: dateRange.start_date,
+  //   end_date: dateRange.end_date,
+  //   wallet_id: activeWallet?.id,
+  //   sorts: [{ field: 'date', direction: 'desc' }],
+  // })
+  const {
+    data: transactionData,
+    isLoading,
+    refetch,
+  } = useQuery(
+    [ReactQueryKeys.TRANSACTION_FILTER, {
+    phrase,
+    start_date: dateRange.start_date,
+    end_date: dateRange.end_date,
+    wallet_id: activeWallet?.id,
+    sorts: [{ field: 'date', direction: 'desc' }],
+  }],
+    () => TransactionApi.fetchTransactions({
+    phrase,
+    start_date: dateRange.start_date,
+    end_date: dateRange.end_date,
+    wallet_id: activeWallet?.id,
+    sorts: [{ field: 'date', direction: 'desc' }],
+  }).then((r) => r.data),
     {
       cacheTime: 0,
-      retry: false,
+      // keepPreviousData: true,
+      // refetchOnWindowFocus: false,
     }
   )
-
-  const { activeWallet } = useActiveWallet()
 
   const nodes = [
     {
@@ -65,22 +104,19 @@ export const TransactionPage = ({ amount }) => {
     },
   ]
 
-  const { setModal, showModal, hideModal } = useModal()
-
-  const onTransactionClick = (id) => {
-    const transactionNow = nodes.filter((transaction) => transaction.id === id)
+  const onTransactionClick = (transaction) => {
     setModal(
       <div className="flex flex-col sm:flex-row sm:gap-4 md:py-6">
         <div className="flex flex-2 sm:flex-row-reverse gap-6 pb-4">
           <div className="flex flex-col text-xs">
             <p className="text-headline text-lg font-bold md:text-2xl">
-              {transactionNow[0].name}
+              {transaction.name}
             </p>
             <p className="text-paragraph pb-2 md:text-base">
-              {moment(transactionNow.date).format('ddd, MMM Do YYYY')}
+              {moment(transaction.date).format('ddd, MMM Do YYYY')}
             </p>
             <p className="bg-primary rounded-lg text-white text-sm w-max px-4 md:text-base">
-              {transactionNow[0].category.name}
+              {transaction.category.name}
             </p>
           </div>
           <img
@@ -92,14 +128,14 @@ export const TransactionPage = ({ amount }) => {
           className="flex flex-1 justify-end items-center text-right text-green-600 font-semibold
             text-lg py-2 border-t border-secondary sm:border-0 sm:py-0 sm:pb-4 md:text-2xl"
         >
-          Rp. {transactionNow[0].amount}
+          Rp. {transaction.amount}
         </p>
       </div>
     )
     showModal()
   }
 
-  const onDeleteHandler = (id) => {
+  const onDeleteHandler = (transaction) => {
     setModal(
       <div className="flex flex-col justify-center py-4 text-center gap-4">
         <p>Anda yakin ingin menghapus transaksi?</p>
@@ -107,11 +143,11 @@ export const TransactionPage = ({ amount }) => {
           <Button
             type={'button'}
             className="btn bg-danger text-white rounded-full"
-            // onClick={async () => {
-            //   await WalletApi.deleteWallet({ id: id })
-            //   hideModal()
-            //   refetch()
-            // }}
+            onClick={async () => {
+              await WalletApi.deleteWallet({ id: id })
+              hideModal()
+              refetch()
+            }}
           >
             Hapus
           </Button>
@@ -128,9 +164,31 @@ export const TransactionPage = ({ amount }) => {
     showModal()
   }
 
+  useEffect(() => {
+    if (!isLoading) {
+      // setPages(
+      //   loadPages({
+      //     paginationLimit: limit,
+      //     maxVisiblePage: 3,
+      //     totalData: wallets.total,
+      //   })
+      // )
+    }
+  }, [isLoading, page])
+
+  useFirstTimeEffect(
+    (firstTime) => {
+      if (!firstTime) {
+        console.log("REFETCH", dateRange, activeWallet)
+        refetch()
+      }
+    },
+    [dateRange, activeWallet]
+  )
+
   return (
     <div className="bg-background">
-      <div className="w-full flex flex-col space-y-6 py-40px px-20px sm:px-100px lg:px-200px items-center">
+      <div className="w-full flex flex-col space-y-6 py-40px px-20px sm:px-100px lg:px-200px 2xl:px-400px items-center">
         <div className="w-full flex flex-col items-start text-headline text-lg sm:text-xl md:text-2xl">
           <h1 className="font-bold text-2xl sm:text-2xl xl:text-3xl">
             Transaction
@@ -142,7 +200,7 @@ export const TransactionPage = ({ amount }) => {
             </div>
           </div>
         </div>
-        <div className="w-full sm:w-full md:max-w-800px sm:gap-8 flex flex-col sm:flex-row items-center">
+        <div className="w-full sm:w-full sm:gap-8 flex flex-col sm:flex-row items-center">
           <div className="w-full flex flex-col items-center bg-white text-green-600 p-8 rounded-md mb-4">
             <div className="font-semibold text-xl pb-1">
               Rp.{amount}4,750,000
@@ -154,7 +212,7 @@ export const TransactionPage = ({ amount }) => {
             <p className="font-bold text-headline">Expense</p>
           </div>
         </div>
-        <div className="w-full sm:w-full md:max-w-800px flex flex-col items-center mt-60 sm:mt-24">
+        <div className="w-full sm:w-full flex flex-col items-center mt-60 sm:mt-24">
           <div className="w-full sm:w-full flex flex-col items-center bg-white text-headline p-2 rounded-md mb-4">
             <div className="w-full flex text-center text-xs sm:text-sm md:text-base lg:text-lg py-3 border-b-2">
               <div className="flex-1">Last month</div>
@@ -187,18 +245,18 @@ export const TransactionPage = ({ amount }) => {
             <div className="w-full flex text-center text-xs sm:text-sm md:text-base lg:text-lg py-3 border-b-2">
               <div className="flex-1">This month</div>
             </div>
-            <div className="w-full sm:py-6 sm:px-6 md:px-8 flex flex-col text-xs sm:text-sm md:text-base p-3 justify-between gap-2 sm:gap-6">
-              {nodes?.map((transaction, idx) => {
-                return (
-                  <ThisMonthTransactionsItem
-                    key={idx}
-                    name={transaction.name}
-                    amount={transaction.amount}
-                    onClick={() => onTransactionClick(transaction.id)}
-                    onDelete={() => onDeleteHandler(transaction.id)}
-                  />
-                )
-              })}
+            <div className="w-full sm:py-6 sm:px-12 md:px-16 flex flex-col text-xs sm:text-sm md:text-base p-3 justify-between gap-2 sm:gap-6">
+              {!isLoading &&
+                transactionData?.nodes?.map((transaction, idx) => {
+                  return (
+                    <ThisMonthTransactionsItem
+                      key={idx}
+                      transaction={transaction}
+                      onClick={() => onTransactionClick(transaction)}
+                      onDelete={() => onDeleteHandler(transaction)}
+                    />
+                  )
+                })}
             </div>
           </div>
         </div>

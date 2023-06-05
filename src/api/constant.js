@@ -4,4 +4,5 @@ export const ReactQueryKeys = {
   LOGIN_HISTORIES: 'login-histories',
   USER_ME: 'user-me',
   WALLET_FILTER: 'wallet-filter',
+  TRANSACTION_FILTER: 'transaction-filter',
 }

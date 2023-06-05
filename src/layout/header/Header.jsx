@@ -142,7 +142,6 @@ export const Header = ({ children }) => {
           <div className="flex items-center">
             <Button
               type="button"
-              top
               className="sm:hidden"
             >
               <img
@@ -150,11 +149,9 @@ export const Header = ({ children }) => {
                 src="/svgs/hamburger-menu.svg"
               />
             </Button>
-            {
-              location.pathname === "/transactions" && (
-                <ActiveWalletSelect className={"ml-20px"}/>
-              )
-            }
+            {location.pathname === '/transactions' && (
+              <ActiveWalletSelect className={'ml-20px'} />
+            )}
           </div>
           <div className="flex flex-row gap-4 items-center">
             {location.pathname === '/transactions' && (

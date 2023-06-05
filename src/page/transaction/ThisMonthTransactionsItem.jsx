@@ -3,10 +3,10 @@ import { useModal } from '../../core/Modal/ModalProvider'
 import { Button } from '../../components/button/Button'
 import { Select } from '../../layout/header/Select/Select'
 import DatePicker from 'react-datepicker'
+import moment from 'moment'
 
 export const ThisMonthTransactionsItem = ({
-  name,
-  amount,
+  transaction,
   onClick,
   onDelete,
 }) => {
@@ -135,15 +135,18 @@ export const ThisMonthTransactionsItem = ({
         onClick={onClick}
       >
         <div className="flex flex-1 gap-2 items-center">
+          <div className="mr-20px font-bold">
+            {moment(transaction.date).format("DD MMMM")}
+          </div>
           <img
             src="/svgs/avatar.svg"
             className="w-6 hidden sm:block"
           />
-          <p className="">{name}</p>
+          <p className="">{transaction.name}</p>
         </div>
         <div className="flex flex-1 gap-2">
           <p className="flex flex-1 justify-end items-center text-right text-green-600">
-            Rp. {amount}
+            Rp. {transaction.amount}
           </p>
         </div>
       </div>

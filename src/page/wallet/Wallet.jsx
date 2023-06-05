@@ -11,6 +11,7 @@ import { useModal } from '../../core/Modal/ModalProvider'
 import { Icon } from '@iconify/react'
 import { Input } from '../../components/input/Input'
 import { Select } from '../../layout/header/Select/Select'
+import { AddWallet } from './components/AddWallet'
 
 export const WalletPage = () => {
   const { setModal, showModal, hideModal } = useModal()
@@ -163,23 +164,7 @@ export const WalletPage = () => {
   ]
 
   const addWalletButtonClick = () => {
-    setModal(
-      <form className="flex flex-col w-56 py-2 md:w-72">
-        <Input
-          type="text"
-          placeholder="Masukkan nama wallet"
-          className="text-sm"
-        />
-        <Select
-          label="Wallet type"
-          onChange={setSelectedWallet}
-          options={walletOptions}
-        />
-        <Button className="btn btn-primary rounded-lg text-sm font-bold mt-4">
-          Tambah
-        </Button>
-      </form>
-    )
+    setModal(<AddWallet refetch={refetch} />)
     showModal()
   }
 
