@@ -183,7 +183,6 @@ export const TransactionPage = ({ amount }) => {
   useFirstTimeEffect(
     (firstTime) => {
       if (!firstTime) {
-        console.log('REFETCH', dateRange, activeWallet)
         refetch()
       }
     },
