@@ -27,7 +27,7 @@ export const ActiveWalletProvider = ({ children }) => {
     ) {
       setActiveWallet(
         currentUser.wallets.find(
-          (wallet) => (wallet.id === searchParams.get('active_wallet_id'))
+          (wallet) => wallet.id === searchParams.get('active_wallet_id')
         )
       )
     } else {

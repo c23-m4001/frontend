@@ -48,65 +48,19 @@ export const TransactionPage = ({ amount }) => {
         sorts: [{ field: 'date', direction: 'desc' }],
       },
     ],
-    () =>
-      TransactionApi.fetchTransactions({
+    () => {
+      return TransactionApi.fetchTransactions({
         phrase,
         start_date: dateRange.start_date,
         end_date: dateRange.end_date,
         wallet_id: activeWallet?.id,
         sorts: [{ field: 'date', direction: 'desc' }],
-      }).then((r) => r.data),
+      }).then((r) => r.data)
+    },
     {
       cacheTime: 0,
-      // keepPreviousData: true,
-      // refetchOnWindowFocus: false,
     }
   )
-
-  const nodes = [
-    {
-      id: '10',
-      name: 'Pesen makan',
-      amount: 20000,
-      category: {
-        created_at: '2023-01-01T07:00:00+07:00',
-        id: '023b6735-8255-43c0-bc3d-f6d1e423612d',
-        is_expense: true,
-        is_global: true,
-        name: 'Makanan',
-        updated_at: '2023-01-01T07:00:00+07:00',
-      },
-      date: '2023-01-01T07:00:00+07:00',
-    },
-    {
-      id: '11',
-      name: 'Bayar sekolah',
-      amount: 3450000,
-      category: {
-        created_at: '2023-01-01T07:00:00+07:00',
-        id: '023b6735-8255-43c0-bc3d-f6d1e423612d',
-        is_expense: true,
-        is_global: true,
-        name: 'Education',
-        updated_at: '2023-01-01T07:00:00+07:00',
-      },
-      date: '2023-01-01T07:00:00+07:00',
-    },
-    {
-      id: '12',
-      name: 'Beli mainan',
-      amount: 300000,
-      category: {
-        created_at: '2023-01-01T07:00:00+07:00',
-        id: '023b6735-8255-43c0-bc3d-f6d1e423612d',
-        is_expense: true,
-        is_global: true,
-        name: 'Hobies',
-        updated_at: '2023-01-01T07:00:00+07:00',
-      },
-      date: '2023-01-01T07:00:00+07:00',
-    },
-  ]
 
   const onTransactionClick = (transaction) => {
     setModal(
@@ -148,7 +102,7 @@ export const TransactionPage = ({ amount }) => {
             type={'button'}
             className="btn bg-danger text-white rounded-full"
             onClick={async () => {
-              await WalletApi.deleteWallet({ id: id })
+              await TransactionApi.deleteTransaction({ id: transaction.id })
               hideModal()
               refetch()
             }}

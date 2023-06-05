@@ -12,15 +12,17 @@ export const TransactionApi = {
   fetchTransactions: async ({
     page,
     limit,
-    phrase,
     start_date,
     end_date,
+    wallet_id,
+    phrase,
     sorts,
   }) => {
     return axios
       .post(`${TRANSACTION_API_URL}/filter`, {
         page,
         limit,
+        wallet_id,
         phrase,
         start_date,
         end_date,
@@ -28,7 +30,7 @@ export const TransactionApi = {
       })
       .then((r) => r.data)
   },
-  // deleteTransaction: async ({ id }) => {
-  //   return axios.delete(`${TRANSACTION_API_URL}/${id}`).then((r) => r.message)
-  // },
+  deleteTransaction: async ({ id }) => {
+    return axios.delete(`${TRANSACTION_API_URL}/${id}`).then((r) => r.message)
+  },
 }

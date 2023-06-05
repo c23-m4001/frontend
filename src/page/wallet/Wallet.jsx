@@ -239,7 +239,7 @@ export const WalletPage = () => {
                   <div className="flex justify-between items-center">
                     <div className="flex">
                       <Icon
-                      className="rounded-full bg-primary text-primary-inverse mr-4 w-12 h-12 p-8px"
+                        className="rounded-full bg-primary text-primary-inverse mr-4 w-12 h-12 p-8px"
                         alt="icon"
                         icon={WalletEnums[wallet.logo_type].icon}
                       />
