@@ -8,6 +8,9 @@ import { useEffect, useState } from 'react'
 import { loadPages } from '../../util/pagination'
 import { Button } from '../../components/button/Button'
 import { useModal } from '../../core/Modal/ModalProvider'
+import { Icon } from '@iconify/react'
+import { Input } from '../../components/input/Input'
+import { Select } from '../../layout/header/Select/Select'
 
 export const WalletPage = () => {
   const { setModal, showModal, hideModal } = useModal()
@@ -58,6 +61,128 @@ export const WalletPage = () => {
     }
   }, [isLoading, page])
 
+  const [selectedWallet, setSelectedWallet] = useState(null)
+
+  const walletOptions = [
+    {
+      value: 'cash',
+      label: (
+        <div className="flex items-center gap-x-4 hover:text-primary">
+          <Icon
+            icon="bi-cash"
+            width="24"
+          />
+          Cash
+        </div>
+      ),
+    },
+    {
+      value: 'bank',
+      label: (
+        <div className="flex items-center gap-x-4 hover:text-primary">
+          <Icon
+            icon="ph-piggy-bank-bold"
+            width="24"
+          />
+          Bank
+        </div>
+      ),
+    },
+    {
+      value: 'credit card',
+      label: (
+        <div className="flex items-center gap-x-4 hover:text-primary">
+          <Icon
+            icon="ic:baseline-credit-card"
+            width="24"
+          />
+          Credit Card
+        </div>
+      ),
+    },
+    {
+      value: 'loan',
+      label: (
+        <div className="flex items-center gap-x-4 hover:text-primary">
+          <Icon
+            icon="uil:moneybag-alt"
+            width="24"
+          />
+          Loan
+        </div>
+      ),
+    },
+    {
+      value: 'insurance',
+      label: (
+        <div className="flex items-center gap-x-4 hover:text-primary">
+          <Icon
+            icon="material-symbols:health-and-safety-outline-rounded"
+            width="24"
+          />
+          Insurance
+        </div>
+      ),
+    },
+    {
+      value: 'investment',
+      label: (
+        <div className="flex items-center gap-x-4 hover:text-primary">
+          <Icon
+            icon="mdi:graph-line-shimmer"
+            width="24"
+          />
+          Investment
+        </div>
+      ),
+    },
+    {
+      value: 'mortgage',
+      label: (
+        <div className="flex items-center gap-x-4 hover:text-primary">
+          <Icon
+            icon="pepicons-pop:house"
+            width="24"
+          />
+          Mortgage
+        </div>
+      ),
+    },
+    {
+      value: 'bonus',
+      label: (
+        <div className="flex items-center gap-x-4 hover:text-primary">
+          <Icon
+            icon="tabler:moneybag"
+            width="24"
+          />
+          Bonus
+        </div>
+      ),
+    },
+  ]
+
+  const addWalletButtonClick = () => {
+    setModal(
+      <form className="flex flex-col w-56 py-2 md:w-72">
+        <Input
+          type="text"
+          placeholder="Masukkan nama wallet"
+          className="text-sm"
+        />
+        <Select
+          label="Wallet type"
+          onChange={setSelectedWallet}
+          options={walletOptions}
+        />
+        <Button className="btn btn-primary rounded-lg text-sm font-bold mt-4">
+          Tambah
+        </Button>
+      </form>
+    )
+    showModal()
+  }
+
   const deleteWalletButtonClick = (id) => {
     setModal(
       <div className="flex flex-col justify-center py-4 text-center gap-4">
@@ -101,6 +226,7 @@ export const WalletPage = () => {
           <button
             type="button"
             className="btn btn-primary rounded-xl font-poppins font-bold text-sm leading-18"
+            onClick={addWalletButtonClick}
           >
             Tambah Wallet
           </button>
