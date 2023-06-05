@@ -1,6 +1,7 @@
 import { Button } from '../../components/button/Button'
 import { useModal } from '../../core/Modal/ModalProvider'
 import { Input } from '../../components/input/Input'
+import { DefaultCategories } from './components/DefaultCategories'
 
 export const CategoryPage = () => {
   const defaultCategories = [
@@ -85,29 +86,29 @@ export const CategoryPage = () => {
     showModal()
   }
 
-  const categoryDetailClick = (id) => {
-    const detail = defaultCategories.filter((category) => category.id === id)
-    setModal(
-      <form className="flex flex-col w-56 py-2 md:w-72">
-        <div className="flex items-center gap-x-4">
-          <img
-            alt="category icon"
-            src={`/svgs/${detail[0].src}.svg`}
-            className="w-12"
-          />
-          <div className="flex flex-col gap-y-1">
-            <h3 className="text-headline text-xl font-bold">
-              {detail[0].name}
-            </h3>
-            <p className="bg-danger rounded-lg text-white text-sm w-max px-4">
-              Expense
-            </p>
-          </div>
-        </div>
-      </form>
-    )
-    showModal()
-  }
+  // const categoryDetailClick = (id) => {
+  //   const detail = defaultCategories.filter((category) => category.id === id)
+  //   setModal(
+  //     <form className="flex flex-col w-56 py-2 md:w-72">
+  //       <div className="flex items-center gap-x-4">
+  //         <img
+  //           alt="category icon"
+  //           src={`/svgs/${detail[0].src}.svg`}
+  //           className="w-12"
+  //         />
+  //         <div className="flex flex-col gap-y-1">
+  //           <h3 className="text-headline text-xl font-bold">
+  //             {detail[0].name}
+  //           </h3>
+  //           <p className="bg-danger rounded-lg text-white text-sm w-max px-4">
+  //             Expense
+  //           </p>
+  //         </div>
+  //       </div>
+  //     </form>
+  //   )
+  //   showModal()
+  // }
 
   return (
     <div className="min-h-screen bg-background">
@@ -129,7 +130,8 @@ export const CategoryPage = () => {
             <div className="flex flex-col grow basis-50% px-6">
               <h2 className="font-bold text-base text-headline">Default</h2>
               <div className="py-4">
-                {defaultCategories.map((category, id) => (
+                <DefaultCategories />
+                {/* {defaultCategories.map((category, id) => (
                   <div
                     key={id}
                     name={category.name}
@@ -143,7 +145,7 @@ export const CategoryPage = () => {
                     />
                     <h3>{category.name}</h3>
                   </div>
-                ))}
+                ))} */}
               </div>
             </div>
             <div className="bg-secondary mx-20px my-10px md:m-0 h-1px md:h-auto grow md:flex-none md:w-1px"></div>

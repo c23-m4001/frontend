@@ -5,14 +5,12 @@ import { Input } from '../../components/input/Input'
 import { useAuth } from '../../core/Auth/AuthProvider'
 import { useInput } from '../../custom-hooks/useInput'
 import { Select } from '../../layout/header/Select/Select'
+import { WalletTypeSelect } from '../wallet/components/WalletTypeSelect'
 
 export const WelcomePage = () => {
   const { refetchUser } = useAuth()
   const [name, onNameChange] = useInput('')
-  const [selectedType, setSelectedType] = useState({
-    label: 'Default',
-    value: 'DEFAULT',
-  })
+  const [selectedType, setSelectedType] = useState(null)
   const [domainErrors, setDomainErrors] = useState({})
   const isLoading = false
 
@@ -50,17 +48,11 @@ export const WelcomePage = () => {
                     error={domainErrors?.wallet}
                     disabled={isLoading}
                   />
-                  <Select
+                  <WalletTypeSelect
                     className="mb-4"
                     label="Type"
                     defaultValue={selectedType}
                     onChange={setSelectedType}
-                    options={[
-                      {
-                        label: 'Default',
-                        value: 'DEFAULT',
-                      },
-                    ]}
                   />
                   <Button
                     className="btn btn-primary rounded-sm mb-4"
