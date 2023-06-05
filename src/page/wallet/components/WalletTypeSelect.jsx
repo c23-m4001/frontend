@@ -1,6 +1,6 @@
 import { Icon } from '@iconify/react'
 import { Select } from '../../../layout/header/Select/Select'
-import { WalletEnums } from '../../../util/enum'
+import { WalletTypeEnums } from '../../../util/enum'
 
 export const WalletTypeSelect = ({ className, label, value, onChange }) => {
   return (
@@ -9,7 +9,7 @@ export const WalletTypeSelect = ({ className, label, value, onChange }) => {
       label={label}
       value={value}
       onChange={onChange}
-      options={Object.entries(WalletEnums).map(([_, walletTypeOption]) => ({
+      options={Object.entries(WalletTypeEnums).map(([_, walletTypeOption]) => ({
         ...walletTypeOption,
         label: (
           <>

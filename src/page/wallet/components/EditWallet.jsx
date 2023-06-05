@@ -4,14 +4,14 @@ import { Button } from '../../../components/button/Button'
 import { Input } from '../../../components/input/Input'
 import { useModal } from '../../../core/Modal/ModalProvider'
 import { useInput } from '../../../custom-hooks/useInput'
-import { WalletEnums } from '../../../util/enum'
+import { WalletTypeEnums } from '../../../util/enum'
 import { WalletTypeSelect } from './WalletTypeSelect'
 
 export const EditWallet = ({ refetch, wallet }) => {
   const { unsetModal, hideModal } = useModal()
   const [name, setName] = useInput(wallet.name)
   const [selectedWalletType, setSelectedWalletType] = useState(
-    WalletEnums[wallet.logo_type]
+    WalletTypeEnums[wallet.logo_type]
   )
 
   const onSubmit = async (e) => {
