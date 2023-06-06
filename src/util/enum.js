@@ -30,56 +30,56 @@ export const CategoryTypeEnum = {
   FOOD_BEVERAGE: {
     label: 'Food & Beverage',
     value: 'FOOD_BEVERAGE',
-    src: 'food-beverage-category',
+    icon: 'ion:fast-food',
   },
   TRANSPORTATION: {
     label: 'Transportation',
     value: 'TRANSPORTATION',
-    src: 'transportation-category',
+    icon: 'icon-park-solid:engineering-vehicle',
   },
   RENTAL: {
     label: 'Rental',
     value: 'RENTAL',
-    src: 'rental-category',
+    icon: 'icon-park-solid:bill',
   },
   WATER_BILL: {
     label: 'Water Bill',
     value: 'WATER_BILL',
-    src: 'water-bill-category',
+    icon: 'icon-park-solid:water-level',
   },
   PHONE_BILL: {
     label: 'Phone Bill',
     value: 'PHONE_BILL',
-    src: 'phone-bill-category',
+    icon: 'fluent:phone-chat-16-filled',
   },
   ELECTRICITY_BILL: {
     label: 'Electricity Bill',
     value: 'ELECTRICITY_BILL',
-    src: 'electricity-bill-category',
+    icon: 'mdi:electricity',
   },
   EDUCATION: {
     label: 'Education',
     value: 'EDUCATION',
-    src: 'education-category',
+    icon: 'icon-park-solid:school',
   },
   PETS: {
     label: 'Pets',
     value: 'PETS',
-    src: 'pets-category',
+    icon: 'material-symbols:pets',
   },
   FITNESS: {
     label: 'Fitness',
     value: 'FITNESS',
-    src: 'fitness-category',
+    icon: 'ion:fitness',
   },
   GAMES: {
     label: 'Games',
     value: 'GAMES',
-    src: 'games-category',
+    icon: 'mingcute:game-2-fill',
   },
   OTHER: {
     label: 'Other',
     value: 'OTHER',
-    src: 'other-category',
+    icon: 'ph:question-bold',
   },
 }
