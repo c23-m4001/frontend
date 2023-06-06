@@ -19,7 +19,7 @@ export const WalletPage = () => {
   const [pages, setPages] = useState([])
 
   const page = parseInt(searchParams.get('page')) || 1
-  const limit = 10
+  const limit = 6
   const phrase = undefined
 
   const {
