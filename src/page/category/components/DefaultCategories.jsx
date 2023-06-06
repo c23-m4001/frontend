@@ -6,19 +6,17 @@ import { Icon } from '@iconify/react'
 import { useModal } from '../../../core/Modal/ModalProvider'
 
 export const DefaultCategories = () => {
+  const { setModal, showModal } = useModal()
   const { data, isLoading } = useQuery(
     ['default', ReactQueryKeys.CATEGORIES_FILTER],
     () =>
-      CategoryApi.fetchCategories({
-        sorts: [{ field: 'name', direction: 'asc' }],
-      }).then((r) => r.data),
+      CategoryApi.fetchDefaultCategories().then((r) => r.data),
     {
       keepPreviousData: true,
       refetchOnWindowFocus: false,
     }
   )
 
-  const { setModal, showModal, hideModal } = useModal()
 
   const categoryDetailClick = ({ category }) => {
     setModal(
@@ -48,22 +46,23 @@ export const DefaultCategories = () => {
   return (
     <div>
       {!isLoading &&
-        data?.nodes?.map((category, idx) => (
-          <div
-            key={idx}
-            name={category.name}
-            src={category.src}
-            className="flex text-sm items-center gap-x-4 py-4 border-b-2 cursor-pointer"
-            onClick={() => categoryDetailClick({ category: category })}
-          >
-            <Icon
-              className="rounded-full bg-background text-primary w-12 h-12 p-8px"
-              alt="icon"
-              icon={CategoryTypeEnum[category.logo_type].icon}
-            />
-            <h3>{category.name}</h3>
-          </div>
-        ))}
+      data?.categories?.map((category, idx) => {
+        return (
+        <div
+          key={idx}
+          name={category.name}
+          src={category.src}
+          className="flex text-sm items-center gap-x-4 py-4 border-b-2 cursor-pointer"
+          onClick={() => categoryDetailClick({ category: category })}
+        >
+          <Icon
+            className="rounded-full bg-background text-primary w-12 h-12 p-8px"
+            alt="icon"
+            icon={CategoryTypeEnum[category.logo_type].icon}
+          />
+          <h3>{category.name}</h3>
+        </div>
+      )})}
     </div>
   )
 }

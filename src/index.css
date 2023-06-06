@@ -10,6 +10,7 @@
 /* Sen font */
 @import url('https://fonts.googleapis.com/css2?family=Sen:wght@800&display=swap');
 
+@import url(components/index.css);
 @import url(core/index.css);
 
 html,

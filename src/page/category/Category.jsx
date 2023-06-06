@@ -2,20 +2,9 @@ import { Button } from '../../components/button/Button'
 import { useModal } from '../../core/Modal/ModalProvider'
 import { Input } from '../../components/input/Input'
 import { DefaultCategories } from './components/DefaultCategories'
+import { AddCategory } from './components/AddCategory'
 
 export const CategoryPage = () => {
-  const defaultCategories = [
-    { id: '1', name: 'Food & Beverage', src: 'food-beverage-category' },
-    { id: '2', name: 'Transportation', src: 'transportation-category' },
-    { id: '3', name: 'Rental', src: 'rental-category' },
-    { id: '4', name: 'Water Bill', src: 'water-bill-category' },
-    { id: '5', name: 'Phone Bill', src: 'phone-bill-category' },
-    { id: '6', name: 'Electricity Bill', src: 'electricity-bill-category' },
-    { id: '7', name: 'Education', src: 'education-category' },
-    { id: '8', name: 'Pets', src: 'pets-category' },
-    { id: '9', name: 'Fitness', src: 'fitness-category' },
-    { id: '10', name: 'Games', src: 'games-category' },
-  ]
 
   const customCategories = [
     { id: '1', name: 'Custom 1', src: 'custom-category' },
@@ -27,16 +16,8 @@ export const CategoryPage = () => {
 
   const addCategoryButtonClick = () => {
     setModal(
-      <form className="flex flex-col w-56 py-2 md:w-72">
-        <Input
-          type="text"
-          placeholder="Masukkan nama kategori"
-          className="text-sm"
-        />
-        <Button className="btn btn-primary rounded-lg text-sm font-bold">
-          Tambah
-        </Button>
-      </form>
+      // <AddCategory refetch={refetch} />
+      <AddCategory />
     )
     showModal()
   }
@@ -131,21 +112,6 @@ export const CategoryPage = () => {
               <h2 className="font-bold text-base text-headline">Default</h2>
               <div className="py-4">
                 <DefaultCategories />
-                {/* {defaultCategories.map((category, id) => (
-                  <div
-                    key={id}
-                    name={category.name}
-                    src={category.src}
-                    className="flex text-sm items-center gap-x-4 py-4 border-b-2 cursor-pointer"
-                    onClick={() => categoryDetailClick(category.id)}
-                  >
-                    <img
-                      alt="category icon"
-                      src={`/svgs/${category.src}.svg`}
-                    />
-                    <h3>{category.name}</h3>
-                  </div>
-                ))} */}
               </div>
             </div>
             <div className="bg-secondary mx-20px my-10px md:m-0 h-1px md:h-auto grow md:flex-none md:w-1px"></div>
