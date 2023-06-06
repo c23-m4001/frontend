@@ -22,21 +22,25 @@ export const DefaultCategories = () => {
 
   const categoryDetailClick = ({ category }) => {
     setModal(
-      <form className="flex flex-col w-56 py-2 md:w-72">
+      <div className="flex flex-col w-56 py-2 md:w-72">
         <div className="flex items-center gap-x-4">
           <Icon
-            className="rounded-full bg-primary text-primary-inverse w-12 h-12 p-8px"
+            className="rounded-full bg-background text-primary w-12 h-12 p-8px"
             alt="icon"
             icon={CategoryTypeEnum[category.logo_type].icon}
           />
           <div className="flex flex-col gap-y-1">
             <h3 className="text-headline text-xl font-bold">{category.name}</h3>
-            <p className="bg-danger rounded-lg text-white text-sm w-max px-4">
+            <p
+              className={`rounded-lg text-white text-sm w-max px-4 ${
+                category.is_expense ? 'bg-danger' : 'bg-primary'
+              }`}
+            >
               {category.is_expense ? 'Expense' : 'Income'}
             </p>
           </div>
         </div>
-      </form>
+      </div>
     )
     showModal()
   }
@@ -53,7 +57,7 @@ export const DefaultCategories = () => {
             onClick={() => categoryDetailClick({ category: category })}
           >
             <Icon
-              className="rounded-full bg-primary text-primary-inverse w-12 h-12 p-8px"
+              className="rounded-full bg-background text-primary w-12 h-12 p-8px"
               alt="icon"
               icon={CategoryTypeEnum[category.logo_type].icon}
             />

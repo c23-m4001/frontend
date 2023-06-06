@@ -239,7 +239,7 @@ export const WalletPage = () => {
                   <div className="flex justify-between items-center">
                     <div className="flex">
                       <Icon
-                        className="rounded-full bg-primary text-primary-inverse mr-4 w-12 h-12 p-8px"
+                        className="rounded-full bg-background text-primary mr-4 w-12 h-12 p-8px"
                         alt="icon"
                         icon={WalletTypeEnums[wallet.logo_type].icon}
                       />
@@ -253,7 +253,7 @@ export const WalletPage = () => {
                       </div>
                     </div>
 
-                    <div className="flex">
+                    <div className="flex gap-x-4">
                       <Button
                         onClick={() => editWalletButtonClick({ wallet })}
                         type="button"
@@ -262,7 +262,7 @@ export const WalletPage = () => {
                         <img
                           alt="edit icon"
                           src="/svgs/editicon.svg"
-                          className={`duration-500 w-9 h-9 ml-16 mr-5`}
+                          className="w-6 h-6"
                         />
                       </Button>
                       <Button
@@ -273,7 +273,7 @@ export const WalletPage = () => {
                         <img
                           alt="delete icon"
                           src="/svgs/deleteicon.svg"
-                          className={`duration-500 w-9 h-9`}
+                          className="w-6 h-6"
                         />
                       </Button>
                     </div>

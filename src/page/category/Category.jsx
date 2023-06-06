@@ -173,6 +173,7 @@ export const CategoryPage = () => {
                         <img
                           alt="edit icon"
                           src="/svgs/editicon.svg"
+                          className="w-6 h-6"
                         />
                       </button>
                       <button
@@ -183,6 +184,7 @@ export const CategoryPage = () => {
                         <img
                           alt="delete icon"
                           src="/svgs/deleteicon.svg"
+                          className="w-6 h-6"
                         />
                       </button>
                     </div>
