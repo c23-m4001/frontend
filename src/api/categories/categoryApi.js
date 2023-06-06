@@ -14,10 +14,9 @@ export const CategoryApi = {
       .put(`${CATEGORY_API_URL}/${id}`, { name, logo_type, is_expense })
       .then((r) => r.data)
   },
-  fetchCategories: async ({ is_global, page, limit, phrase, sorts }) => {
+  fetchCategories: async ({ page, limit, phrase, sorts }) => {
     return axios
       .post(`${CATEGORY_API_URL}/filter`, {
-        is_global,
         page,
         limit,
         phrase,

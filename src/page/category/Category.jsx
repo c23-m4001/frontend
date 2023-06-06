@@ -3,93 +3,66 @@ import { useModal } from '../../core/Modal/ModalProvider'
 import { Input } from '../../components/input/Input'
 import { DefaultCategories } from './components/DefaultCategories'
 import { AddCategory } from './components/AddCategory'
+import { UserCategories } from './components/UserCategories'
+import { useSearchParams } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { useQuery } from 'react-query'
+import { ReactQueryKeys } from '../../api/constant'
+import useFirstTimeEffect from '../../util/useFirstTimeEffect'
+import { loadPages } from '../../util/pagination'
+import { CategoryApi } from '../../api/categories/categoryApi'
 
 export const CategoryPage = () => {
+  const { setModal, showModal } = useModal()
+  const [searchParams, setSearchParams] = useSearchParams()
+  const [pages, setPages] = useState([])
 
-  const customCategories = [
-    { id: '1', name: 'Custom 1', src: 'custom-category' },
-    { id: '2', name: 'Custom 2', src: 'custom-category' },
-    { id: '3', name: 'Custom 3', src: 'custom-category' },
-  ]
+  const page = parseInt(searchParams.get('page')) || 1
+  const limit = 6
+  const phrase = undefined
 
-  const { setModal, showModal, hideModal } = useModal()
+  const { data, isLoading, refetch } = useQuery(
+    ['user', ReactQueryKeys.CATEGORIES_FILTER, page],
+    () =>
+      CategoryApi.fetchCategories({
+        limit,
+        page,
+        phrase,
+        sorts: [{ field: 'name', direction: 'asc' }],
+      }).then((r) => r.data),
+    {
+      keepPreviousData: true,
+      refetchOnWindowFocus: false,
+    }
+  )
 
   const addCategoryButtonClick = () => {
     setModal(
-      // <AddCategory refetch={refetch} />
-      <AddCategory />
+      <AddCategory refetch={refetch} />
     )
     showModal()
   }
 
-  const editCategoryButtonClick = () => {
-    setModal(
-      <form className="flex flex-col w-56 py-2 md:w-72">
-        <Input
-          type="text"
-          placeholder="Masukkan nama kategori"
-          className="text-sm"
-        />
-        <Button className="btn btn-primary rounded-lg text-sm font-bold">
-          Edit
-        </Button>
-      </form>
-    )
-    showModal()
-  }
+  useFirstTimeEffect(
+    (firstTime) => {
+      if (!firstTime) {
+        refetch()
+      }
+    },
+    [page]
+  )
 
-  const deleteCategoryButtonClick = (id) => {
-    setModal(
-      <div className="flex flex-col justify-center py-4 text-center gap-4">
-        <p>Anda yakin ingin menghapus kategori ini?</p>
-        <div className="flex justify-center gap-4 text-sm">
-          <Button
-            type={'button'}
-            className="btn bg-danger text-white rounded-full"
-            // onClick={async () => {
-            //   await WalletApi.deleteWallet({ id: id })
-            //   hideModal()
-            //   refetch()
-            // }}
-          >
-            Hapus
-          </Button>
-          <Button
-            type={'button'}
-            className="btn bg-white border border-paragraph text-paragraph rounded-full"
-            onClick={() => hideModal()}
-          >
-            Batal
-          </Button>
-        </div>
-      </div>
-    )
-    showModal()
-  }
-
-  // const categoryDetailClick = (id) => {
-  //   const detail = defaultCategories.filter((category) => category.id === id)
-  //   setModal(
-  //     <form className="flex flex-col w-56 py-2 md:w-72">
-  //       <div className="flex items-center gap-x-4">
-  //         <img
-  //           alt="category icon"
-  //           src={`/svgs/${detail[0].src}.svg`}
-  //           className="w-12"
-  //         />
-  //         <div className="flex flex-col gap-y-1">
-  //           <h3 className="text-headline text-xl font-bold">
-  //             {detail[0].name}
-  //           </h3>
-  //           <p className="bg-danger rounded-lg text-white text-sm w-max px-4">
-  //             Expense
-  //           </p>
-  //         </div>
-  //       </div>
-  //     </form>
-  //   )
-  //   showModal()
-  // }
+  useEffect (() => {
+    if (!isLoading) {
+      setPages(
+        loadPages({
+          paginationLimit: limit,
+          maxVisiblePage: 3,
+          totalData: data.total,
+        })
+      )
+    }
+  }, [isLoading, page])
 
   return (
     <div className="min-h-screen bg-background">
@@ -118,44 +91,11 @@ export const CategoryPage = () => {
             <div className="flex flex-col grow basis-50% px-6">
               <h2 className="font-bold text-base text-headline">Custom</h2>
               <div className="py-4">
-                {customCategories.map((category, id) => (
-                  <div
-                    key={id}
-                    className="flex text-sm py-4 border-b-2 justify-between"
-                  >
-                    <div className="flex items-center gap-x-4">
-                      <img
-                        alt="category icon"
-                        src={`/svgs/${category.src}.svg`}
-                      />
-                      <h3>{category.name}</h3>
-                    </div>
-                    <div className="flex gap-x-4">
-                      <button
-                        type="button"
-                        className="flex items-center bg-transparent border-none focus:outline-none"
-                        onClick={editCategoryButtonClick}
-                      >
-                        <img
-                          alt="edit icon"
-                          src="/svgs/editicon.svg"
-                          className="w-6 h-6"
-                        />
-                      </button>
-                      <button
-                        type="button"
-                        className="flex items-center bg-transparent border-none focus:outline-none"
-                        onClick={deleteCategoryButtonClick}
-                      >
-                        <img
-                          alt="delete icon"
-                          src="/svgs/deleteicon.svg"
-                          className="w-6 h-6"
-                        />
-                      </button>
-                    </div>
-                  </div>
-                ))}
+                <UserCategories
+                  data={data}
+                  isLoading={isLoading}
+                  refetch={refetch}
+                />
               </div>
             </div>
           </div>
