@@ -3,24 +3,17 @@ import { CategoryTypeEnum } from '../../../util/enum'
 import { Icon } from '@iconify/react'
 import { useModal } from '../../../core/Modal/ModalProvider'
 import { Button } from '../../../components/button/Button'
-import { Input } from '../../../components/input/Input'
+import { EditCategory } from './EditCategory'
 
-export const UserCategories = ({data, isLoading, refetch}) => {
+export const UserCategories = ({ data, isLoading, refetch }) => {
   const { setModal, showModal, hideModal } = useModal()
 
-
-  const editCategoryButtonClick = () => {
+  const editCategoryButtonClick = ({ category }) => {
     setModal(
-      <form className="flex flex-col w-56 py-2 md:w-72">
-        <Input
-          type="text"
-          placeholder="Masukkan nama kategori"
-          className="text-sm"
-        />
-        <Button className="btn btn-primary rounded-lg text-sm font-bold">
-          Edit
-        </Button>
-      </form>
+      <EditCategory
+        refetch={refetch}
+        category={category}
+      />
     )
     showModal()
   }
@@ -86,7 +79,8 @@ export const UserCategories = ({data, isLoading, refetch}) => {
           return (
             <div
               key={idx}
-              className="flex text-sm py-4 border-b-2 justify-between"
+              className="flex text-sm py-4 border-b-2 justify-between cursor-pointer"
+              onClick={() => categoryDetailClick({ category: category })}
             >
               <div className="flex items-center gap-x-4">
                 <Icon
@@ -100,7 +94,10 @@ export const UserCategories = ({data, isLoading, refetch}) => {
                 <button
                   type="button"
                   className="flex items-center bg-transparent border-none focus:outline-none"
-                  onClick={() => editCategoryButtonClick}
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    editCategoryButtonClick({ category })
+                  }}
                 >
                   <img
                     alt="edit icon"
@@ -111,7 +108,10 @@ export const UserCategories = ({data, isLoading, refetch}) => {
                 <button
                   type="button"
                   className="flex items-center bg-transparent border-none focus:outline-none"
-                  onClick={() => deleteCategoryButtonClick(category.id)}
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    deleteCategoryButtonClick(category.id)
+                  }}
                 >
                   <img
                     alt="delete icon"
