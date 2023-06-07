@@ -15,24 +15,21 @@ export const TransactionPage = ({ amount }) => {
   const { activeWallet } = useActiveWallet()
   const { setModal, showModal, hideModal } = useModal()
   const [searchParams, setSearchParams] = useSearchParams()
+  // const [activeDate, setActiveDate] = useState(
+  //   searchParams.get('active_date') || undefined
+  // )
+  const activeDate = searchParams.get('active_date') || undefined
 
-  const [dateRange, setDateRange] = useState({
-    start_date: moment().startOf('month').format('YYYY-MM-DD'),
-    end_date: moment().endOf('month').format('YYYY-MM-DD'),
-  })
-  const [pages, setPages] = useState([])
-
+  const dateRange = {
+    start_date: moment(activeDate).startOf('month').format('YYYY-MM-DD'),
+    end_date: moment(activeDate).endOf('month').format('YYYY-MM-DD'),
+  }
+  
   const page = parseInt(searchParams.get('page')) || 1
-  const limit = undefined
   const phrase = undefined
 
-  // const [params, setParams] = useState({
-  //   phrase,
-  //   start_date: dateRange.start_date,
-  //   end_date: dateRange.end_date,
-  //   wallet_id: activeWallet?.id,
-  //   sorts: [{ field: 'date', direction: 'desc' }],
-  // })
+  console.log(dateRange)
+
   const {
     data: transactionData,
     isLoading,
@@ -132,7 +129,8 @@ export const TransactionPage = ({ amount }) => {
       //   })
       // )
     }
-  }, [isLoading, page])
+  }, [isLoading, page, transactionData])
+
 
   useFirstTimeEffect(
     (firstTime) => {
@@ -140,7 +138,7 @@ export const TransactionPage = ({ amount }) => {
         refetch()
       }
     },
-    [dateRange, activeWallet]
+    [activeDate, activeWallet]
   )
 
   return (
@@ -171,10 +169,20 @@ export const TransactionPage = ({ amount }) => {
         </div>
         <div className="w-full sm:w-full flex flex-col items-center mt-60 sm:mt-24">
           <div className="w-full sm:w-full flex flex-col items-center bg-white text-headline p-2 rounded-md mb-4">
-            <div className="w-full flex text-center text-xs sm:text-sm md:text-base lg:text-lg py-3 border-b-2">
-              <div className="flex-1">Last month</div>
-              <div className="flex-1">This month</div>
-              <div className="flex-1">Future</div>
+            <div className="w-full flex text-center text-xs sm:text-sm md:text-base lg:text-lg border-b-2">
+              <div className="cursor-pointer py-3 flex-1" onClick={() => setSearchParams({
+                active_date: moment(activeDate).subtract(1, 'M').format('MMMM YYYY')
+              })}>
+                {moment(activeDate).subtract(1, 'M').format('MMMM YYYY')}
+              </div>
+              <div className="py-3 border-b-primary border-b-4px -mb-3px flex-1 font-bold">
+                {moment(activeDate).format('MMMM YYYY')}
+              </div>
+              <div className="cursor-pointer py-3 flex-1" onClick={() => setSearchParams({
+                active_date: moment(activeDate).add(1, 'M').format('MMMM YYYY')
+              })}>
+                {moment(activeDate).add(1, 'M').format('MMMM YYYY')}
+              </div>
             </div>
             <div className="w-full flex flex-col gap-2 sm:px-6 md:px-8 text-xs sm:text-sm md:text-base p-3">
               <div className="flex justify-between">
