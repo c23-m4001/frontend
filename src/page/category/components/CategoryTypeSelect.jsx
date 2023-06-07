@@ -14,9 +14,10 @@ export const CategoryTypeSelect = ({ className, label, value, onChange }) => {
           ...categoryTypeOption,
           label: (
             <>
-              <div className="flex items-center gap-x-4 hover:text-primary">
+              <div className="flex items-center gap-x-4">
                 <Icon
-                  className="rounded-full bg-background text-primary"
+                  className="text-primary active:text-white"
+                  width="24"
                   alt="icon"
                   icon={categoryTypeOption.icon}
                 />

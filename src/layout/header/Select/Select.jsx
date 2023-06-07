@@ -14,17 +14,26 @@ export const Select = ({
         {label}
       </label>
       <ReactSelect
-        className="text-xs sm:text-16px"
+        className="text-sm"
         defaultValue={defaultValue}
         value={value}
         options={options}
         onChange={onChange}
+        theme={(theme) => ({
+          ...theme,
+          colors: {
+            ...theme.colors,
+            primary25: '#D8EEFE',
+            primary: '#3DA9FC',
+          },
+        })}
         styles={{
           control: (provided) => ({
             ...provided,
-            border: '1px solid #ccc',
+            border: '1px solid #90B4CE',
             borderRadius: '4px',
             padding: '2px 10px',
+            cursor: 'pointer',
           }),
           placeholder: (provided) => ({
             ...provided,
@@ -47,6 +56,15 @@ export const Select = ({
           }),
           indicatorSeparator: () => ({
             display: 'none',
+          }),
+          option: (provided, state) => ({
+            ...provided,
+            backgroundColor: state.isSelected && '#D8EEFE',
+            color: state.isSelected && 'black',
+            '&:hover': {
+              backgroundColor: '#D8EEFE',
+            },
+            cursor: 'pointer',
           }),
         }}
       />

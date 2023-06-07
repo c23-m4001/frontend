@@ -13,8 +13,9 @@ export const WalletTypeSelect = ({ className, label, value, onChange }) => {
         ...walletTypeOption,
         label: (
           <>
-            <div className="flex items-center gap-x-4 hover:text-primary">
+            <div className="flex items-center gap-x-4">
               <Icon
+                className="text-primary"
                 icon={walletTypeOption.icon}
                 width="24"
               />
