@@ -11,6 +11,7 @@ import { ReactQueryKeys } from '../../api/constant'
 import useFirstTimeEffect from '../../util/useFirstTimeEffect'
 import { loadPages } from '../../util/pagination'
 import { CategoryApi } from '../../api/categories/categoryApi'
+import clsx from 'clsx'
 
 export const CategoryPage = () => {
   const { setModal, showModal } = useModal()
@@ -37,9 +38,7 @@ export const CategoryPage = () => {
   )
 
   const addCategoryButtonClick = () => {
-    setModal(
-      <AddCategory refetch={refetch} />
-    )
+    setModal(<AddCategory refetch={refetch} />)
     showModal()
   }
 
@@ -52,7 +51,7 @@ export const CategoryPage = () => {
     [page]
   )
 
-  useEffect (() => {
+  useEffect(() => {
     if (!isLoading) {
       setPages(
         loadPages({
@@ -62,11 +61,11 @@ export const CategoryPage = () => {
         })
       )
     }
-  }, [isLoading, page])
+  }, [isLoading, page, data])
 
   return (
-    <div className="min-h-screen bg-background">
-      <div className="flex flex-col space-y-6 py-40px px-20px sm:px-100px lg:px-200px">
+    <div className="h-full bg-background">
+      <div className="h-full flex flex-col space-y-6 py-40px px-20px sm:px-100px lg:px-200px">
         <div className="flex justify-between items-center">
           <h1 className="font-bold text-2xl sm:text-2xl xl:text-3xl text-headline">
             Category
@@ -79,26 +78,51 @@ export const CategoryPage = () => {
             Tambah Kategori
           </Button>
         </div>
-        <div className="bg-white py-6 rounded-md">
-          <div className="flex flex-col md:flex-row">
-            <div className="flex flex-col grow basis-50% px-6">
-              <h2 className="font-bold text-base text-headline">Default</h2>
-              <div className="py-4">
-                <DefaultCategories />
+        <div className="grow">
+          <div className="bg-white py-6 rounded-md">
+            <div className="flex flex-col md:flex-row">
+              <div className="flex flex-col grow basis-50% px-6">
+                <h2 className="font-bold text-base text-headline">Default</h2>
+                <div className="py-4">
+                  <DefaultCategories />
+                </div>
               </div>
-            </div>
-            <div className="bg-secondary mx-20px my-10px md:m-0 h-1px md:h-auto grow md:flex-none md:w-1px"></div>
-            <div className="flex flex-col grow basis-50% px-6">
-              <h2 className="font-bold text-base text-headline">Custom</h2>
-              <div className="py-4">
-                <UserCategories
-                  data={data}
-                  isLoading={isLoading}
-                  refetch={refetch}
-                />
+              <div className="bg-secondary mx-20px my-10px md:m-0 h-1px md:h-auto grow md:flex-none md:w-1px"></div>
+              <div className="flex flex-col grow basis-50% px-6">
+                <h2 className="font-bold text-base text-headline">Custom</h2>
+                <div className="py-4">
+                  <UserCategories
+                    data={data}
+                    isLoading={isLoading}
+                    refetch={refetch}
+                  />
+                </div>
               </div>
             </div>
           </div>
+        </div>
+
+        <div className="flex justify-center">
+          {pages.map((pageNumber, idx) => (
+            <Button
+              className={clsx({
+                'btn mr-10px rounded-lg font-bold': true,
+                'btn-active': '' + pageNumber.value === '' + page,
+                'btn-primary': '' + pageNumber.value !== '' + page,
+              })}
+              disabled={!pageNumber.is_active}
+              key={idx}
+              onClick={
+                pageNumber.is_active
+                  ? () => {
+                      setSearchParams({ page: parseInt(pageNumber.value) })
+                    }
+                  : null
+              }
+            >
+              {pageNumber.value}
+            </Button>
+          ))}
         </div>
       </div>
     </div>

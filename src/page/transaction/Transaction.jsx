@@ -144,7 +144,7 @@ export const TransactionPage = ({ amount }) => {
   )
 
   return (
-    <div className="bg-background">
+    <div className="h-full bg-background">
       <div className="w-full flex flex-col space-y-6 py-40px px-20px sm:px-100px lg:px-200px 2xl:px-400px items-center">
         <div className="w-full flex flex-col items-start text-headline text-lg sm:text-xl md:text-2xl">
           <h1 className="font-bold text-2xl sm:text-2xl xl:text-3xl">

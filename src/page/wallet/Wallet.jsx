@@ -60,7 +60,7 @@ export const WalletPage = () => {
         })
       )
     }
-  }, [isLoading, page])
+  }, [isLoading, page, wallets])
   
   const addWalletButtonClick = () => {
     setModal(<AddWallet refetch={refetch} />)
