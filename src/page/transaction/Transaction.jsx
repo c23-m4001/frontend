@@ -6,29 +6,25 @@ import moment from 'moment/moment'
 import { Button } from '../../components/button/Button'
 import { useActiveWallet } from '../../core/wallet/ActiveWalletProvider'
 import { TransactionApi } from '../../api/transactions/transactionApi'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom'
-import { loadPages } from '../../util/pagination'
 import useFirstTimeEffect from '../../util/useFirstTimeEffect'
+import { TransactionSummaryTotal } from './components/TransactionSummaryTotal'
+import { TransactionSummary } from './components/TransactionSummary'
 
 export const TransactionPage = ({ amount }) => {
   const { activeWallet } = useActiveWallet()
   const { setModal, showModal, hideModal } = useModal()
-  const [searchParams, setSearchParams] = useSearchParams()
-  // const [activeDate, setActiveDate] = useState(
-  //   searchParams.get('active_date') || undefined
-  // )
+  const [searchParams] = useSearchParams()
   const activeDate = searchParams.get('active_date') || undefined
 
   const dateRange = {
     start_date: moment(activeDate).startOf('month').format('YYYY-MM-DD'),
     end_date: moment(activeDate).endOf('month').format('YYYY-MM-DD'),
   }
-  
+
   const page = parseInt(searchParams.get('page')) || 1
   const phrase = undefined
-
-  console.log(dateRange)
 
   const {
     data: transactionData,
@@ -131,7 +127,6 @@ export const TransactionPage = ({ amount }) => {
     }
   }, [isLoading, page, transactionData])
 
-
   useFirstTimeEffect(
     (firstTime) => {
       if (!firstTime) {
@@ -144,67 +139,9 @@ export const TransactionPage = ({ amount }) => {
   return (
     <div className="bg-background">
       <div className="w-full flex flex-col space-y-6 py-40px px-20px sm:px-100px lg:px-200px 2xl:px-400px items-center">
-        <div className="w-full flex flex-col items-start text-headline text-lg sm:text-xl md:text-2xl">
-          <h1 className="font-bold text-2xl sm:text-2xl xl:text-3xl">
-            Transaction
-          </h1>
-          <div className="w-full flex flex-col items-center py-6">
-            <h2 className="pb-4 text-xl font-bold sm:text-2xl">Cashflow</h2>
-            <div className="font-bold text-2xl sm:text-3xl">
-              Rp.{amount}4,750,000
-            </div>
-          </div>
-        </div>
-        <div className="w-full sm:w-full sm:gap-8 flex flex-col sm:flex-row items-center">
-          <div className="w-full flex flex-col items-center bg-white text-green-600 p-8 rounded-md mb-4">
-            <div className="font-semibold text-xl pb-1">
-              Rp.{amount}4,750,000
-            </div>
-            <p className="font-bold text-headline">Gross Income</p>
-          </div>
-          <div className="w-full flex flex-col items-center bg-white text-danger p-8 rounded-md mb-4">
-            <div className="font-semibold text-xl pb-1">Rp.{amount}200,000</div>
-            <p className="font-bold text-headline">Expense</p>
-          </div>
-        </div>
+        <TransactionSummaryTotal wallet={activeWallet} />
         <div className="w-full sm:w-full flex flex-col items-center mt-60 sm:mt-24">
-          <div className="w-full sm:w-full flex flex-col items-center bg-white text-headline p-2 rounded-md mb-4">
-            <div className="w-full flex text-center text-xs sm:text-sm md:text-base lg:text-lg border-b-2">
-              <div className="cursor-pointer py-3 flex-1" onClick={() => setSearchParams({
-                active_date: moment(activeDate).subtract(1, 'M').format('MMMM YYYY')
-              })}>
-                {moment(activeDate).subtract(1, 'M').format('MMMM YYYY')}
-              </div>
-              <div className="py-3 border-b-primary border-b-4px -mb-3px flex-1 font-bold">
-                {moment(activeDate).format('MMMM YYYY')}
-              </div>
-              <div className="cursor-pointer py-3 flex-1" onClick={() => setSearchParams({
-                active_date: moment(activeDate).add(1, 'M').format('MMMM YYYY')
-              })}>
-                {moment(activeDate).add(1, 'M').format('MMMM YYYY')}
-              </div>
-            </div>
-            <div className="w-full flex flex-col gap-2 sm:px-6 md:px-8 text-xs sm:text-sm md:text-base p-3">
-              <div className="flex justify-between">
-                <p>Starting balance</p>
-                <p>Rp. 4,750,000</p>
-              </div>
-              <div className="flex justify-between">
-                <p>Inflow</p>
-                <p className="text-green-600">+Rp. 680,000</p>
-              </div>
-              <div className="flex justify-between">
-                <p>Outflow</p>
-                <p className="text-danger">-Rp. 2,000,000</p>
-              </div>
-            </div>
-            <div className="w-full px-3 sm:px-6 md:px-8 text-xs sm:text-sm md:text-base pb-3">
-              <div className="flex justify-between pt-3 border-t-2">
-                <p>Total</p>
-                <p>Rp. 3,430,000</p>
-              </div>
-            </div>
-          </div>
+          <TransactionSummary  activeDate={activeDate} dateRange={dateRange} />
 
           <div className="w-full sm:w-full flex flex-col items-center bg-white text-headline p-2 rounded-md mb-4">
             <div className="w-full flex text-center text-xs sm:text-sm md:text-base lg:text-lg py-3 border-b-2">

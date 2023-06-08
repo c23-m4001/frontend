@@ -30,6 +30,22 @@ export const TransactionApi = {
       })
       .then((r) => r.data)
   },
+  fetchTransactionSummary: async ({ start_date, end_date, wallet_id }) => {
+    return axios
+      .post(`${TRANSACTION_API_URL}/summary`, {
+        start_date,
+        end_date,
+        wallet_id,
+      })
+      .then((r) => r.data)
+  },
+  fetchTransactionSummaryTotal: async ({ wallet_id }) => {
+    return axios
+      .post(`${TRANSACTION_API_URL}/summary-total`, {
+        wallet_id,
+      })
+      .then((r) => r.data)
+  },
   deleteTransaction: async ({ id }) => {
     return axios.delete(`${TRANSACTION_API_URL}/${id}`).then((r) => r.message)
   },

@@ -5,5 +5,7 @@ export const ReactQueryKeys = {
   USER_ME: 'user-me',
   WALLET_FILTER: 'wallet-filter',
   TRANSACTION_FILTER: 'transaction-filter',
+  TRANSACTION_SUMMARY: 'transaction-summary',
+  TRANSACTION_SUMMARY_TOTAL: 'transaction-summary-total',
   CATEGORIES_FILTER: 'categories-filter',
 }
