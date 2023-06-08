@@ -36,6 +36,7 @@ export const EditWallet = ({ refetch, wallet }) => {
       <Input
         type="text"
         name="name"
+        label="Name"
         placeholder="Masukkan nama wallet"
         className="text-sm"
         value={name}

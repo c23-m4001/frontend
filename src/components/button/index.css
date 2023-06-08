@@ -23,7 +23,7 @@
 }
 
 .btn-active {
-  @apply bg-primary-hover text-primary-inverse border-3px border-solid border-black;
+  @apply bg-primary-hover text-primary-inverse border-3px border-solid border-primary;
 }
 
 @keyframes spin-infinite {

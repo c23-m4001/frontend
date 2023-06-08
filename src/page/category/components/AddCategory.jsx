@@ -37,6 +37,7 @@ export const AddCategory = ({ refetch }) => {
       <Input
         type="text"
         name="name"
+        label="Name"
         placeholder="Masukkan nama kategori"
         className="text-sm"
         value={name}
