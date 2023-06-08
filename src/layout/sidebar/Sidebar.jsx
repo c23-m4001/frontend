@@ -79,6 +79,19 @@ export const Sidebar = ({ children }) => {
                   <span className={`origin-left ml-25px`}>Category</span>
                 </NavLink>
               </li>
+              <li>
+                <NavLink
+                  to="/faq"
+                  className={`flex rounded-md mt-2 p-2 cursor-pointer font-medium hover:bg-background hover:text-primary text-secondary text-sm items-center gap-x-3`}
+                >
+                  <Icon
+                    icon="wpf:faq"
+                    width="30"
+                    className="min-w-max"
+                  />
+                  <span className={`origin-left ml-25px`}>FAQ</span>
+                </NavLink>
+              </li>
             </ul>
           </div>
         </div>

@@ -119,11 +119,13 @@ export const Header = ({ children }) => {
           <label className="absolute z-10 -top-8px left-10px bg-white px-5px py-0 text-12px">
             Date
           </label>
-          <div className="w-full p-10px gap-2">
+          <div className="w-full p-10px gap-2 text-sm text-center">
             <DatePicker
+              showIcon
               className="focus:outline-none"
               selected={startDate}
               onChange={(date) => setStartDate(date)}
+              placeholderText="Click to select a date"
             />
           </div>
         </div>
@@ -160,7 +162,7 @@ export const Header = ({ children }) => {
                 onClick={onButtonClick}
                 className="hidden sm:block rounded-xl btn btn-primary font-bold text-sm"
               >
-                Add Transaction
+                Tambah Transaksi
               </Button>
             )}
             <ProfileModal />

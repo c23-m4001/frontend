@@ -7,6 +7,7 @@ import { WalletPage } from '../wallet/Wallet'
 import { useAuth } from '../../core/Auth/AuthProvider'
 import { WelcomePage } from '../Welcome/Welcome'
 import { ActiveWalletProvider } from '../../core/wallet/ActiveWalletProvider'
+import { FrequentlyAskedQuestions } from '../faq/FrequentlyAskedQuestions'
 
 export const DashboardPage = () => {
   const { currentUser } = useAuth()
@@ -41,6 +42,11 @@ export const DashboardPage = () => {
               <Route
                 path="/login-histories"
                 element={<LoginHistoryPage />}
+              />
+
+              <Route 
+                path="/faq"
+                element={<FrequentlyAskedQuestions />}
               />
             </Route>
           </>
