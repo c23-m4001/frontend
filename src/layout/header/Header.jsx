@@ -8,9 +8,11 @@ import 'react-datepicker/dist/react-datepicker.css'
 import { useState } from 'react'
 import { Select } from './Select/Select'
 import { ActiveWalletSelect } from './components/ActiveWalletSelect'
+import { useSidebar } from '../sidebar/Sidebar'
 
 export const Header = ({ children }) => {
   const location = useLocation()
+  const { toggleOpen } = useSidebar();
   const { setModal, showModal } = useModal()
   const [startDate, setStartDate] = useState(new Date())
   const [selectedWallet, setSelectedWallet] = useState(null)
@@ -149,6 +151,7 @@ export const Header = ({ children }) => {
               <img
                 alt="hamburger menu"
                 src="/svgs/hamburger-menu.svg"
+                onClick={() => toggleOpen()}
               />
             </Button>
             {location.pathname === '/transactions' && (

@@ -64,7 +64,7 @@ export const CategoryPage = () => {
   }, [isLoading, page, data])
 
   return (
-    <div className="bg-background">
+    <div className="sm:h-full bg-background">
       <div className="h-full flex flex-col space-y-6 py-40px px-20px sm:px-100px lg:px-200px">
         <div className="flex justify-between items-center">
           <h1 className="font-bold text-2xl sm:text-2xl xl:text-3xl text-headline">
