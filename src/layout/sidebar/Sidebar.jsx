@@ -4,6 +4,16 @@ import { Icon } from '@iconify/react'
 
 export const Sidebar = ({ children }) => {
   const [open, setOpen] = useState(false)
+  const menus = [
+    {
+      title: 'Transaction',
+      icon: 'icon-park-solid:transaction',
+      to: '/transactions',
+    },
+    { title: 'Wallet', icon: 'icon-park-solid:wallet', to: '/wallets' },
+    { title: 'Category', icon: 'bxs:category', to: '/categories' },
+    { title: 'FAQ', icon: 'wpf:faq', to: '/faq' },
+  ]
 
   return (
     <div className="flex">
@@ -31,67 +41,28 @@ export const Sidebar = ({ children }) => {
               <img
                 alt="Moneta logo"
                 src="/svgs/moneta-logo-sidebar.svg"
-                className={`cursor-pointer duration-500`}
+                className="cursor-pointer duration-500"
               />
-              <h1
-                className={`brand-name text-primary cursor-pointer font-extrabold text-lg ml-15px origin-left duration-200`}
-              >
+              <h1 className="brand-name text-primary cursor-pointer font-extrabold text-lg ml-15px origin-left duration-200">
                 MONETA
               </h1>
             </div>
             <ul className="pt-6">
-              <li>
-                <NavLink
-                  to="/transactions"
-                  className={`flex rounded-md mt-2 p-2 cursor-pointer font-medium hover:bg-background hover:text-primary text-secondary text-sm items-center gap-x-3`}
-                >
-                  <Icon
-                    icon="icon-park-solid:transaction"
-                    width="30"
-                    className="min-w-max"
-                  />
-                  <span className={`origin-left ml-25px`}>Transaction</span>
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/wallets"
-                  className={`flex rounded-md mt-2 p-2 cursor-pointer font-medium hover:bg-background hover:text-primary text-secondary text-sm items-center gap-x-3`}
-                >
-                  <Icon
-                    icon="icon-park-solid:wallet"
-                    width="30"
-                    className="min-w-max"
-                  />
-                  <span className={`origin-left ml-25px`}>Wallet</span>
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/categories"
-                  className={`flex rounded-md mt-2 p-2 cursor-pointer font-medium hover:bg-background hover:text-primary text-secondary text-sm items-center gap-x-3`}
-                >
-                  <Icon
-                    icon="bxs:category"
-                    width="30"
-                    className="min-w-max"
-                  />
-                  <span className={`origin-left ml-25px`}>Category</span>
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/faq"
-                  className={`flex rounded-md mt-2 p-2 cursor-pointer font-medium hover:bg-background hover:text-primary text-secondary text-sm items-center gap-x-3`}
-                >
-                  <Icon
-                    icon="wpf:faq"
-                    width="30"
-                    className="min-w-max"
-                  />
-                  <span className={`origin-left ml-25px`}>FAQ</span>
-                </NavLink>
-              </li>
+              {menus.map((menu, i) => (
+                <li key={i}>
+                  <NavLink
+                    to={menu.to}
+                    className="flex rounded-md mt-2 p-2 cursor-pointer font-medium hover:bg-background hover:text-primary text-secondary text-sm items-center gap-x-3"
+                  >
+                    <Icon
+                      icon={menu.icon}
+                      width="30"
+                      className="min-w-max"
+                    />
+                    <span className="origin-left ml-25px">{menu.title}</span>
+                  </NavLink>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
