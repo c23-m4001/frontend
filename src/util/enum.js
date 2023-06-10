@@ -23,7 +23,11 @@ export const WalletTypeEnums = {
     icon: 'pepicons-pop:house',
   },
   BONUS: { label: 'Bonus', value: 'BONUS', icon: 'tabler:moneybag' },
-  OTHER: { label: 'Other', value: 'OTHER', icon: 'material-symbols:temp-preferences-custom' },
+  OTHER: {
+    label: 'Other',
+    value: 'OTHER',
+    icon: 'material-symbols:temp-preferences-custom',
+  },
 }
 
 export const CategoryTypeEnum = {

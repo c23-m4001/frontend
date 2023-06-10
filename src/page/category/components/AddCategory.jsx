@@ -17,7 +17,7 @@ export const AddCategory = ({ refetch }) => {
     e.preventDefault()
 
     await CategoryApi.createCategory({
-      name, 
+      name,
       logo_type: selectedCategoryType.value,
       is_expense: isExpense,
     }).then((r) => r.data)

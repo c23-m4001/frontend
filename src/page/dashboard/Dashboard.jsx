@@ -44,7 +44,7 @@ export const DashboardPage = () => {
                 element={<LoginHistoryPage />}
               />
 
-              <Route 
+              <Route
                 path="/faq"
                 element={<FrequentlyAskedQuestions />}
               />

@@ -45,11 +45,15 @@ export const TransactionSummaryTotal = ({ wallet }) => {
       </div>
       <div className="w-full sm:w-full sm:gap-8 flex flex-col sm:flex-row items-center">
         <div className="w-full flex flex-col items-center bg-white text-green-600 p-8 rounded-md mb-4">
-          <div className="font-semibold text-xl pb-1">Rp.{!isLoading && data?.summary_total?.total_income}</div>
+          <div className="font-semibold text-xl pb-1">
+            Rp.{!isLoading && data?.summary_total?.total_income}
+          </div>
           <p className="font-bold text-headline">Gross Income</p>
         </div>
         <div className="w-full flex flex-col items-center bg-white text-danger p-8 rounded-md mb-4">
-          <div className="font-semibold text-xl pb-1">Rp.{!isLoading && data?.summary_total?.total_expense}</div>
+          <div className="font-semibold text-xl pb-1">
+            Rp.{!isLoading && data?.summary_total?.total_expense}
+          </div>
           <p className="font-bold text-headline">Expense</p>
         </div>
       </div>

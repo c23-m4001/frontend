@@ -77,10 +77,7 @@ export const Header = ({ children }) => {
   // ]
 
   const onButtonClick = () => {
-    setModal(
-     
-     <AddTransaction />
-    )
+    setModal(<AddTransaction />)
     showModal()
   }
 

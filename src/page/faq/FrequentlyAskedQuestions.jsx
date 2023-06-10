@@ -7,7 +7,8 @@ export const FrequentlyAskedQuestions = () => {
     rows: [
       {
         title: 'Bagaimana cara menggunakan Moneta?,',
-        content: 'Anda harus mendaftar menggunakan Google atau Email kemudian masuk menggunakan akun yang telah terdaftar untuk menggunakan Moneta.',
+        content:
+          'Anda harus mendaftar menggunakan Google atau Email kemudian masuk menggunakan akun yang telah terdaftar untuk menggunakan Moneta.',
       },
       {
         title: 'Pembuatan dompet awal tidak memasukan saldo?',

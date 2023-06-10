@@ -8,7 +8,6 @@ import { EditTransaction } from './components/EditTransaction'
 
 export const ThisMonthTransactionsItem = ({
   transaction,
-  wallet,
   refetch,
   onClick,
   onDelete,
@@ -20,7 +19,6 @@ export const ThisMonthTransactionsItem = ({
       <EditTransaction
         refetch={refetch}
         transaction={transaction}
-        wallet={wallet}
       />
     )
     showModal()

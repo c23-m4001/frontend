@@ -9,17 +9,15 @@ import { useInput } from '../../../custom-hooks/useInput'
 import { CategorySelect } from '../../category/components/CategorySelect'
 import { WalletSelect } from '../../wallet/components/WalletSelect'
 
-export const EditTransaction = ({ refetch, transaction, wallet }) => {
+export const EditTransaction = ({ refetch, transaction }) => {
   const { unsetModal, hideModal } = useModal()
   const [date, setDate] = useState(
     transaction?.date ? new Date(transaction?.date) : new Date()
   )
   const [selectedWallet, setSelectedWallet] = useState(
-    wallet ? { label: wallet?.name, value: wallet?.id } : undefined
-  )
-  console.log(
-    'ASD',
-    wallet ? { label: wallet?.name, value: wallet?.id } : undefined
+    transaction?.wallet
+      ? { label: transaction?.wallet?.name, value: transaction?.wallet?.id }
+      : undefined
   )
   const [selectedCategory, setSelectedCategory] = useState(
     transaction?.category

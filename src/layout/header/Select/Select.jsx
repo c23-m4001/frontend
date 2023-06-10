@@ -62,7 +62,7 @@ export const Select = ({
           menu: (provided) => ({
             ...provided,
             zIndex: 11,
-          }), 
+          }),
           option: (provided, state) => ({
             ...provided,
             backgroundColor: state.isSelected && '#D8EEFE',
@@ -72,7 +72,6 @@ export const Select = ({
             },
             cursor: 'pointer',
           }),
-
         }}
       />
     </div>
