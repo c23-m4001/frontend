@@ -117,6 +117,7 @@ const CustomModal = ({ title, modal }) => {
               onClick={closeModal}
             >
               <img
+                className="sm:hidden"
                 height={20}
                 width={20}
                 src="/svgs/x.svg"

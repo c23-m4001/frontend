@@ -7,6 +7,7 @@ export const Select = ({
   value,
   options,
   onChange,
+  ...rest
 }) => {
   return (
     <div className={`relative ${className}`}>
@@ -19,6 +20,7 @@ export const Select = ({
         value={value}
         options={options}
         onChange={onChange}
+        {...rest}
         theme={(theme) => ({
           ...theme,
           colors: {
@@ -57,6 +59,10 @@ export const Select = ({
           indicatorSeparator: () => ({
             display: 'none',
           }),
+          menu: (provided) => ({
+            ...provided,
+            zIndex: 11,
+          }), 
           option: (provided, state) => ({
             ...provided,
             backgroundColor: state.isSelected && '#D8EEFE',
@@ -66,6 +72,7 @@ export const Select = ({
             },
             cursor: 'pointer',
           }),
+
         }}
       />
     </div>

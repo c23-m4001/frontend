@@ -6,7 +6,7 @@ import { TransactionApi } from '../../../api/transactions/transactionApi'
 import useFirstTimeEffect from '../../../util/useFirstTimeEffect'
 
 export const TransactionSummary = ({ activeDate, dateRange, wallet }) => {
-  const [_, setSearchParams] = useSearchParams()
+  const [searchParams, setSearchParams] = useSearchParams()
   const { data, isLoading, refetch } = useQuery(
     [
       ReactQueryKeys.TRANSACTION_SUMMARY_TOTAL,
@@ -42,13 +42,14 @@ export const TransactionSummary = ({ activeDate, dateRange, wallet }) => {
       <div className="w-full flex text-center text-xs sm:text-sm md:text-base lg:text-lg border-b-2">
         <div
           className="cursor-pointer py-3 flex-1"
-          onClick={() =>
-            setSearchParams({
-              active_date: moment(activeDate)
-                .subtract(1, 'M')
-                .format('MMMM YYYY'),
-            })
-          }
+          onClick={() => {
+            searchParams.set(
+              'active_date',
+              moment(activeDate).subtract(1, 'M').format('MMMM YYYY')
+            )
+
+            setSearchParams(searchParams)
+          }}
         >
           {moment(activeDate).subtract(1, 'M').format('MMMM YYYY')}
         </div>
@@ -57,11 +58,14 @@ export const TransactionSummary = ({ activeDate, dateRange, wallet }) => {
         </div>
         <div
           className="cursor-pointer py-3 flex-1"
-          onClick={() =>
-            setSearchParams({
-              active_date: moment(activeDate).add(1, 'M').format('MMMM YYYY'),
-            })
-          }
+          onClick={() => {
+            searchParams.set(
+              'active_date',
+              moment(activeDate).add(1, 'M').format('MMMM YYYY')
+            )
+
+            setSearchParams(searchParams)
+          }}
         >
           {moment(activeDate).add(1, 'M').format('MMMM YYYY')}
         </div>

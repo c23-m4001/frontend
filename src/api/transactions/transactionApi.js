@@ -4,11 +4,17 @@ import { API_URL } from '../constant'
 const TRANSACTION_API_URL = `${API_URL}/transactions`
 
 export const TransactionApi = {
-  // createTransaction: async ({ name, logo_type }) => {
-  //   return axios
-  //     .post(`${TRANSACTION_API_URL}`, { name, logo_type })
-  //     .then((r) => r.data)
-  // },
+  createTransaction: async ({ name, date, amount, category_id, wallet_id }) => {
+    return axios
+      .post(`${TRANSACTION_API_URL}`, {
+        name,
+        date,
+        amount,
+        category_id,
+        wallet_id,
+      })
+      .then((r) => r.data)
+  },
   fetchTransactions: async ({
     page,
     limit,

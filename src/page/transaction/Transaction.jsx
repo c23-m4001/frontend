@@ -141,7 +141,11 @@ export const TransactionPage = ({ amount }) => {
       <div className="w-full flex flex-col space-y-6 py-40px px-20px sm:px-100px lg:px-200px 2xl:px-400px items-center">
         <TransactionSummaryTotal wallet={activeWallet} />
         <div className="w-full sm:w-full flex flex-col items-center mt-60 sm:mt-24">
-          <TransactionSummary  activeDate={activeDate} dateRange={dateRange} />
+          <TransactionSummary
+            activeDate={activeDate}
+            dateRange={dateRange}
+            wallet={activeWallet}
+          />
 
           <div className="w-full sm:w-full flex flex-col items-center bg-white text-headline p-2 rounded-md mb-4">
             <div className="w-full flex text-center text-xs sm:text-sm md:text-base lg:text-lg py-3 border-b-2">
