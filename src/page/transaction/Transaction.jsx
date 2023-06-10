@@ -157,6 +157,8 @@ export const TransactionPage = ({ amount }) => {
                   return (
                     <ThisMonthTransactionsItem
                       key={idx}
+                      wallet={activeWallet}
+                      refetch={refetch}
                       transaction={transaction}
                       onClick={() => onTransactionClick(transaction)}
                       onDelete={() => onDeleteHandler(transaction)}

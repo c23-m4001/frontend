@@ -52,6 +52,24 @@ export const TransactionApi = {
       })
       .then((r) => r.data)
   },
+  updateTransaction: async ({
+    id,
+    name,
+    date,
+    amount,
+    category_id,
+    wallet_id,
+  }) => {
+    return axios
+      .put(`${TRANSACTION_API_URL}/${id}`, {
+        name,
+        date,
+        amount,
+        category_id,
+        wallet_id,
+      })
+      .then((r) => r.data)
+  },
   deleteTransaction: async ({ id }) => {
     return axios.delete(`${TRANSACTION_API_URL}/${id}`).then((r) => r.message)
   },

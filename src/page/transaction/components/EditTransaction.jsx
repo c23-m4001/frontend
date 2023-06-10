@@ -6,21 +6,34 @@ import { CustomDatePicker } from '../../../components/input/CustomDatepicker'
 import { Input } from '../../../components/input/Input'
 import { useModal } from '../../../core/Modal/ModalProvider'
 import { useInput } from '../../../custom-hooks/useInput'
-import { CategorySelect } from '../../../page/category/components/CategorySelect'
-import { WalletSelect } from '../../../page/wallet/components/WalletSelect'
+import { CategorySelect } from '../../category/components/CategorySelect'
+import { WalletSelect } from '../../wallet/components/WalletSelect'
 
-export const AddTransaction = ({ refetch }) => {
+export const EditTransaction = ({ refetch, transaction, wallet }) => {
   const { unsetModal, hideModal } = useModal()
-  const [date, setDate] = useState(new Date())
-  const [selectedWallet, setSelectedWallet] = useState(null)
-  const [selectedCategory, setSelectedCategory] = useState(null)
-  const [name, setName] = useInput('')
-  const [amount, setAmount] = useInput(undefined)
+  const [date, setDate] = useState(
+    transaction?.date ? new Date(transaction?.date) : new Date()
+  )
+  const [selectedWallet, setSelectedWallet] = useState(
+    wallet ? { label: wallet?.name, value: wallet?.id } : undefined
+  )
+  console.log(
+    'ASD',
+    wallet ? { label: wallet?.name, value: wallet?.id } : undefined
+  )
+  const [selectedCategory, setSelectedCategory] = useState(
+    transaction?.category
+      ? { label: transaction?.category?.name, value: transaction?.category?.id }
+      : undefined
+  )
+  const [name, setName] = useInput(transaction?.name)
+  const [amount, setAmount] = useInput(transaction?.amount)
 
   const onSubmit = async (e) => {
     e.preventDefault()
 
-    await TransactionApi.createTransaction({
+    await TransactionApi.updateTransaction({
+      id: transaction?.id,
       date: moment(date).format('YYYY-MM-DD'),
       name,
       amount,
@@ -80,7 +93,7 @@ export const AddTransaction = ({ refetch }) => {
         type="submit"
         className="btn btn-primary rounded-lg"
       >
-        Tambah
+        Ubah
       </Button>
     </form>
   )
