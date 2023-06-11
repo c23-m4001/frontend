@@ -73,25 +73,41 @@ export const TransactionSummary = ({ activeDate, dateRange, wallet }) => {
       <div className="w-full flex flex-col gap-2 sm:px-6 md:px-8 text-xs sm:text-sm md:text-base p-3">
         <div className="flex justify-between">
           <p>Starting balance</p>
-          <p>Rp. {!isLoading ? Number(data?.summary?.starting_cash).toLocaleString() : '-'}</p>
+          <p>
+            Rp
+            {!isLoading
+              ? Number(data?.summary?.starting_cash).toLocaleString()
+              : '-'}
+          </p>
         </div>
         <div className="flex justify-between">
           <p>Inflow</p>
           <p className="text-green-600">
-            +Rp. {!isLoading ? Number(data?.summary?.total_income).toLocaleString() : '-'}
+            +Rp
+            {!isLoading
+              ? Number(data?.summary?.total_income).toLocaleString()
+              : '-'}
           </p>
         </div>
         <div className="flex justify-between">
           <p>Outflow</p>
           <p className="text-danger">
-            -Rp. {!isLoading ? Number(data?.summary?.total_expense).toLocaleString() : '-'}
+            -Rp
+            {!isLoading
+              ? Number(data?.summary?.total_expense).toLocaleString()
+              : '-'}
           </p>
         </div>
       </div>
       <div className="w-full px-3 sm:px-6 md:px-8 text-xs sm:text-sm md:text-base pb-3">
         <div className="flex justify-between pt-3 border-t-2">
           <p>Total</p>
-          <p>Rp. {!isLoading ? Number(data?.summary?.grand_total).toLocaleString() : '-'}</p>
+          <p>
+            Rp
+            {!isLoading
+              ? Number(data?.summary?.grand_total).toLocaleString()
+              : '-'}
+          </p>
         </div>
       </div>
     </div>

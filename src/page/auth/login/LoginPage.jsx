@@ -25,7 +25,12 @@ export const LoginPage = () => {
                 <LoginInput />
                 <p className="text-sm">
                   Don't have an account?{' '}
-                  <Link to="/auth/register">Register</Link>
+                  <Link
+                    to="/auth/register"
+                    className="text-primary underline underline-offset-2"
+                  >
+                    Register
+                  </Link>
                 </p>
               </div>
             </div>

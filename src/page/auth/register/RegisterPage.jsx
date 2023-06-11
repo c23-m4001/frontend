@@ -24,7 +24,13 @@ export const RegisterPage = () => {
                 <p className="m-2 md:mb-4">Sign up a Moneta account</p>
                 <RegisterInput />
                 <p className="text-sm">
-                  Don't have an account? <Link to="/auth/login">Login</Link>
+                  Already have an account?{' '}
+                  <Link
+                    to="/auth/login"
+                    className="text-primary underline underline-offset-2"
+                  >
+                    Login
+                  </Link>
                 </p>
               </div>
             </div>

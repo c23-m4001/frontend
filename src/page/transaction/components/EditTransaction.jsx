@@ -60,7 +60,7 @@ export const EditTransaction = ({ refetch, transaction }) => {
           onChange={setSelectedCategory}
         />
         <Input
-          prefix="Rp."
+          prefix="Rp"
           type="number"
           name="amount"
           label="Amount"

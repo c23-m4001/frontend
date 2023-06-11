@@ -79,7 +79,7 @@ export const TransactionPage = () => {
           className="flex flex-1 justify-end items-center text-right text-green-600 font-semibold
             text-lg py-2 border-t border-secondary sm:border-0 sm:py-0 sm:pb-4 md:text-2xl"
         >
-          Rp. {Number(transaction.amount).toLocaleString()}
+          Rp{Number(transaction.amount).toLocaleString()}
         </p>
       </div>
     )

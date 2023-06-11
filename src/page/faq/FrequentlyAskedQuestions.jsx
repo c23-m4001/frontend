@@ -6,34 +6,34 @@ export const FrequentlyAskedQuestions = () => {
   const faq = {
     rows: [
       {
-        title: 'Bagaimana cara menggunakan Moneta?,',
+        title: 'Bagaimana cara menggunakan Moneta?',
         content:
-          'Anda harus mendaftar menggunakan Google atau Email kemudian masuk menggunakan akun yang telah terdaftar untuk menggunakan Moneta.',
+          'Anda harus mendaftar menggunakan Google atau Email, kemudian masuk menggunakan akun yang telah terdaftar untuk menggunakan Moneta.',
       },
       {
         title: 'Pembuatan dompet awal tidak memasukan saldo?',
         content:
-          'Saldo awal dapat ditambahkan melalui Tambah Transaksi kemudian pilih jenis Income.',
+          'Saldo awal dapat ditambahkan melalui menu Tambah Transaksi, kemudian pilih jenis kategori yang merupakan income (pemasukan).',
       },
       {
         title: 'Bagaimana cara menambahkan transaksi?',
         content:
-          'Pada halaman Transaction pilih menu Tambah Transaksi yang terletak di bagian pojok kanan atas di sebelah kiri icon profile, lalu isi kolom kemudian klik Tambah.',
+          'Pada halaman Transaction, pilih menu Tambah Transaksi yang terletak di bagian pojok kanan atas sebelah kiri icon profil (untuk perangkat tablet/laptop/PC) atau pilih icon tambah yang berada pada sisi kanan bawah halaman (untuk perangkat mobile). Lalu, masukkan wallet, kategori, jumlah uang, nama, serta tanggal transaksi. Apabila telah yakin kolom telah terisi dengan benar, klik Tambah.',
       },
       {
         title: 'Bagaimana cara menambahkan wallet baru?',
         content:
-          'Buka halaman Wallet kemudian pilih menu Tambah Wallet yang terletak di bagian pojok kanan atas, lalu masukan nama dan jenis wallet kemudian klik Tambah.',
+          'Buka halaman Wallet, kemudian pilih menu Tambah Wallet yang terletak di bagian pojok kanan atas. Lalu, masukkan nama serta jenis wallet. Apabila telah yakin kolom telah terisi dengan benar, klik Tambah.',
       },
       {
         title: 'Apa itu Custom Category?',
         content:
-          'Custom Category adalah jenis kategori yang dibuat oleh pengguna diluar dari Default Category.',
+          'Custom Category adalah jenis kategori yang dibuat oleh pengguna di luar dari kategori yang telah ditetapkan (Default Category).',
       },
       {
         title: 'Bagaimana cara menambahkan Custom Category?',
         content:
-          'Buka halaman Category kemudian pilih menu Tambah Kategori yang terletak di bagian pojok kanan atas, lalu masukan nama Category dan jenis Category kemudian klik Tambah.',
+          'Buka halaman Category, kemudian pilih menu Tambah Kategori yang terletak di bagian pojok kanan atas. Lalu, masukkan nama kategori, jenis kategori, dan pilihan pengeluaran (expense) atau pemasukan (income). Apabila telah yakin kolom telah terisi dengan benar, klik Tambah.',
       },
     ],
   }
@@ -54,7 +54,7 @@ export const FrequentlyAskedQuestions = () => {
             />
             <div className="flex items-center font-semibold text-headline sm:text-lg">
               <p>
-                Selamat Datang di Moneta! Silahkan baca FAQ di bawah sebelum
+                Selamat Datang di Moneta! Silakan baca FAQ di bawah sebelum
                 menggunakan aplikasi
               </p>
             </div>
