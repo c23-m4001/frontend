@@ -35,7 +35,7 @@ export const AddTransaction = ({ refetch }) => {
 
   return (
     <form onSubmit={onSubmit}>
-      <div className="grid grid-cols-3 gap-2">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
         <WalletSelect
           className="col-span-1 z-40"
           label="Wallet"
@@ -70,7 +70,7 @@ export const AddTransaction = ({ refetch }) => {
         <CustomDatePicker
           showIcon
           label="Date"
-          className="focus:outline-none"
+          className="mb-4 sm:mb-0 focus:outline-none"
           selected={date}
           onChange={(date) => setDate(date)}
           placeholderText="Click to select a date"

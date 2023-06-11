@@ -1,9 +1,15 @@
+import clsx from 'clsx'
 import React from 'react'
 import DatePicker from 'react-datepicker'
 
-export const CustomDatePicker = ({ label, selected, onChange }) => {
+export const CustomDatePicker = ({ className, label, selected, onChange }) => {
   return (
-    <div className="custom-datepicker">
+    <div
+      className={clsx({
+        [className]: true,
+        'custom-datepicker': true,
+      })}
+    >
       <label className="absolute z-10 -top-8px left-10px bg-white px-5px py-0 text-12px">
         {label}
       </label>

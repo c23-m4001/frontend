@@ -52,6 +52,8 @@ module.exports = {
         '18px': '18px',
         '20px': '20px',
         '24px': '24px',
+        '30px': '30px',
+        '36px': '36px',
       },
       flexBasis: {
         '50%': '50%',
