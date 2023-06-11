@@ -39,20 +39,23 @@ export const TransactionSummaryTotal = ({ wallet }) => {
         <div className="w-full flex flex-col items-center py-6">
           <h2 className="pb-4 text-xl font-bold sm:text-2xl">Cashflow</h2>
           <div className="font-bold text-2xl sm:text-3xl">
-            Rp.{!isLoading && data?.summary_total?.grand_total}
+            Rp.{!isLoading && Number(data?.summary_total?.grand_total)
+                  .toLocaleString()}
           </div>
         </div>
       </div>
       <div className="w-full sm:w-full sm:gap-8 flex flex-col sm:flex-row items-center">
         <div className="w-full flex flex-col items-center bg-white text-green-600 p-8 rounded-md mb-4">
           <div className="font-semibold text-xl pb-1">
-            Rp.{!isLoading && data?.summary_total?.total_income}
+            Rp.{!isLoading && Number(data?.summary_total?.total_income)
+                  .toLocaleString()}
           </div>
           <p className="font-bold text-headline">Gross Income</p>
         </div>
         <div className="w-full flex flex-col items-center bg-white text-danger p-8 rounded-md mb-4">
           <div className="font-semibold text-xl pb-1">
-            Rp.{!isLoading && data?.summary_total?.total_expense}
+            Rp.{!isLoading && Number(data?.summary_total?.total_expense)
+                  .toLocaleString()}
           </div>
           <p className="font-bold text-headline">Expense</p>
         </div>

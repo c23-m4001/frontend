@@ -12,7 +12,7 @@ import useFirstTimeEffect from '../../util/useFirstTimeEffect'
 import { TransactionSummaryTotal } from './components/TransactionSummaryTotal'
 import { TransactionSummary } from './components/TransactionSummary'
 
-export const TransactionPage = ({ amount }) => {
+export const TransactionPage = () => {
   const { activeWallet } = useActiveWallet()
   const { setModal, showModal, hideModal } = useModal()
   const [searchParams] = useSearchParams()
@@ -79,7 +79,7 @@ export const TransactionPage = ({ amount }) => {
           className="flex flex-1 justify-end items-center text-right text-green-600 font-semibold
             text-lg py-2 border-t border-secondary sm:border-0 sm:py-0 sm:pb-4 md:text-2xl"
         >
-          Rp. {transaction.amount}
+          Rp. {Number(transaction.amount).toLocaleString()}
         </p>
       </div>
     )

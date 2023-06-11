@@ -1,8 +1,6 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useModal } from '../../core/Modal/ModalProvider'
 import { Button } from '../../components/button/Button'
-import { Select } from '../../layout/header/Select/Select'
-import DatePicker from 'react-datepicker'
 import moment from 'moment'
 import { EditTransaction } from './components/EditTransaction'
 
@@ -42,7 +40,7 @@ export const ThisMonthTransactionsItem = ({
         </div>
         <div className="flex flex-1 gap-2">
           <p className="flex flex-1 justify-end items-center text-right text-green-600">
-            Rp. {transaction.amount}
+            Rp. {Number(transaction.amount).toLocaleString()}
           </p>
         </div>
       </div>
