@@ -88,7 +88,8 @@ export const TransactionPage = () => {
         >
           Rp{Number(transaction.amount).toLocaleString()}
         </p>
-      </div>
+      </div>,
+      'Detail Transaksi'
     )
     showModal()
   }
@@ -96,7 +97,7 @@ export const TransactionPage = () => {
   const onDeleteHandler = (transaction) => {
     setModal(
       <div className="flex flex-col justify-center py-4 text-center gap-4">
-        <p>Anda yakin ingin menghapus transaksi?</p>
+        <p>Anda yakin ingin menghapus transaksi ini?</p>
         <div className="flex justify-center gap-4">
           <Button
             type={'button'}
@@ -117,7 +118,8 @@ export const TransactionPage = () => {
             Batal
           </Button>
         </div>
-      </div>
+      </div>,
+      'Hapus Transaksi'
     )
     showModal()
   }

@@ -36,7 +36,8 @@ export const DefaultCategories = () => {
             </p>
           </div>
         </div>
-      </div>
+      </div>,
+      'Detail Kategori'
     )
     showModal()
   }

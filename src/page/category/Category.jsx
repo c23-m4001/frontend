@@ -38,7 +38,7 @@ export const CategoryPage = () => {
   )
 
   const addCategoryButtonClick = () => {
-    setModal(<AddCategory refetch={refetch} />)
+    setModal(<AddCategory refetch={refetch} />, 'Tambah Kategori')
     showModal()
   }
 

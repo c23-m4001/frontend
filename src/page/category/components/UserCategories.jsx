@@ -14,7 +14,8 @@ export const UserCategories = ({ data, isLoading, refetch }) => {
       <EditCategory
         refetch={refetch}
         category={category}
-      />
+      />,
+      'Edit Kategori'
     )
     showModal()
   }
@@ -43,7 +44,8 @@ export const UserCategories = ({ data, isLoading, refetch }) => {
             Batal
           </Button>
         </div>
-      </div>
+      </div>,
+      'Hapus Kategori'
     )
     showModal()
   }
@@ -68,7 +70,8 @@ export const UserCategories = ({ data, isLoading, refetch }) => {
             </p>
           </div>
         </div>
-      </div>
+      </div>,
+      'Detail Kategori'
     )
     showModal()
   }

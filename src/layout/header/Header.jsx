@@ -22,7 +22,7 @@ export const Header = ({ children }) => {
   const onButtonClick = (e) => {
     e.stopPropagation()
 
-    setModal(<AddTransaction />)
+    setModal(<AddTransaction />, 'Tambah Transaksi')
     showModal()
   }
 

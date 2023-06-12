@@ -31,7 +31,7 @@ body.modal-open {
 }
 
 .modal-title {
-  @apply font-bold mr-auto;
+  @apply font-bold mr-auto text-headline;
 }
 
 @keyframes modal-fade {

@@ -20,7 +20,8 @@ export const ThisMonthTransactionsItem = ({
       <EditTransaction
         refetch={refetch}
         transaction={transaction}
-      />
+      />,
+      'Edit Transaksi'
     )
     showModal()
   }
