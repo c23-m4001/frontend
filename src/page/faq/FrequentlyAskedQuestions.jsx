@@ -11,7 +11,7 @@ export const FrequentlyAskedQuestions = () => {
           'Anda harus mendaftar menggunakan Google atau Email, kemudian masuk menggunakan akun yang telah terdaftar untuk menggunakan Moneta.',
       },
       {
-        title: 'Pembuatan dompet awal tidak memasukan saldo?',
+        title: 'Pembuatan dompet awal tidak memasukkan saldo?',
         content:
           'Saldo awal dapat ditambahkan melalui menu Tambah Transaksi, kemudian pilih jenis kategori yang merupakan income (pemasukan).',
       },
