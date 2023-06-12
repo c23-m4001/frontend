@@ -28,7 +28,7 @@ export const WebRoutes = () => {
                 element={<Navigate to="/auth" />}
               />
               <Route
-                path="/landingpage"
+                path="/"
                 element={<LandingPage />}
               />
             </>

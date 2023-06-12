@@ -5,8 +5,8 @@ export const LandingPage = () => {
   const navigate = useNavigate()
 
   return (
-    <div>
-      <div className="px-20px sm:px-40px md:px-50px w-full sticky py-20px bg-white flex items-center justify-between">
+    <div className="h-full">
+      <div className="px-20px sm:px-40px md:px-50px w-full py-20px bg-white flex items-center justify-between">
         <div className="flex items-center">
           <img
             alt="Moneta logo"
