@@ -49,3 +49,7 @@ body::-webkit-scrollbar-thumb {
 body {
   margin-right: calc(100vw - 100%);
 }
+
+.badge {
+  @apply flex justify-center items-center py-1 px-2 rounded-2xl text-xs font-bold;
+}

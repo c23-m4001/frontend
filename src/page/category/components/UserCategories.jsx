@@ -4,6 +4,7 @@ import { Icon } from '@iconify/react'
 import { useModal } from '../../../core/Modal/ModalProvider'
 import { Button } from '../../../components/button/Button'
 import { EditCategory } from './EditCategory'
+import clsx from 'clsx'
 
 export const UserCategories = ({ data, isLoading, refetch }) => {
   const { setModal, showModal, hideModal } = useModal()
@@ -88,7 +89,18 @@ export const UserCategories = ({ data, isLoading, refetch }) => {
                   alt="icon"
                   icon={CategoryTypeEnum[category.logo_type].icon}
                 />
-                <h3>{category.name}</h3>
+                <div className="flex flex-col justify-center items-start">
+                  <h3 className="ml-1 font-bold">{category.name}</h3>
+                  <div
+                    className={clsx({
+                      'mt-1 sm:mt-0 badge text-primary-inverse': true,
+                      'bg-danger': category.is_expense,
+                      'bg-primary': !category.is_expense,
+                    })}
+                  >
+                    {category.is_expense ? 'Expense' : 'Income'}
+                  </div>
+                </div>
               </div>
               <div className="flex gap-x-4">
                 <button

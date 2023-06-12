@@ -78,7 +78,7 @@ export const AddTransaction = ({ refetch }) => {
       </div>
       <Button
         type="submit"
-        className="btn btn-primary rounded-lg"
+        className="w-full sm:w-auto btn btn-primary rounded-lg"
       >
         Tambah
       </Button>

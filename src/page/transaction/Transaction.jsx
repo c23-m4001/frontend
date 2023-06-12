@@ -11,6 +11,9 @@ import { useSearchParams } from 'react-router-dom'
 import useFirstTimeEffect from '../../util/useFirstTimeEffect'
 import { TransactionSummaryTotal } from './components/TransactionSummaryTotal'
 import { TransactionSummary } from './components/TransactionSummary'
+import { Icon } from '@iconify/react'
+import { CategoryTypeEnum } from '../../util/enum'
+import clsx from 'clsx'
 
 export const TransactionPage = () => {
   const { activeWallet } = useActiveWallet()
@@ -70,14 +73,18 @@ export const TransactionPage = () => {
               {transaction.category.name}
             </p>
           </div>
-          <img
-            src="/svgs/avatar.svg"
-            className="w-8 md:w-12"
+          <Icon
+            className="rounded-full bg-background text-primary w-14 h-14 p-5px"
+            alt="icon"
+            icon={CategoryTypeEnum[transaction.category.logo_type].icon}
           />
         </div>
         <p
-          className="flex flex-1 justify-end items-center text-right text-green-600 font-semibold
-            text-lg py-2 border-t border-secondary sm:border-0 sm:py-0 sm:pb-4 md:text-2xl"
+          className={clsx({
+            'flex flex-1 justify-end items-center text-right font-semibold text-lg py-2 border-t border-secondary sm:border-0 sm:py-0 sm:pb-4 md:text-2xl': true,
+            'text-danger': transaction.category.is_expense,
+            'text-green-600': !transaction.category.is_expense,
+          })}
         >
           Rp{Number(transaction.amount).toLocaleString()}
         </p>

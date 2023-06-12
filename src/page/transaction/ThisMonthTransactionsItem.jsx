@@ -3,6 +3,9 @@ import { useModal } from '../../core/Modal/ModalProvider'
 import { Button } from '../../components/button/Button'
 import moment from 'moment'
 import { EditTransaction } from './components/EditTransaction'
+import clsx from 'clsx'
+import { Icon } from '@iconify/react'
+import { CategoryTypeEnum } from '../../util/enum'
 
 export const ThisMonthTransactionsItem = ({
   transaction,
@@ -32,14 +35,21 @@ export const ThisMonthTransactionsItem = ({
           <div className="mr-20px font-bold">
             {moment(transaction.date).format('DD MMMM')}
           </div>
-          <img
-            src="/svgs/avatar.svg"
-            className="w-6 hidden sm:block"
+          <Icon
+            className="rounded-full bg-background text-primary w-8 h-8 p-4px"
+            alt="icon"
+            icon={CategoryTypeEnum[transaction.category.logo_type].icon}
           />
           <p className="">{transaction.name}</p>
         </div>
         <div className="flex flex-1 gap-2">
-          <p className="flex flex-1 justify-end items-center text-right text-green-600">
+          <p
+            className={clsx({
+              'flex flex-1 justify-end items-center text-right font-bold': true,
+              'text-danger': transaction.category.is_expense,
+              'text-green-600': !transaction.category.is_expense,
+            })}
+          >
             Rp{Number(transaction.amount).toLocaleString()}
           </p>
         </div>
