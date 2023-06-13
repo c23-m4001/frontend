@@ -5,7 +5,7 @@ export const LandingPage = () => {
   const navigate = useNavigate()
 
   return (
-    <div className="h-full">
+    <div className="h-screen overflow-y-auto">
       <div className="px-20px sm:px-40px md:px-50px w-full py-20px bg-white flex items-center justify-between">
         <div className="flex items-center">
           <img
