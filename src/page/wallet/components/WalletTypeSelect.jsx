@@ -1,10 +1,21 @@
 import { Icon } from '@iconify/react'
 import { Select } from '../../../layout/header/Select/Select'
 import { WalletTypeEnums } from '../../../util/enum'
+import { useIntl } from 'react-intl'
 
-export const WalletTypeSelect = ({ className, label, value, onChange }) => {
+export const WalletTypeSelect = ({
+  className,
+  label,
+  value,
+  onChange,
+  error,
+}) => {
+  const intl = useIntl()
+
   return (
     <Select
+      placeholder={intl.formatMessage({ id: 'walletTypeSelectPlaceholder' })}
+      error={error}
       className={className}
       label={label}
       value={value}

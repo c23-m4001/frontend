@@ -5,11 +5,13 @@ import { useAuth } from '../../core/Auth/AuthProvider'
 import { Button } from '../button/Button'
 import { BiHistory, BiLogOutCircle } from 'react-icons/bi'
 import { ActiveLanguageSelect } from '../../layout/header/components/ActiveLanguageSelect'
+import { useIntl } from 'react-intl'
 
 export const ProfileModal = () => {
   const [isOpen, setIsOpen] = useState(false)
   const { currentUser, logout } = useAuth()
   const navigate = useNavigate()
+  const intl = useIntl()
 
   return (
     <>
@@ -56,7 +58,7 @@ export const ProfileModal = () => {
               }}
             >
               <BiHistory className="flex justify-center text-2xl" />
-              <p>Login History</p>
+              <p>{intl.formatMessage({ id: 'loginHistory' })}</p>
             </Button>
           </li>
           <li>
@@ -67,7 +69,7 @@ export const ProfileModal = () => {
               className="flex items-center text-secondary gap-2 md:gap-4 p-2 hover:bg-background hover:text-primary w-full"
             >
               <BiLogOutCircle className="flex justify-center transform rotate-180 text-2xl" />
-              <p>Logout</p>
+              <p>{intl.formatMessage({ id: 'logout' })}</p>
             </Button>
           </li>
         </ul>

@@ -5,9 +5,11 @@ import { useModal } from '../../../core/Modal/ModalProvider'
 import { Button } from '../../../components/button/Button'
 import { EditCategory } from './EditCategory'
 import clsx from 'clsx'
+import { useIntl } from 'react-intl'
 
 export const UserCategories = ({ data, isLoading, refetch }) => {
   const { setModal, showModal, hideModal } = useModal()
+  const intl = useIntl()
 
   const editCategoryButtonClick = ({ category }) => {
     setModal(
@@ -23,7 +25,7 @@ export const UserCategories = ({ data, isLoading, refetch }) => {
   const deleteCategoryButtonClick = (id) => {
     setModal(
       <div className="flex flex-col justify-center py-4 text-center gap-4">
-        <p>Anda yakin ingin menghapus kategori ini?</p>
+        <p>{intl.formatMessage({ id: 'confirmationDeleteCategory' })}</p>
         <div className="flex justify-center gap-4 text-sm">
           <Button
             type={'button'}
@@ -34,14 +36,14 @@ export const UserCategories = ({ data, isLoading, refetch }) => {
               refetch()
             }}
           >
-            Hapus
+            {intl.formatMessage({ id: 'deleteButton' })}
           </Button>
           <Button
             type={'button'}
             className="btn bg-white border border-paragraph text-paragraph rounded-full"
             onClick={() => hideModal()}
           >
-            Batal
+            {intl.formatMessage({ id: 'cancelButton' })}
           </Button>
         </div>
       </div>,

@@ -5,11 +5,14 @@ import { Button } from '../../../components/button/Button'
 import { CustomDatePicker } from '../../../components/input/CustomDatepicker'
 import { Input } from '../../../components/input/Input'
 import { useModal } from '../../../core/Modal/ModalProvider'
+import { useError } from '../../../custom-hooks/useError'
 import { useInput } from '../../../custom-hooks/useInput'
 import { CategorySelect } from '../../category/components/CategorySelect'
 import { WalletSelect } from '../../wallet/components/WalletSelect'
+import { useIntl } from 'react-intl'
 
 export const EditTransaction = ({ refetch, transaction }) => {
+  const intl = useIntl()
   const { unsetModal, hideModal } = useModal()
   const [date, setDate] = useState(
     transaction?.date ? new Date(transaction?.date) : new Date()
@@ -26,9 +29,12 @@ export const EditTransaction = ({ refetch, transaction }) => {
   )
   const [name, setName] = useInput(transaction?.name)
   const [amount, setAmount] = useInput(transaction?.amount)
+  const { error, domainErrors, handleError, resetError } = useError()
 
   const onSubmit = async (e) => {
     e.preventDefault()
+
+    resetError()
 
     await TransactionApi.updateTransaction({
       id: transaction?.id,
@@ -38,6 +44,10 @@ export const EditTransaction = ({ refetch, transaction }) => {
       category_id: selectedCategory?.value,
       wallet_id: selectedWallet?.value,
     })
+      .catch((err) => {
+        handleError(err.response.data)
+      })
+      .finally(() => {})
 
     if (refetch) refetch()
     unsetModal()
@@ -46,41 +56,46 @@ export const EditTransaction = ({ refetch, transaction }) => {
 
   return (
     <form onSubmit={onSubmit}>
+      {error && <div className="error-box mb-4">{error}</div>}
       <div className="grid grid-cols-3 gap-2">
         <WalletSelect
           className="col-span-1 z-40"
-          label="Wallet"
+          label={intl.formatMessage({ id: 'walletTitle' })}
           value={selectedWallet}
           onChange={setSelectedWallet}
+          error={domainErrors?.wallet_id}
         />
         <CategorySelect
           className="col-span-1"
-          label="Category"
+          label={intl.formatMessage({ id: 'categoryTitle' })}
           value={selectedCategory}
           onChange={setSelectedCategory}
+          error={domainErrors?.category_id}
         />
         <Input
           prefix="Rp"
           type="number"
           name="amount"
-          label="Amount"
-          placeholder="Masukkan jumlah transaksi"
+          label={intl.formatMessage({ id: 'amount' })}
+          placeholder={intl.formatMessage({ id: 'amountPlaceholder' })}
           className="text-sm"
           value={amount}
           onChange={setAmount}
+          error={domainErrors?.amount}
         />
         <Input
           type="text"
           name="name"
-          label="Name"
-          placeholder="Masukkan nama transaksi"
+          label={intl.formatMessage({ id: 'name' })}
+          placeholder={intl.formatMessage({ id: 'transactionNamePlaceholder' })}
           className="text-sm"
           value={name}
           onChange={setName}
+          error={domainErrors?.name}
         />
         <CustomDatePicker
           showIcon
-          label="Date"
+          label={intl.formatMessage({ id: 'Date' })}
           className="focus:outline-none"
           selected={date}
           onChange={(date) => setDate(date)}
@@ -89,9 +104,9 @@ export const EditTransaction = ({ refetch, transaction }) => {
       </div>
       <Button
         type="submit"
-        className="btn btn-primary rounded-lg"
+        className="btn btn-primary rounded-lg text-sm font-bold"
       >
-        Ubah
+        {intl.formatMessage({ id: 'editButton' })}
       </Button>
     </form>
   )

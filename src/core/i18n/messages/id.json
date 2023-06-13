@@ -1,3 +1,46 @@
 {
-  "TEST.QWE": "Halo Test"
+  "TEST.QWE": "Halo Test",
+
+  "loginHistory": "Riwayat Akun",
+  "logout": "Keluar",
+
+  "addButton": "Tambah",
+  "editButton": "Ubah",
+  "deleteButton": "Hapus",
+  "cancelButton": "Batal",
+  "confirmationDeleteTransaction": "Anda yakin ingin menghapus transaksi ini?",
+  "confirmationDeleteWallet": "Anda yakin ingin menghapus dompet ini?",
+  "confirmationDeleteCategory": "Anda yakin ingin menghapus kategori ini?",
+  "name": "Nama",
+
+  "transactionTitle": "Transaksi",
+  "cashflow": "Arus Kas",
+  "grossIncome": "Pendapatan Kotor",
+  "expense": "Pengeluaran",
+  "addTransaction": "Tambah Transaksi",
+  "thisMonthTransaction": "Bulan Ini",
+  "startingBalance": "Saldo Awal",
+  "inflow": "Arus Masuk",
+  "outflow": "Arus Keluar",
+  "amount": "Jumlah",
+  "date": "Tanggal",
+  "amountPlaceholder": "Masukkan jumlah transaksi",
+  "transactionNamePlaceholder": "Masukkan nama transaksi",
+
+  "walletTitle": "Dompet",
+  "addWallet": "Tambah Dompet",
+  "walletType": "Tipe Dompet",
+  "walletNamePlaceholder": "Masukkan nama dompet",
+  "walletTypeSelectPlaceholder": "Pilih tipe dompet",
+
+  "categoryTitle": "Kategori",
+  "addCategory": "Tambah Kategori",
+  "defaultCategory": "Standar",
+  "customCategory": "Kustom",
+  "categoryType": "Tipe Kategori",
+  "categoryNamePlaceholder": "Masukkan nama kategori",
+  "categoryTypeSelectPlaceholder": "Pilih tipe kategori",
+
+  "welcomeMessage": "Selamat Datang di Moneta! Silakan baca FAQ di bawah sebelum menggunakan aplikasi",
+  "illustrationCredit": "Illustrasi didukung oleh "
 }

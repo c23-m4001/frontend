@@ -1,7 +1,7 @@
 import { WalletApi } from '../../../api/wallets/walletApi'
 import { DebouncedAsyncSelect } from '../../../components/input/DebouncedAsyncSelect'
 
-export const WalletSelect = ({ className, label, value, onChange }) => {
+export const WalletSelect = ({ className, label, value, onChange, error }) => {
   const loadOptions = async (inputValue) => {
     return WalletApi.fetchWallets({
       phrase: inputValue,
@@ -18,6 +18,7 @@ export const WalletSelect = ({ className, label, value, onChange }) => {
       label={label}
       className={className}
       value={value}
+      error={error}
       onChange={onChange}
       loadOptions={loadOptions}
     />

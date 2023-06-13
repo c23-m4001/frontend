@@ -10,8 +10,8 @@ const GOOGLE_OAUTH_REDIRECT_URI =
   process.env.REACT_APP_GOOGLE_OAUTH_REDIRECT_URI
 
 export const GoogleLogin = () => {
-  const [error, setError] = useState()
-  const { setToken, isLoading } = useAuth()
+  const [, setError] = useState()
+  const { setToken } = useAuth()
   const location = useLocation()
   const navigate = useNavigate()
 
