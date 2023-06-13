@@ -12,11 +12,14 @@ export const ActiveWalletSelect = ({ className }) => {
   const value = useMemo(() => {
     return activeWallet
       ? { label: activeWallet.name, value: activeWallet.id }
-      : { label: 'All wallet', value: undefined }
+      : {
+          label: intl.formatMessage({ id: 'allWallet' }),
+          value: undefined,
+        }
   }, [activeWallet])
 
   const options = [
-    { label: 'All wallet', value: undefined },
+    { label: intl.formatMessage({ id: 'allWallet' }), value: undefined },
     ...currentUser?.wallets.map((wallet) => ({
       label: wallet.name,
       value: wallet.id,

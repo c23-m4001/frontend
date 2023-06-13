@@ -8,34 +8,28 @@ export const FrequentlyAskedQuestions = () => {
   const faq = {
     rows: [
       {
-        title: 'Bagaimana cara menggunakan Moneta?',
-        content:
-          'Anda harus mendaftar menggunakan Google atau Email, kemudian masuk menggunakan akun yang telah terdaftar untuk menggunakan Moneta.',
+        title: intl.formatMessage({ id: 'firstQuestion' }),
+        content: intl.formatMessage({ id: 'firstAnswer' }),
       },
       {
-        title: 'Pembuatan dompet awal tidak memasukkan saldo?',
-        content:
-          'Saldo awal dapat ditambahkan melalui menu Tambah Transaksi, kemudian pilih jenis kategori yang merupakan income (pemasukan).',
+        title: intl.formatMessage({ id: 'secondQuestion' }),
+        content: intl.formatMessage({ id: 'secondAnswer' }),
       },
       {
-        title: 'Bagaimana cara menambahkan transaksi?',
-        content:
-          'Pada halaman Transaction, pilih menu Tambah Transaksi yang terletak di bagian pojok kanan atas sebelah kiri icon profil (untuk perangkat tablet/laptop/PC) atau pilih icon tambah yang berada pada sisi kanan bawah halaman (untuk perangkat mobile). Lalu, masukkan wallet, kategori, jumlah uang, nama, serta tanggal transaksi. Apabila telah yakin kolom telah terisi dengan benar, klik Tambah.',
+        title: intl.formatMessage({ id: 'thirdQuestion' }),
+        content: intl.formatMessage({ id: 'thirdAnswer' }),
       },
       {
-        title: 'Bagaimana cara menambahkan wallet baru?',
-        content:
-          'Buka halaman Wallet, kemudian pilih menu Tambah Wallet yang terletak di bagian pojok kanan atas. Lalu, masukkan nama serta jenis wallet. Apabila telah yakin kolom telah terisi dengan benar, klik Tambah.',
+        title: intl.formatMessage({ id: 'fourthQuestion' }),
+        content: intl.formatMessage({ id: 'fourthAnswer' }),
       },
       {
-        title: 'Apa itu Custom Category?',
-        content:
-          'Custom Category adalah jenis kategori yang dibuat oleh pengguna di luar dari kategori yang telah ditetapkan (Default Category).',
+        title: intl.formatMessage({ id: 'fifthQuestion' }),
+        content: intl.formatMessage({ id: 'fifthAnswer' }),
       },
       {
-        title: 'Bagaimana cara menambahkan Custom Category?',
-        content:
-          'Buka halaman Category, kemudian pilih menu Tambah Kategori yang terletak di bagian pojok kanan atas. Lalu, masukkan nama kategori, jenis kategori, dan pilihan pengeluaran (expense) atau pemasukan (income). Apabila telah yakin kolom telah terisi dengan benar, klik Tambah.',
+        title: intl.formatMessage({ id: 'sixthQuestion' }),
+        content: intl.formatMessage({ id: 'sixthAnswer' }),
       },
     ],
   }
@@ -44,7 +38,7 @@ export const FrequentlyAskedQuestions = () => {
       <div className="h-full flex flex-col space-y-6 justify-center py-40px px-20px sm:px-100px lg:px-200px">
         <div className="flex justify-between">
           <h1 className="font-bold text-2xl sm:text-2xl xl:text-3xl text-headline">
-            FAQ
+            {intl.formatMessage({ id: 'faqTitle' })}
           </h1>
         </div>
         <div className="grow">

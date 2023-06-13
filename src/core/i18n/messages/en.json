@@ -3,6 +3,7 @@
 
   "loginHistory": "Login History",
   "logout": "Logout",
+  "allWallet": "All wallet",
 
   "addButton": "Add",
   "editButton": "Edit",
@@ -41,6 +42,20 @@
   "categoryNamePlaceholder": "Enter category name",
   "categoryTypeSelectPlaceholder": "Select category type",
 
+  "faq": "FAQ",
+  "faqTitle": "Frequently Asked Questions (FAQ)",
   "welcomeMessage": "Welcome to Moneta! Please read the FAQ below before using the app",
-  "illustrationCredit": "Illustration supported by "
+  "illustrationCredit": "Illustration supported by ",
+  "firstQuestion": "How to use Moneta?",
+  "firstAnswer": "You must register using Google or Email, then log in using an account that has been registered to use Moneta.",
+  "secondQuestion": "Initial wallet creation doesn't include balance?",
+  "secondAnswer": "The initial balance can be added through the Add Transaction menu, then select the type of category that is income.'",
+  "thirdQuestion": "How do I add a transaction?",
+  "thirdAnswer": "On the Transaction page, select the Add Transaction menu located in the upper right corner to the left of the profile icon (for tablet/laptop/PC devices) or select the plus icon located on the bottom right side of the page (for mobile devices). Then, enter the wallet, category, amount of money, name, and transaction date. When you are sure that the fields are filled in correctly, click Add.",
+  "fourthQuestion": "How do I add a new wallet?",
+  "fourthAnswer": "Open the Wallet page, then select the Add Wallet menu located in the upper right corner. Then, enter the name and type of wallet. When you are sure that the fields are filled in correctly, click Add.",
+  "fifthQuestion": "What is Custom Category?",
+  "fifthAnswer": "Custom Category is a type of category created by a user outside of a predefined category (Default Category).",
+  "sixthQuestion": "How do I add a Custom Category?",
+  "sixthAnswer": "Open the Category page, then select the Add Category menu located in the upper right corner. Then, enter the category name, category type, and expense or income options. When you're sure the fields are filled in correctly, click Add."
 }

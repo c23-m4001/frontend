@@ -4,6 +4,7 @@ import { Icon } from '@iconify/react'
 import { useContext } from 'react'
 import { createContext } from 'react'
 import clsx from 'clsx'
+import { useIntl } from 'react-intl'
 
 const initialSidebarContext = {
   open: false,
@@ -16,15 +17,28 @@ export const useSidebar = () => useContext(SidebarContext)
 
 export const Sidebar = ({ children }) => {
   const [open, setOpen] = useState(false)
+  const intl = useIntl()
   const menus = [
     {
-      title: 'Transaction',
+      title: intl.formatMessage({ id: 'transactionTitle' }),
       icon: 'icon-park-solid:transaction',
       to: '/transactions',
     },
-    { title: 'Wallet', icon: 'icon-park-solid:wallet', to: '/wallets' },
-    { title: 'Category', icon: 'bxs:category', to: '/categories' },
-    { title: 'FAQ', icon: 'wpf:faq', to: '/faq' },
+    {
+      title: intl.formatMessage({ id: 'walletTitle' }),
+      icon: 'icon-park-solid:wallet',
+      to: '/wallets',
+    },
+    {
+      title: intl.formatMessage({ id: 'categoryTitle' }),
+      icon: 'bxs:category',
+      to: '/categories',
+    },
+    {
+      title: intl.formatMessage({ id: 'faq' }),
+      icon: 'wpf:faq',
+      to: '/faq',
+    },
   ]
 
   return (

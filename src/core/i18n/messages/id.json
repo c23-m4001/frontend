@@ -3,6 +3,7 @@
 
   "loginHistory": "Riwayat Akun",
   "logout": "Keluar",
+  "allWallet": "Semua dompet",
 
   "addButton": "Tambah",
   "editButton": "Ubah",
@@ -41,6 +42,20 @@
   "categoryNamePlaceholder": "Masukkan nama kategori",
   "categoryTypeSelectPlaceholder": "Pilih tipe kategori",
 
+  "faq": "SSD",
+  "faqTitle": "Soal Sering Ditanya (SSD)",
   "welcomeMessage": "Selamat Datang di Moneta! Silakan baca FAQ di bawah sebelum menggunakan aplikasi",
-  "illustrationCredit": "Illustrasi didukung oleh "
+  "illustrationCredit": "Illustrasi didukung oleh ",
+  "firstQuestion": "Bagaimana cara menggunakan Moneta?",
+  "firstAnswer": "Anda harus mendaftar menggunakan Google atau Email, kemudian masuk menggunakan akun yang telah terdaftar untuk menggunakan Moneta.",
+  "secondQuestion": "Pembuatan dompet awal tidak memasukkan saldo?",
+  "secondAnswer": "Saldo awal dapat ditambahkan melalui menu Tambah Transaksi, kemudian pilih jenis kategori yang merupakan pendapatan.'",
+  "thirdQuestion": "Bagaimana cara menambahkan transaksi?",
+  "thirdAnswer": "Pada halaman Transaksi, pilih menu Tambah Transaksi yang terletak di bagian pojok kanan atas sebelah kiri icon profil (untuk perangkat tablet/laptop/PC) atau pilih icon tambah yang berada pada sisi kanan bawah halaman (untuk perangkat seluler). Lalu, masukkan wallet, kategori, jumlah uang, nama, serta tanggal transaksi. Apabila telah yakin kolom telah terisi dengan benar, klik Tambah.",
+  "fourthQuestion": "Bagaimana cara menambahkan dompet baru?",
+  "fourthAnswer": "Buka halaman dompet, kemudian pilih menu Tambah Dompet yang terletak di bagian pojok kanan atas. Lalu, masukkan nama serta jenis dompet. Apabila telah yakin kolom telah terisi dengan benar, klik Tambah.",
+  "fifthQuestion": "Apa itu Kategori Kustom?",
+  "fifthAnswer": "Kategori Kustom adalah jenis kategori yang dibuat oleh pengguna di luar dari kategori yang telah ditetapkan (Kategori Standar).",
+  "sixthQuestion": "Bagaimana cara menambahkan Kategori Kustom?",
+  "sixthAnswer": "Buka halaman Kategori, kemudian pilih menu Tambah Kategori yang terletak di bagian pojok kanan atas. Lalu, masukkan nama kategori, jenis kategori, dan pilihan pengeluaran atau pendapatan. Apabila telah yakin kolom telah terisi dengan benar, klik Tambah."
 }
