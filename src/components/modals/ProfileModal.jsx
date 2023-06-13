@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../../core/Auth/AuthProvider'
 import { Button } from '../button/Button'
 import { BiHistory, BiLogOutCircle } from 'react-icons/bi'
+import { ActiveLanguageSelect } from '../../layout/header/components/ActiveLanguageSelect'
 
 export const ProfileModal = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -42,6 +43,9 @@ export const ProfileModal = () => {
         </div>
         <div className="border-t-2"></div>
         <ul className="text-sm">
+          <li>
+            <ActiveLanguageSelect className="my-2" />
+          </li>
           <li>
             <Button
               type="button"
