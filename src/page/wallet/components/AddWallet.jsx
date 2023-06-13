@@ -43,15 +43,15 @@ export const AddWallet = ({ refetch }) => {
       <Input
         type="text"
         name="name"
-        label="Name"
-        placeholder="Masukkan nama wallet"
+        label={intl.formatMessage({ id: 'name' })}
+        placeholder={intl.formatMessage({ id: 'walletNamePlaceholder' })}
         className="text-sm"
         value={name}
         onChange={setName}
         error={domainErrors?.name}
       />
       <WalletTypeSelect
-        label="Wallet type"
+        label={intl.formatMessage({ id: 'walletType' })}
         value={selectedWalletType}
         onChange={setSelectedWalletType}
         error={domainErrors?.logo_type}

@@ -60,14 +60,14 @@ export const EditTransaction = ({ refetch, transaction }) => {
       <div className="grid grid-cols-3 gap-2">
         <WalletSelect
           className="col-span-1 z-40"
-          label="Wallet"
+          label={intl.formatMessage({ id: 'walletTitle' })}
           value={selectedWallet}
           onChange={setSelectedWallet}
           error={domainErrors?.wallet_id}
         />
         <CategorySelect
           className="col-span-1"
-          label="Category"
+          label={intl.formatMessage({ id: 'categoryTitle' })}
           value={selectedCategory}
           onChange={setSelectedCategory}
           error={domainErrors?.category_id}
@@ -76,8 +76,8 @@ export const EditTransaction = ({ refetch, transaction }) => {
           prefix="Rp"
           type="number"
           name="amount"
-          label="Amount"
-          placeholder="Masukkan jumlah transaksi"
+          label={intl.formatMessage({ id: 'amount' })}
+          placeholder={intl.formatMessage({ id: 'amountPlaceholder' })}
           className="text-sm"
           value={amount}
           onChange={setAmount}
@@ -86,8 +86,8 @@ export const EditTransaction = ({ refetch, transaction }) => {
         <Input
           type="text"
           name="name"
-          label="Name"
-          placeholder="Masukkan nama transaksi"
+          label={intl.formatMessage({ id: 'name' })}
+          placeholder={intl.formatMessage({ id: 'transactionNamePlaceholder' })}
           className="text-sm"
           value={name}
           onChange={setName}
@@ -95,7 +95,7 @@ export const EditTransaction = ({ refetch, transaction }) => {
         />
         <CustomDatePicker
           showIcon
-          label="Date"
+          label={intl.formatMessage({ id: 'Date' })}
           className="focus:outline-none"
           selected={date}
           onChange={(date) => setDate(date)}

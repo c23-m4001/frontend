@@ -46,8 +46,8 @@ export const AddCategory = ({ refetch }) => {
       <Input
         type="text"
         name="name"
-        label="Name"
-        placeholder="Masukkan nama kategori"
+        label={intl.formatMessage({ id: 'name' })}
+        placeholder={intl.formatMessage({ id: 'categoryNamePlaceholder' })}
         className="text-sm"
         value={name}
         onChange={setName}
@@ -55,7 +55,7 @@ export const AddCategory = ({ refetch }) => {
       />
       <CategoryTypeSelect
         className="mb-2"
-        label="Category type"
+        label={intl.formatMessage({ id: 'categoryType' })}
         value={selectedCategoryType}
         onChange={setSelectedCategoryType}
         error={domainErrors?.logo_type}
@@ -65,7 +65,7 @@ export const AddCategory = ({ refetch }) => {
         checked={isExpense}
         onChange={setIsExpense}
         name="is_expense"
-        label="Expense"
+        label={intl.formatMessage({ id: 'expense' })}
         error={domainErrors?.is_expense}
       />
       <Button className="btn btn-primary rounded-lg text-sm font-bold mt-4">

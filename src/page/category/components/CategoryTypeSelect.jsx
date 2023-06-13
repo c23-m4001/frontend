@@ -1,6 +1,7 @@
 import { Icon } from '@iconify/react'
 import { Select } from '../../../layout/header/Select/Select'
 import { CategoryTypeEnum } from '../../../util/enum'
+import { useIntl } from 'react-intl'
 
 export const CategoryTypeSelect = ({
   className,
@@ -9,8 +10,11 @@ export const CategoryTypeSelect = ({
   onChange,
   error,
 }) => {
+  const intl = useIntl()
+
   return (
     <Select
+      placeholder={intl.formatMessage({ id: 'categoryTypeSelectPlaceholder' })}
       error={error}
       className={className}
       label={label}
