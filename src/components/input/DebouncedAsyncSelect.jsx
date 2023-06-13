@@ -7,6 +7,7 @@ export const DebouncedAsyncSelect = ({
   label,
   defaultValue,
   value,
+  error,
   onChange,
   loadOptions,
 }) => {
@@ -45,6 +46,7 @@ export const DebouncedAsyncSelect = ({
     <Select
       isClearable
       isSearchable
+      error={error}
       className={className}
       label={label}
       defaultValue={defaultValue}

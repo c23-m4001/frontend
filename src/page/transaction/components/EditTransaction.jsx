@@ -5,6 +5,7 @@ import { Button } from '../../../components/button/Button'
 import { CustomDatePicker } from '../../../components/input/CustomDatepicker'
 import { Input } from '../../../components/input/Input'
 import { useModal } from '../../../core/Modal/ModalProvider'
+import { useError } from '../../../custom-hooks/useError'
 import { useInput } from '../../../custom-hooks/useInput'
 import { CategorySelect } from '../../category/components/CategorySelect'
 import { WalletSelect } from '../../wallet/components/WalletSelect'
@@ -28,9 +29,12 @@ export const EditTransaction = ({ refetch, transaction }) => {
   )
   const [name, setName] = useInput(transaction?.name)
   const [amount, setAmount] = useInput(transaction?.amount)
+  const { error, domainErrors, handleError, resetError } = useError()
 
   const onSubmit = async (e) => {
     e.preventDefault()
+
+    resetError()
 
     await TransactionApi.updateTransaction({
       id: transaction?.id,
@@ -40,6 +44,10 @@ export const EditTransaction = ({ refetch, transaction }) => {
       category_id: selectedCategory?.value,
       wallet_id: selectedWallet?.value,
     })
+      .catch((err) => {
+        handleError(err.response.data)
+      })
+      .finally(() => {})
 
     if (refetch) refetch()
     unsetModal()
@@ -48,18 +56,21 @@ export const EditTransaction = ({ refetch, transaction }) => {
 
   return (
     <form onSubmit={onSubmit}>
+      {error && <div className="error-box mb-4">{error}</div>}
       <div className="grid grid-cols-3 gap-2">
         <WalletSelect
           className="col-span-1 z-40"
           label="Wallet"
           value={selectedWallet}
           onChange={setSelectedWallet}
+          error={domainErrors?.wallet_id}
         />
         <CategorySelect
           className="col-span-1"
           label="Category"
           value={selectedCategory}
           onChange={setSelectedCategory}
+          error={domainErrors?.category_id}
         />
         <Input
           prefix="Rp"
@@ -70,6 +81,7 @@ export const EditTransaction = ({ refetch, transaction }) => {
           className="text-sm"
           value={amount}
           onChange={setAmount}
+          error={domainErrors?.amount}
         />
         <Input
           type="text"
@@ -79,6 +91,7 @@ export const EditTransaction = ({ refetch, transaction }) => {
           className="text-sm"
           value={name}
           onChange={setName}
+          error={domainErrors?.name}
         />
         <CustomDatePicker
           showIcon

@@ -2,9 +2,16 @@ import { Icon } from '@iconify/react'
 import { Select } from '../../../layout/header/Select/Select'
 import { WalletTypeEnums } from '../../../util/enum'
 
-export const WalletTypeSelect = ({ className, label, value, onChange }) => {
+export const WalletTypeSelect = ({
+  className,
+  label,
+  value,
+  onChange,
+  error,
+}) => {
   return (
     <Select
+      error={error}
       className={className}
       label={label}
       value={value}

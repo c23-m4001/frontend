@@ -101,7 +101,7 @@ const CustomModal = ({ title, modal }) => {
         role="dialog"
         tabIndex={-1}
         aria-modal="true"
-        onClick={closeModal}
+        // onClick={closeModal}
       >
         {/* begin::Modal Dialog */}
         <div
@@ -117,7 +117,6 @@ const CustomModal = ({ title, modal }) => {
               onClick={closeModal}
             >
               <img
-                className="sm:hidden"
                 height={20}
                 width={20}
                 src="/svgs/x.svg"

@@ -30,6 +30,7 @@ module.exports = {
         paragraph: '#5F6C7B',
         danger: '#FF0000',
         success: '#3DA9FC',
+        'danger-fade': '#F8D7DA',
       },
       borderRadius: {
         '10px': '10px',

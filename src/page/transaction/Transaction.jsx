@@ -1,5 +1,3 @@
-import { useQuery } from 'react-query'
-import { ReactQueryKeys } from '../../api/constant'
 import { ThisMonthTransactionsItem } from './ThisMonthTransactionsItem'
 import { useModal } from '../../core/Modal/ModalProvider'
 import moment from 'moment/moment'
@@ -15,6 +13,7 @@ import { Icon } from '@iconify/react'
 import { CategoryTypeEnum } from '../../util/enum'
 import clsx from 'clsx'
 import { useIntl } from 'react-intl'
+import { useTransactionWrapper } from '../../layout/header/components/TransactionWrapperProvider'
 
 export const TransactionPage = () => {
   const { activeWallet } = useActiveWallet()
@@ -29,36 +28,8 @@ export const TransactionPage = () => {
   }
 
   const page = parseInt(searchParams.get('page')) || 1
-  const phrase = undefined
 
-  const {
-    data: transactionData,
-    isLoading,
-    refetch,
-  } = useQuery(
-    [
-      ReactQueryKeys.TRANSACTION_FILTER,
-      {
-        phrase,
-        start_date: dateRange.start_date,
-        end_date: dateRange.end_date,
-        wallet_id: activeWallet?.id,
-        sorts: [{ field: 'date', direction: 'desc' }],
-      },
-    ],
-    () => {
-      return TransactionApi.fetchTransactions({
-        phrase,
-        start_date: dateRange.start_date,
-        end_date: dateRange.end_date,
-        wallet_id: activeWallet?.id,
-        sorts: [{ field: 'date', direction: 'desc' }],
-      }).then((r) => r.data)
-    },
-    {
-      cacheTime: 0,
-    }
-  )
+  const { transactionData, isLoading, refetch } = useTransactionWrapper()
 
   const onTransactionClick = (transaction) => {
     setModal(

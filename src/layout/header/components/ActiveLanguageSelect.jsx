@@ -1,13 +1,10 @@
 import { useMemo } from 'react'
 import SVG from 'react-inlinesvg'
-import { useAuth } from '../../../core/Auth/AuthProvider'
 import { useLanguage } from '../../../core/i18n/LanguageProvider'
-import { useActiveWallet } from '../../../core/wallet/ActiveWalletProvider'
 import { Select } from '../Select/Select'
 
 export const ActiveLanguageSelect = ({ className }) => {
   const { language, setLanguage } = useLanguage()
-
 
   const options = [
     {

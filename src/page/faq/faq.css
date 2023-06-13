@@ -1,8 +1,7 @@
-.faq-row-wrapper {
-  .faq-body .faq-row .row-title:hover {
-    color: #094067;
-  }
-  .faq-body .faq-row .row-title .expanded {
-    color: #094067;
-  }
+.faq-row-wrapper .faq-body .faq-row .row-title:hover {
+  color: #094067;
+}
+
+.faq-row-wrapper .faq-body .faq-row .row-title .expanded {
+  color: #094067;
 }

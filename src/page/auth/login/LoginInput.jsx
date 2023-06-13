@@ -5,12 +5,12 @@ import { useAuth } from '../../../core/Auth/AuthProvider'
 import { useInput } from '../../../custom-hooks/useInput'
 import { Button } from '../../../components/button/Button'
 import { Input } from '../../../components/input/Input'
-import clsx from 'clsx'
+import { useError } from '../../../custom-hooks/useError'
 
 export const LoginInput = () => {
   const [email, onEmailChange] = useInput('')
   const [password, onPasswordChange] = useInput('')
-  const [domainErrors, setDomainErrors] = useState({})
+  const { error, domainErrors, handleError, resetError } = useError()
   const [isLoading, setIsLoading] = useState(false)
   const { setToken } = useAuth()
   const navigate = useNavigate()
@@ -19,15 +19,11 @@ export const LoginInput = () => {
     e.preventDefault()
 
     setIsLoading(true)
+    resetError()
 
     const a = await AuthApi.emailLogin({ email, password })
-      .catch((er) => {
-        setDomainErrors(
-          er.response.data.errors.reduce((prev, err) => {
-            prev[err.domain] = err.message
-            return prev
-          }, {})
-        )
+      .catch((err) => {
+        handleError(err.response.data)
       })
       .finally(() => {
         setIsLoading(false)
@@ -42,6 +38,7 @@ export const LoginInput = () => {
       className="flex flex-col px-20px"
       onSubmit={onSubmit}
     >
+      {error && <div className="error-box mb-4">{error}</div>}
       <Input
         placeholder="Email"
         name="email"

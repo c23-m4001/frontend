@@ -4,7 +4,6 @@ import { Button } from '../../components/button/Button'
 import { Input } from '../../components/input/Input'
 import { useAuth } from '../../core/Auth/AuthProvider'
 import { useInput } from '../../custom-hooks/useInput'
-import { Select } from '../../layout/header/Select/Select'
 import { WalletTypeSelect } from '../wallet/components/WalletTypeSelect'
 
 export const WelcomePage = () => {

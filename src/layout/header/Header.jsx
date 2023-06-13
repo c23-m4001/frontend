@@ -2,29 +2,24 @@ import { useLocation } from 'react-router-dom'
 import { Button } from '../../components/button/Button'
 import { ProfileModal } from '../../components/modals/ProfileModal'
 import { useModal } from '../../core/Modal/ModalProvider'
-import DatePicker from 'react-datepicker'
-
-import { useState } from 'react'
-import { Select } from './Select/Select'
 import { ActiveWalletSelect } from './components/ActiveWalletSelect'
 import { useSidebar } from '../sidebar/Sidebar'
-import { WalletSelect } from '../../page/wallet/components/WalletSelect'
-import { CategorySelect } from '../../page/category/components/CategorySelect'
-import { Input } from '../../components/input/Input'
 import { AddTransaction } from './components/AddTransaction'
 import { Icon } from '@iconify/react'
 import { useIntl } from 'react-intl'
+import { useTransactionWrapper } from './components/TransactionWrapperProvider'
 
 export const Header = ({ children }) => {
   const location = useLocation()
   const { toggleOpen } = useSidebar()
   const { setModal, showModal } = useModal()
   const intl = useIntl()
+  const { refetch } = useTransactionWrapper()
 
   const onButtonClick = (e) => {
     e.stopPropagation()
 
-    setModal(<AddTransaction />, 'Tambah Transaksi')
+    setModal(<AddTransaction refetch={refetch} />, 'Tambah Transaksi')
     showModal()
   }
 

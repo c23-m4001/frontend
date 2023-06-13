@@ -1,3 +1,4 @@
+import clsx from 'clsx'
 import ReactSelect from 'react-select'
 
 export const Select = ({
@@ -7,6 +8,7 @@ export const Select = ({
   value,
   options,
   onChange,
+  error,
   ...rest
 }) => {
   return (
@@ -74,6 +76,14 @@ export const Select = ({
           }),
         }}
       />
+      <div
+        className={clsx({
+          'min-h-16px text-left text-xs grow mb-1 text-danger': true,
+          invisible: !error,
+        })}
+      >
+        {error}
+      </div>
     </div>
   )
 }

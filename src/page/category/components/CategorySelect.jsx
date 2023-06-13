@@ -1,7 +1,13 @@
 import { CategoryApi } from '../../../api/categories/categoryApi'
 import { DebouncedAsyncSelect } from '../../../components/input/DebouncedAsyncSelect'
 
-export const CategorySelect = ({ className, label, value, onChange }) => {
+export const CategorySelect = ({
+  error,
+  className,
+  label,
+  value,
+  onChange,
+}) => {
   const loadOptions = async (inputValue) => {
     return CategoryApi.fetchCategories({
       phrase: inputValue,
@@ -18,6 +24,7 @@ export const CategorySelect = ({ className, label, value, onChange }) => {
       label={label}
       className={className}
       value={value}
+      error={error}
       onChange={onChange}
       loadOptions={loadOptions}
     />
