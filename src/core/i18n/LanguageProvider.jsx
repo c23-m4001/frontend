@@ -3,7 +3,7 @@ import { createContext, useContext, useEffect, useState } from 'react'
 const I18N_CONFIG_KEY = process.env.REACT_APP_I18N_CONFIG_KEY || 'i18n-cfg'
 
 const getCachedLanguage = () => {
-  const ls = localStorage.getItem(I18N_CONFIG_KEY)
+  const ls = JSON.parse(localStorage.getItem(I18N_CONFIG_KEY))
   return ls
 }
 
@@ -19,7 +19,7 @@ const defaultLanguage = 'id'
 
 const initialLanguageState = {
   language: 'id',
-  setLanguage: () => {},
+  setLanguage: (nextLang) => {},
 }
 
 const LanguageContext = createContext(initialLanguageState)
@@ -37,7 +37,7 @@ export const LanguageProvider = ({ children }) => {
 
   const setLanguage = (nextLang) => {
     setLang(nextLang)
-    setCachedLanguage(nextLang)
+    setCachedLanguage(nextLang, true)
   }
 
   useEffect(() => {
