@@ -14,12 +14,14 @@ import { TransactionSummary } from './components/TransactionSummary'
 import { Icon } from '@iconify/react'
 import { CategoryTypeEnum } from '../../util/enum'
 import clsx from 'clsx'
+import { useIntl } from 'react-intl'
 
 export const TransactionPage = () => {
   const { activeWallet } = useActiveWallet()
   const { setModal, showModal, hideModal } = useModal()
   const [searchParams] = useSearchParams()
   const activeDate = searchParams.get('active_date') || undefined
+  const intl = useIntl()
 
   const dateRange = {
     start_date: moment(activeDate).startOf('month').format('YYYY-MM-DD'),
@@ -97,8 +99,8 @@ export const TransactionPage = () => {
   const onDeleteHandler = (transaction) => {
     setModal(
       <div className="flex flex-col justify-center py-4 text-center gap-4">
-        <p>Anda yakin ingin menghapus transaksi ini?</p>
-        <div className="flex justify-center gap-4">
+        <p>{intl.formatMessage({ id: 'confirmationDeleteTransaction' })}</p>
+        <div className="flex justify-center gap-4 text-sm">
           <Button
             type={'button'}
             className="btn bg-danger text-white rounded-full"
@@ -108,14 +110,14 @@ export const TransactionPage = () => {
               refetch()
             }}
           >
-            Hapus
+            {intl.formatMessage({ id: 'deleteButton' })}
           </Button>
           <Button
             type={'button'}
             className="btn bg-white border border-paragraph text-paragraph rounded-full"
             onClick={() => hideModal()}
           >
-            Batal
+            {intl.formatMessage({ id: 'cancelButton' })}
           </Button>
         </div>
       </div>,
@@ -158,7 +160,9 @@ export const TransactionPage = () => {
 
           <div className="w-full sm:w-full flex flex-col items-center bg-white text-headline p-2 rounded-md mb-4">
             <div className="w-full flex text-center text-xs sm:text-sm md:text-base lg:text-lg py-3 border-b-2">
-              <div className="flex-1">This month</div>
+              <div className="flex-1">
+                {intl.formatMessage({ id: 'thisMonthTransaction' })}
+              </div>
             </div>
             <div className="w-full sm:py-6 sm:px-12 md:px-16 flex flex-col text-xs sm:text-sm md:text-base p-3 justify-between gap-2 sm:gap-6">
               {!isLoading &&

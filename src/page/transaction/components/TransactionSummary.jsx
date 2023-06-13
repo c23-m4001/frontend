@@ -4,8 +4,10 @@ import { useSearchParams } from 'react-router-dom'
 import { ReactQueryKeys } from '../../../api/constant'
 import { TransactionApi } from '../../../api/transactions/transactionApi'
 import useFirstTimeEffect from '../../../util/useFirstTimeEffect'
+import { useIntl } from 'react-intl'
 
 export const TransactionSummary = ({ activeDate, dateRange, wallet }) => {
+  const intl = useIntl()
   const [searchParams, setSearchParams] = useSearchParams()
   const { data, isLoading, refetch } = useQuery(
     [
@@ -72,7 +74,7 @@ export const TransactionSummary = ({ activeDate, dateRange, wallet }) => {
       </div>
       <div className="w-full flex flex-col gap-2 sm:px-6 md:px-8 text-xs sm:text-sm md:text-base p-3">
         <div className="flex justify-between">
-          <p>Starting balance</p>
+          <p>{intl.formatMessage({ id: 'startingBalance' })}</p>
           <p>
             Rp
             {!isLoading
@@ -81,7 +83,7 @@ export const TransactionSummary = ({ activeDate, dateRange, wallet }) => {
           </p>
         </div>
         <div className="flex justify-between">
-          <p>Inflow</p>
+          <p>{intl.formatMessage({ id: 'inflow' })}</p>
           <p className="text-green-600">
             +Rp
             {!isLoading
@@ -90,7 +92,7 @@ export const TransactionSummary = ({ activeDate, dateRange, wallet }) => {
           </p>
         </div>
         <div className="flex justify-between">
-          <p>Outflow</p>
+          <p>{intl.formatMessage({ id: 'outflow' })}</p>
           <p className="text-danger">
             -Rp
             {!isLoading

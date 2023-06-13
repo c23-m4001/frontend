@@ -8,6 +8,7 @@ import { useModal } from '../../../core/Modal/ModalProvider'
 import { useInput } from '../../../custom-hooks/useInput'
 import { CategorySelect } from '../../../page/category/components/CategorySelect'
 import { WalletSelect } from '../../../page/wallet/components/WalletSelect'
+import { useIntl } from 'react-intl'
 
 export const AddTransaction = ({ refetch }) => {
   const { unsetModal, hideModal } = useModal()
@@ -16,6 +17,7 @@ export const AddTransaction = ({ refetch }) => {
   const [selectedCategory, setSelectedCategory] = useState(null)
   const [name, setName] = useInput('')
   const [amount, setAmount] = useInput(undefined)
+  const intl = useIntl()
 
   const onSubmit = async (e) => {
     e.preventDefault()
@@ -78,9 +80,9 @@ export const AddTransaction = ({ refetch }) => {
       </div>
       <Button
         type="submit"
-        className="w-full sm:w-auto btn btn-primary rounded-lg"
+        className="w-full sm:w-auto btn btn-primary rounded-lg text-sm font-bold"
       >
-        Tambah
+        {intl.formatMessage({ id: 'addButton' })}
       </Button>
     </form>
   )

@@ -5,8 +5,10 @@ import { Input } from '../../../components/input/Input'
 import { useModal } from '../../../core/Modal/ModalProvider'
 import { useInput } from '../../../custom-hooks/useInput'
 import { WalletTypeSelect } from './WalletTypeSelect'
+import { useIntl } from 'react-intl'
 
 export const AddWallet = ({ refetch }) => {
+  const intl = useIntl()
   const { unsetModal, hideModal } = useModal()
   const [name, setName] = useInput('')
   const [selectedWalletType, setSelectedWalletType] = useState(null)
@@ -44,7 +46,7 @@ export const AddWallet = ({ refetch }) => {
         onChange={setSelectedWalletType}
       />
       <Button className="btn btn-primary rounded-lg text-sm font-bold mt-4">
-        Tambah
+        {intl.formatMessage({ id: 'addButton' })}
       </Button>
     </form>
   )

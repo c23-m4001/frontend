@@ -12,11 +12,13 @@ import useFirstTimeEffect from '../../util/useFirstTimeEffect'
 import { loadPages } from '../../util/pagination'
 import { CategoryApi } from '../../api/categories/categoryApi'
 import clsx from 'clsx'
+import { useIntl } from 'react-intl'
 
 export const CategoryPage = () => {
   const { setModal, showModal } = useModal()
   const [searchParams, setSearchParams] = useSearchParams()
   const [pages, setPages] = useState([])
+  const intl = useIntl()
 
   const page = parseInt(searchParams.get('page')) || 1
   const limit = 6
@@ -68,28 +70,32 @@ export const CategoryPage = () => {
       <div className="h-full flex flex-col space-y-6 py-40px px-20px sm:px-100px lg:px-200px">
         <div className="flex justify-between items-center">
           <h1 className="font-bold text-2xl sm:text-2xl xl:text-3xl text-headline">
-            Category
+            {intl.formatMessage({ id: 'categoryTitle' })}
           </h1>
           <Button
             className="btn btn-primary rounded-xl font-bold text-sm"
             type="button"
             onClick={addCategoryButtonClick}
           >
-            Tambah Kategori
+            {intl.formatMessage({ id: 'addCategory' })}
           </Button>
         </div>
         <div className="grow">
           <div className="bg-white py-6 rounded-md">
             <div className="flex flex-col md:flex-row">
               <div className="flex flex-col grow basis-50% px-6">
-                <h2 className="font-bold text-base text-headline">Default</h2>
+                <h2 className="font-bold text-base text-headline">
+                  {intl.formatMessage({ id: 'defaultCategory' })}
+                </h2>
                 <div className="py-4">
                   <DefaultCategories />
                 </div>
               </div>
               <div className="bg-secondary mx-20px my-10px md:m-0 h-1px md:h-auto grow md:flex-none md:w-1px"></div>
               <div className="flex flex-col grow basis-50% px-6">
-                <h2 className="font-bold text-base text-headline">Custom</h2>
+                <h2 className="font-bold text-base text-headline">
+                  {intl.formatMessage({ id: 'customCategory' })}
+                </h2>
                 <div className="py-4">
                   <UserCategories
                     data={data}

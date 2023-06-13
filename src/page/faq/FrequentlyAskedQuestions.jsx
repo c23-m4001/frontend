@@ -1,8 +1,10 @@
 import React from 'react'
 import Faq from 'react-faq-component'
 import './faq.css'
+import { useIntl } from 'react-intl'
 
 export const FrequentlyAskedQuestions = () => {
+  const intl = useIntl()
   const faq = {
     rows: [
       {
@@ -53,10 +55,7 @@ export const FrequentlyAskedQuestions = () => {
               src="/svgs/faq-amico.svg"
             />
             <div className="flex items-center font-semibold text-headline sm:text-lg">
-              <p>
-                Selamat Datang di Moneta! Silakan baca FAQ di bawah sebelum
-                menggunakan aplikasi
-              </p>
+              <p>{intl.formatMessage({ id: 'welcomeMessage' })}</p>
             </div>
           </div>
           <div className="bg-white p-6 rounded-md">
@@ -81,7 +80,9 @@ export const FrequentlyAskedQuestions = () => {
       </div>
       <div className="bottom-0 text-center py-4">
         <p>
-          Illustration supported by <a href="https://storyset.com/">Storyset</a>
+          {intl.formatMessage({ id: 'illustrationCredit' })}
+          <a href="https://storyset.com/">Storyset</a> &{' '}
+          <a href="https://themeisle.com/">Themeisle</a>
         </p>
       </div>
     </div>

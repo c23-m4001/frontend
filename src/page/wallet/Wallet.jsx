@@ -12,11 +12,13 @@ import { Icon } from '@iconify/react'
 import { AddWallet } from './components/AddWallet'
 import { EditWallet } from './components/EditWallet'
 import { WalletTypeEnums } from '../../util/enum'
+import { useIntl } from 'react-intl'
 
 export const WalletPage = () => {
   const { setModal, showModal, hideModal } = useModal()
   const [searchParams, setSearchParams] = useSearchParams()
   const [pages, setPages] = useState([])
+  const intl = useIntl()
 
   const page = parseInt(searchParams.get('page')) || 1
   const limit = 6
@@ -81,7 +83,7 @@ export const WalletPage = () => {
   const deleteWalletButtonClick = (id) => {
     setModal(
       <div className="flex flex-col justify-center py-4 text-center gap-4">
-        <p>Anda yakin ingin menghapus wallet ini?</p>
+        <p>{intl.formatMessage({ id: 'confirmationDeleteWallet' })}</p>
         <div className="flex justify-center gap-4 text-sm">
           <Button
             type={'button'}
@@ -92,14 +94,14 @@ export const WalletPage = () => {
               refetch()
             }}
           >
-            Hapus
+            {intl.formatMessage({ id: 'deleteButton' })}
           </Button>
           <Button
             type={'button'}
             className="btn bg-white border border-paragraph text-paragraph rounded-full"
             onClick={() => hideModal()}
           >
-            Batal
+            {intl.formatMessage({ id: 'cancelButton' })}
           </Button>
         </div>
       </div>,
@@ -117,14 +119,14 @@ export const WalletPage = () => {
       <div className="h-full flex flex-col justify-center py-40px px-20px sm:px-100px lg:px-200px">
         <div className="flex justify-between">
           <h1 className="font-bold text-2xl sm:text-2xl xl:text-3xl text-headline">
-            Wallet
+            {intl.formatMessage({ id: 'walletTitle' })}
           </h1>
           <button
             type="button"
             className="btn btn-primary rounded-xl font-poppins font-bold text-sm leading-18"
             onClick={addWalletButtonClick}
           >
-            Tambah Wallet
+            {intl.formatMessage({ id: 'addWallet' })}
           </button>
         </div>
 

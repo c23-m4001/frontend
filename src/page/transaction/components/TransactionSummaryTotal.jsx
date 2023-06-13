@@ -2,8 +2,10 @@ import { useQuery } from 'react-query'
 import { ReactQueryKeys } from '../../../api/constant'
 import { TransactionApi } from '../../../api/transactions/transactionApi'
 import useFirstTimeEffect from '../../../util/useFirstTimeEffect'
+import { useIntl } from 'react-intl'
 
 export const TransactionSummaryTotal = ({ wallet }) => {
+  const intl = useIntl()
   const { data, isLoading, refetch } = useQuery(
     [
       ReactQueryKeys.TRANSACTION_SUMMARY,
@@ -34,10 +36,12 @@ export const TransactionSummaryTotal = ({ wallet }) => {
     <>
       <div className="w-full flex flex-col items-start text-headline text-lg sm:text-xl md:text-2xl">
         <h1 className="font-bold text-2xl sm:text-2xl xl:text-3xl">
-          Transaction
+          {intl.formatMessage({ id: 'transactionTitle' })}
         </h1>
         <div className="w-full flex flex-col items-center py-6">
-          <h2 className="pb-4 text-xl font-bold sm:text-2xl">Cashflow</h2>
+          <h2 className="pb-4 text-xl font-bold sm:text-2xl">
+            {intl.formatMessage({ id: 'cashflow' })}
+          </h2>
           <div className="font-bold text-2xl sm:text-3xl">
             Rp
             {!isLoading &&
@@ -52,7 +56,9 @@ export const TransactionSummaryTotal = ({ wallet }) => {
             {!isLoading &&
               Number(data?.summary_total?.total_income).toLocaleString()}
           </div>
-          <p className="font-bold text-headline">Gross Income</p>
+          <p className="font-bold text-headline">
+            {intl.formatMessage({ id: 'grossIncome' })}
+          </p>
         </div>
         <div className="w-full flex flex-col items-center bg-white text-danger p-8 rounded-md mb-4">
           <div className="font-semibold text-xl pb-1">
@@ -60,7 +66,9 @@ export const TransactionSummaryTotal = ({ wallet }) => {
             {!isLoading &&
               Number(data?.summary_total?.total_expense).toLocaleString()}
           </div>
-          <p className="font-bold text-headline">Expense</p>
+          <p className="font-bold text-headline">
+            {intl.formatMessage({ id: 'expense' })}
+          </p>
         </div>
       </div>
     </>

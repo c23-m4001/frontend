@@ -6,12 +6,14 @@ import { Input } from '../../../components/input/Input'
 import { useModal } from '../../../core/Modal/ModalProvider'
 import { useInput } from '../../../custom-hooks/useInput'
 import { CategoryTypeSelect } from './CategoryTypeSelect'
+import { useIntl } from 'react-intl'
 
 export const AddCategory = ({ refetch }) => {
   const { unsetModal, hideModal } = useModal()
   const [name, setName] = useInput('')
   const [isExpense, setIsExpense] = useInput(false)
   const [selectedCategoryType, setSelectedCategoryType] = useState(null)
+  const intl = useIntl()
 
   const onSubmit = async (e) => {
     e.preventDefault()
@@ -57,7 +59,7 @@ export const AddCategory = ({ refetch }) => {
         label="Expense"
       />
       <Button className="btn btn-primary rounded-lg text-sm font-bold mt-4">
-        Tambah
+        {intl.formatMessage({ id: 'addButton' })}
       </Button>
     </form>
   )

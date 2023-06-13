@@ -1,3 +1,35 @@
 {
-  "TEST.QWE": "Halo Test"
+  "TEST.QWE": "Halo Test",
+
+  "loginHistory": "Riwayat Masuk",
+  "logout": "Keluar",
+
+  "addButton": "Tambah",
+  "editButton": "Ubah",
+  "deleteButton": "Hapus",
+  "cancelButton": "Batal",
+  "confirmationDeleteTransaction": "Anda yakin ingin menghapus transaksi ini?",
+  "confirmationDeleteWallet": "Anda yakin ingin menghapus dompet ini?",
+  "confirmationDeleteCategory": "Anda yakin ingin menghapus kategori ini?",
+
+  "transactionTitle": "Transaksi",
+  "cashflow": "Arus Kas",
+  "grossIncome": "Pendapatan Kotor",
+  "expense": "Pengeluaran",
+  "addTransaction": "Tambah Transaksi",
+  "thisMonthTransaction": "Bulan Ini",
+  "startingBalance": "Saldo Awal",
+  "inflow": "Arus Masuk",
+  "outflow": "Arus Keluar",
+
+  "walletTitle": "Dompet",
+  "addWallet": "Tambah Dompet",
+
+  "categoryTitle": "Kategori",
+  "addCategory": "Tambah Kategori",
+  "defaultCategory": "Standar",
+  "customCategory": "Kustom",
+
+  "welcomeMessage": "Selamat Datang di Moneta! Silakan baca FAQ di bawah sebelum menggunakan aplikasi",
+  "illustrationCredit": "Illustrasi didukung oleh "
 }

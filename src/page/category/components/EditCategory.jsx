@@ -7,8 +7,10 @@ import { useModal } from '../../../core/Modal/ModalProvider'
 import { useInput } from '../../../custom-hooks/useInput'
 import { CategoryTypeEnum } from '../../../util/enum'
 import { CategoryTypeSelect } from './CategoryTypeSelect'
+import { useIntl } from 'react-intl'
 
 export const EditCategory = ({ refetch, category }) => {
+  const intl = useIntl()
   const { unsetModal, hideModal } = useModal()
   const [name, setName] = useInput(category.name)
   const [isExpense, setIsExpense] = useInput(category.is_expense)
@@ -61,7 +63,7 @@ export const EditCategory = ({ refetch, category }) => {
         label="Expense"
       />
       <Button className="btn btn-primary rounded-lg text-sm font-bold mt-4">
-        Ubah
+        {intl.formatMessage({ id: 'editButton' })}
       </Button>
     </form>
   )

@@ -13,11 +13,13 @@ import { CategorySelect } from '../../page/category/components/CategorySelect'
 import { Input } from '../../components/input/Input'
 import { AddTransaction } from './components/AddTransaction'
 import { Icon } from '@iconify/react'
+import { useIntl } from 'react-intl'
 
 export const Header = ({ children }) => {
   const location = useLocation()
   const { toggleOpen } = useSidebar()
   const { setModal, showModal } = useModal()
+  const intl = useIntl()
 
   const onButtonClick = (e) => {
     e.stopPropagation()
@@ -61,7 +63,7 @@ export const Header = ({ children }) => {
                 onClick={onButtonClick}
                 className="hidden sm:block rounded-xl btn btn-primary font-bold text-sm"
               >
-                Tambah Transaksi
+                {intl.formatMessage({ id: 'addTransaction' })}
               </Button>
             )}
             <ProfileModal />

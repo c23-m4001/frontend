@@ -6,8 +6,10 @@ import { useModal } from '../../../core/Modal/ModalProvider'
 import { useInput } from '../../../custom-hooks/useInput'
 import { WalletTypeEnums } from '../../../util/enum'
 import { WalletTypeSelect } from './WalletTypeSelect'
+import { useIntl } from 'react-intl'
 
 export const EditWallet = ({ refetch, wallet }) => {
+  const intl = useIntl()
   const { unsetModal, hideModal } = useModal()
   const [name, setName] = useInput(wallet.name)
   const [selectedWalletType, setSelectedWalletType] = useState(
@@ -48,7 +50,7 @@ export const EditWallet = ({ refetch, wallet }) => {
         onChange={setSelectedWalletType}
       />
       <Button className="btn btn-primary rounded-lg text-sm font-bold mt-4">
-        Ubah
+        {intl.formatMessage({ id: 'editButton' })}
       </Button>
     </form>
   )

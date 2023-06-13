@@ -8,8 +8,10 @@ import { useModal } from '../../../core/Modal/ModalProvider'
 import { useInput } from '../../../custom-hooks/useInput'
 import { CategorySelect } from '../../category/components/CategorySelect'
 import { WalletSelect } from '../../wallet/components/WalletSelect'
+import { useIntl } from 'react-intl'
 
 export const EditTransaction = ({ refetch, transaction }) => {
+  const intl = useIntl()
   const { unsetModal, hideModal } = useModal()
   const [date, setDate] = useState(
     transaction?.date ? new Date(transaction?.date) : new Date()
@@ -89,9 +91,9 @@ export const EditTransaction = ({ refetch, transaction }) => {
       </div>
       <Button
         type="submit"
-        className="btn btn-primary rounded-lg"
+        className="btn btn-primary rounded-lg text-sm font-bold"
       >
-        Ubah
+        {intl.formatMessage({ id: 'editButton' })}
       </Button>
     </form>
   )
