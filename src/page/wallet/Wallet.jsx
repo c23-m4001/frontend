@@ -154,7 +154,7 @@ export const WalletPage = () => {
                           <p className="font-bold text-headline">
                             {wallet.name}
                           </p>
-                          <p className="font-bold">Rp{wallet.total_amount}</p>
+                          <p className="font-bold">Rp{Number(wallet.total_amount).toLocaleString()}</p>
                         </div>
                       </div>
                     </div>
