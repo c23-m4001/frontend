@@ -31,7 +31,7 @@ export const TransactionWrapperProvider = ({ children }) => {
   const {
     data: transactionData,
     isLoading,
-    refetch,
+    /*refetch, */
   } = useQuery(
     [
       ReactQueryKeys.TRANSACTION_FILTER,
@@ -60,7 +60,7 @@ export const TransactionWrapperProvider = ({ children }) => {
     <TransactionWrapper.Provider
       value={{
         isLoading,
-        refetch,
+        refetch: () => window.location.reload(),
         transactionData,
       }}
     >

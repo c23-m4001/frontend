@@ -28,7 +28,7 @@ export const WelcomePage = () => {
     <div className="flex justify-center items-center min-h-screen bg-background">
       <div className="max-w-800px flex">
         <div className="mx-20px grow flex justify-center flex-col align-center pb-10">
-          <div className="m-auto grow text-center md:p-5 py-8 md:py-10 bg-primary-inverse border border-gray-200 rounded-2xl shadow dark:bg-gray-800 dark:border-gray-700">
+          <div className="m-auto grow text-center md:p-5 py-8 md:py-10 bg-primary-inverse border border-gray-200 rounded-2xl shadow">
             <p className="text-2xl text-headline mb-4 md:mb-10">
               Let's setup your first wallet
             </p>
