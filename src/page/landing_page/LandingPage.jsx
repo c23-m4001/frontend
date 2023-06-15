@@ -197,7 +197,7 @@ export const LandingPage = () => {
                     <img src="/svgs/avatar.svg" />
                   </div>
                   <figcaption className="text-white text-sm text-left">
-                    <div>David Yapetter</div>
+                    <div>David Yappeter</div>
                     <div className="opacity-70">
                       Student at Dicoding Academy
                     </div>
@@ -241,7 +241,7 @@ export const LandingPage = () => {
                 />
                 <p className="text-base px-10px">
                   Good Job! Walaupun sudah bagus jangan berpuas hati, ditunggu
-                  pengembangan kedepannya.
+                  pengembangan ke depannya.
                 </p>
               </blockquote>
               <div className="w-full flex items-center justify-between px-8 py-4 bg-primary">

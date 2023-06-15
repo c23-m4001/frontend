@@ -62,7 +62,7 @@ export const TransactionPage = () => {
           Rp{Number(transaction.amount).toLocaleString()}
         </p>
       </div>,
-      'Detail Transaksi'
+      intl.formatMessage({ id: 'transactionDetail' })
     )
     showModal()
   }
@@ -92,7 +92,7 @@ export const TransactionPage = () => {
           </Button>
         </div>
       </div>,
-      'Hapus Transaksi'
+      intl.formatMessage({ id: 'deleteTransaction' })
     )
     showModal()
   }

@@ -6,6 +6,7 @@ import { EditTransaction } from './components/EditTransaction'
 import clsx from 'clsx'
 import { Icon } from '@iconify/react'
 import { CategoryTypeEnum } from '../../util/enum'
+import { useIntl } from 'react-intl'
 
 export const ThisMonthTransactionsItem = ({
   transaction,
@@ -14,6 +15,7 @@ export const ThisMonthTransactionsItem = ({
   onDelete,
 }) => {
   const { setModal, showModal } = useModal()
+  const intl = useIntl()
 
   const onEdit = () => {
     setModal(
@@ -21,7 +23,7 @@ export const ThisMonthTransactionsItem = ({
         refetch={refetch}
         transaction={transaction}
       />,
-      'Edit Transaksi'
+      intl.formatMessage({ id: 'editTransaction' })
     )
     showModal()
   }

@@ -4,8 +4,10 @@ import { useQuery } from 'react-query'
 import { CategoryTypeEnum } from '../../../util/enum'
 import { Icon } from '@iconify/react'
 import { useModal } from '../../../core/Modal/ModalProvider'
+import { useIntl } from 'react-intl'
 
 export const DefaultCategories = () => {
+  const intl = useIntl()
   const { setModal, showModal } = useModal()
   const { data, isLoading } = useQuery(
     ['default', ReactQueryKeys.CATEGORIES_FILTER],
@@ -37,7 +39,7 @@ export const DefaultCategories = () => {
           </div>
         </div>
       </div>,
-      'Detail Kategori'
+      intl.formatMessage({ id: 'categoryDetail' })
     )
     showModal()
   }

@@ -19,7 +19,10 @@ export const Header = ({ children }) => {
   const onButtonClick = (e) => {
     e.stopPropagation()
 
-    setModal(<AddTransaction refetch={refetch} />, 'Tambah Transaksi')
+    setModal(
+      <AddTransaction refetch={refetch} />,
+      intl.formatMessage({ id: 'addTransaction' })
+    )
     showModal()
   }
 

@@ -65,7 +65,10 @@ export const WalletPage = () => {
   }, [isLoading, page, wallets])
 
   const addWalletButtonClick = () => {
-    setModal(<AddWallet refetch={refetch} />, 'Tambah Wallet')
+    setModal(
+      <AddWallet refetch={refetch} />,
+      intl.formatMessage({ id: 'addWallet' })
+    )
     showModal()
   }
 
@@ -75,7 +78,7 @@ export const WalletPage = () => {
         wallet={wallet}
         refetch={refetch}
       />,
-      'Edit Wallet'
+      intl.formatMessage({ id: 'editWallet' })
     )
     showModal()
   }
@@ -105,7 +108,7 @@ export const WalletPage = () => {
           </Button>
         </div>
       </div>,
-      'Hapus Wallet'
+      intl.formatMessage({ id: 'deleteWallet' })
     )
     showModal()
   }
