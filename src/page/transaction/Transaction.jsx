@@ -79,6 +79,7 @@ export const TransactionPage = () => {
               await TransactionApi.deleteTransaction({ id: transaction.id })
               hideModal()
               refetch()
+              window.location.reload()
             }}
           >
             {intl.formatMessage({ id: 'deleteButton' })}

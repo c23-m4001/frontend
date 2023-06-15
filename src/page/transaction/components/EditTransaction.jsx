@@ -52,6 +52,7 @@ export const EditTransaction = ({ refetch, transaction }) => {
     if (refetch) refetch()
     unsetModal()
     hideModal()
+    window.location.reload()
   }
 
   return (

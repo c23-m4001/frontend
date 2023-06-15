@@ -37,6 +37,7 @@ export const AddTransaction = ({ refetch }) => {
         if (refetch) refetch()
         unsetModal()
         hideModal()
+        window.location.reload()
       })
       .catch((err) => {
         handleError(err.response.data)
