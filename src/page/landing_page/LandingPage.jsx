@@ -167,8 +167,8 @@ export const LandingPage = () => {
               </blockquote>
               <div className="w-full flex items-center justify-between px-8 py-4 bg-primary">
                 <div className="flex items-center gap-5">
-                  <div className="rounded-full border-2 w-10 h-10 border-white">
-                    <img src="/svgs/avatar.svg" />
+                  <div className="rounded-full border-2 w-10 h-10 border-white overflow-hidden">
+                    <img src="/images/maulana_dimyati.jpg" />
                   </div>
                   <figcaption className="text-white text-sm text-left">
                     <div>Maulana Dimyati</div>
@@ -193,8 +193,8 @@ export const LandingPage = () => {
               </blockquote>
               <div className="w-full flex items-center justify-between px-8 py-4 bg-primary">
                 <div className="flex items-center gap-5">
-                  <div className="rounded-full border-2 w-10 h-10 border-white">
-                    <img src="/svgs/avatar.svg" />
+                  <div className="rounded-full border-2 w-10 h-10 border-white overflow-hidden">
+                    <img src="/images/david_yappeter.jpg" />
                   </div>
                   <figcaption className="text-white text-sm text-left">
                     <div>David Yappeter</div>
@@ -219,8 +219,8 @@ export const LandingPage = () => {
               </blockquote>
               <div className="w-full flex items-center justify-between px-8 py-4 bg-primary">
                 <div className="flex items-center gap-5">
-                  <div className="rounded-full border-2 w-10 h-10 border-white">
-                    <img src="/svgs/avatar.svg" />
+                  <div className="rounded-full border-2 w-10 h-10 border-white overflow-hidden">
+                    <img src="/images/annisa_syasqia.jpg" />
                   </div>
                   <figcaption className="text-white text-sm text-left">
                     <div>Annisa Syasqia Zain</div>
@@ -246,8 +246,8 @@ export const LandingPage = () => {
               </blockquote>
               <div className="w-full flex items-center justify-between px-8 py-4 bg-primary">
                 <div className="flex items-center gap-5">
-                  <div className="rounded-full border-2 w-10 h-10 border-white">
-                    <img src="/svgs/avatar.svg" />
+                  <div className="rounded-full border-2 w-10 h-10 border-white overflow-hidden">
+                    <img src="/images/fioreza_nadhin.jpg" />
                   </div>
                   <figcaption className="text-white text-sm text-left">
                     <div>Fioreza Radhin Naufal</div>
@@ -273,8 +273,8 @@ export const LandingPage = () => {
               </blockquote>
               <div className="w-full flex items-center justify-between px-8 py-4 bg-primary">
                 <div className="flex items-center gap-5">
-                  <div className="rounded-full border-2 w-10 h-10 border-white">
-                    <img src="/svgs/avatar.svg" />
+                  <div className="rounded-full border-2 w-10 h-10 border-white overflow-hidden">
+                    <img src="/images/egy_yuda.jpg" />
                   </div>
                   <figcaption className="text-white text-sm text-left">
                     <div>Egy Yuda Nugraha</div>
