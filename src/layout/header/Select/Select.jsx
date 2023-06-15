@@ -79,7 +79,7 @@ export const Select = ({
       <div
         className={clsx({
           'min-h-16px text-left text-xs grow mb-1 text-danger': true,
-          invisible: !error,
+          hidden: !error,
         })}
       >
         {error}
