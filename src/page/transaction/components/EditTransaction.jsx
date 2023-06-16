@@ -7,9 +7,9 @@ import { Input } from '../../../components/input/Input'
 import { useModal } from '../../../core/Modal/ModalProvider'
 import { useError } from '../../../custom-hooks/useError'
 import { useInput } from '../../../custom-hooks/useInput'
-import { CategorySelect } from '../../category/components/CategorySelect'
 import { WalletSelect } from '../../wallet/components/WalletSelect'
 import { useIntl } from 'react-intl'
+import { CategoryTransactionSelect } from '../../category/components/CategoryTransactionSelect'
 
 export const EditTransaction = ({ refetch, transaction }) => {
   const intl = useIntl()
@@ -66,7 +66,7 @@ export const EditTransaction = ({ refetch, transaction }) => {
           onChange={setSelectedWallet}
           error={domainErrors?.wallet_id}
         />
-        <CategorySelect
+        <CategoryTransactionSelect
           className="col-span-1"
           label={intl.formatMessage({ id: 'categoryTitle' })}
           value={selectedCategory}

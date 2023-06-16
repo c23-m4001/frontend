@@ -30,4 +30,14 @@ export const CategoryApi = {
   deleteCategory: async ({ id }) => {
     return axios.delete(`${CATEGORY_API_URL}/${id}`).then((r) => r.message)
   },
+  optionTransactionForm: async ({ page, limit, phrase, sorts }) => {
+    return axios
+      .post(`${CATEGORY_API_URL}/options/transaction-form`, {
+        page,
+        limit,
+        phrase,
+        sorts,
+      })
+      .then((r) => r.data)
+  },
 }
