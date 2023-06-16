@@ -1,11 +1,10 @@
 # Moneta
 Moneta is a Web-based application to manage our daily cashflow.
 
+## Techstack
 | ReactJS | TailwindCSS | React Query | MomentJs | React Router DOM | EsLint | Github |
 | --- | --- | --- | --- | --- | --- | --- |  
-|  <img width="100" src="https://raw.githubusercontent.com/get-icon/geticon/fc0f660daee147afb4a56c64e12bde6486b73e39/icons/react.svg" /> | <img width="100" src="https://raw.githubusercontent.com/get-icon/geticon/fc0f660daee147afb4a56c64e12bde6486b73e39/icons/tailwindcss.svg" /> | <img width="100" src="https://seeklogo.com/images/R/react-query-logo-1340EA4CE9-seeklogo.com.png" /> | <img width="100" src="	https://cdn.worldvectorlogo.com/logos/momentjs.svg" /> | <img width="100" src="https://reactrouter.com/_brand/react-router-stacked-color.png" /> | <img width="100" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/ESLint_logo.svg/1200px-ESLint_logo.svg.png" /> | <img width="100" src="https://raw.githubusercontent.com/get-icon/geticon/fc0f660daee147afb4a56c64e12bde6486b73e39/icons/github.svg" /> |
-
-
+| <a href="https://react.dev"><img width="100" src="https://github.com/c23-m4001/.github/raw/master/assets/react.png" /></a> | <a href="https://tailwindcss.com"><img width="100" src="https://github.com/c23-m4001/.github/raw/master/assets/tailwindcss.png" /></a> | <a href="https://tanstack.com/query/latest"><img width="100" src="https://github.com/c23-m4001/.github/raw/master/assets/react_query.png" /></a> | <a href="https://momentjs.com"><img width="100" src="https://github.com/c23-m4001/.github/raw/master/assets/moment.png" /></a> | <a href="https://reactrouter.com"><img width="100" src="https://github.com/c23-m4001/.github/raw/master/assets/react_router_dom.png" /></a> | <a href="https://eslint.org/"><img width="100" src="https://github.com/c23-m4001/.github/raw/master/assets/eslint.png" /></a> | <a href="https://github.com"><img width="100" src="https://github.com/c23-m4001/.github/raw/master/assets/github.png" /></a> |
 
 ## Development
 
